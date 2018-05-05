@@ -1,0 +1,26 @@
+.about-section .heading-left {
+  width: 100%;
+  display: block;
+  position: relative;
+  margin: 20px 0; }
+.about-section .heading-wrapper {
+  display: block; }
+  .about-section .heading-wrapper span {
+    color: #F1C30F;
+    position: absolute;
+    font-size: 14px;
+    left: -21px;
+    top: 54px;
+    letter-spacing: 1px;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg); }
+  .about-section .heading-wrapper h2 {
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.2;
+    padding: 16px 16px;
+    padding-left: 35px; }
+.about-section .about-blog > p {
+  margin-bottom: 15px; }
+
+/*# sourceMappingURL=customs.css.map */

@@ -1,7 +1,7 @@
 <?php
 class Reviewblog_model extends CI_Model {
 	public function addReviewblog($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "reviewblog SET author = '" . $this->db->escape_str($data['author']) . "', blog_id = '" . (int)$data['blog_id'] . "', text = '" . $this->db->escape_str(strip_tags($data['text'])) . "', rating = '" . (int)$data['rating'] . "', status = '" . (int)$data['status'] . "', date_added = '" . $this->db->escape_str($data['date_added']) . "'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "reviewblog SET author = '" . $this->db->escape($data['author']) . "', blog_id = '" . (int)$data['blog_id'] . "', text = '" . $this->db->escape(strip_tags($data['text'])) . "', rating = '" . (int)$data['rating'] . "', status = '" . (int)$data['status'] . "', date_added = '" . $this->db->escape($data['date_added']) . "'");
 
 		$reviewblog_id = $this->db->insert_id();
 
@@ -11,7 +11,7 @@ class Reviewblog_model extends CI_Model {
 	}
 
 	public function editReviewblog($reviewblog_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "reviewblog SET author = '" . $this->db->escape_str($data['author']) . "', blog_id = '" . (int)$data['blog_id'] . "', text = '" . $this->db->escape_str(strip_tags($data['text'])) . "', rating = '" . (int)$data['rating'] . "', status = '" . (int)$data['status'] . "', date_added = '" . $this->db->escape_str($data['date_added']) . "', date_modified = NOW() WHERE reviewblog_id = '" . (int)$reviewblog_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "reviewblog SET author = '" . $this->db->escape($data['author']) . "', blog_id = '" . (int)$data['blog_id'] . "', text = '" . $this->db->escape(strip_tags($data['text'])) . "', rating = '" . (int)$data['rating'] . "', status = '" . (int)$data['status'] . "', date_added = '" . $this->db->escape($data['date_added']) . "', date_modified = NOW() WHERE reviewblog_id = '" . (int)$reviewblog_id . "'");
 
 		$this->cache->delete('blog');
 	}
@@ -32,11 +32,11 @@ class Reviewblog_model extends CI_Model {
 		$sql = "SELECT r.reviewblog_id, pd.name, r.author, r.rating, r.status, r.date_added FROM " . DB_PREFIX . "reviewblog r LEFT JOIN " . DB_PREFIX . "blog_description pd ON (r.blog_id = pd.blog_id) WHERE pd.language_id = '" . (int)$this->configs->get('config_language_id') . "'";
 
 		if (!empty($data['filter_blog'])) {
-			$sql .= " AND pd.name LIKE '" . $this->db->escape_str($data['filter_blog']) . "%'";
+			$sql .= " AND pd.name LIKE '" . $this->db->escape($data['filter_blog']) . "%'";
 		}
 
 		if (!empty($data['filter_author'])) {
-			$sql .= " AND r.author LIKE '" . $this->db->escape_str($data['filter_author']) . "%'";
+			$sql .= " AND r.author LIKE '" . $this->db->escape($data['filter_author']) . "%'";
 		}
 
 		if (isset($data['filter_status']) && $data['filter_status'] !== '') {
@@ -44,7 +44,7 @@ class Reviewblog_model extends CI_Model {
 		}
 
 		if (!empty($data['filter_date_added'])) {
-			$sql .= " AND DATE(r.date_added) = DATE('" . $this->db->escape_str($data['filter_date_added']) . "')";
+			$sql .= " AND DATE(r.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
 		}
 
 		$sort_data = array(
@@ -88,11 +88,11 @@ class Reviewblog_model extends CI_Model {
 		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "reviewblog r LEFT JOIN " . DB_PREFIX . "blog_description pd ON (r.blog_id = pd.blog_id) WHERE pd.language_id = '" . (int)$this->configs->get('config_language_id') . "'";
 
 		if (!empty($data['filter_blog'])) {
-			$sql .= " AND pd.name LIKE '" . $this->db->escape_str($data['filter_blog']) . "%'";
+			$sql .= " AND pd.name LIKE '" . $this->db->escape($data['filter_blog']) . "%'";
 		}
 
 		if (!empty($data['filter_author'])) {
-			$sql .= " AND r.author LIKE '" . $this->db->escape_str($data['filter_author']) . "%'";
+			$sql .= " AND r.author LIKE '" . $this->db->escape($data['filter_author']) . "%'";
 		}
 
 		if (isset($data['filter_status']) && $data['filter_status'] !== '') {
@@ -100,7 +100,7 @@ class Reviewblog_model extends CI_Model {
 		}
 
 		if (!empty($data['filter_date_added'])) {
-			$sql .= " AND DATE(r.date_added) = DATE('" . $this->db->escape_str($data['filter_date_added']) . "')";
+			$sql .= " AND DATE(r.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
 		}
 
 		$query = $this->db->query($sql);

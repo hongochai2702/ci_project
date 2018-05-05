@@ -264,7 +264,7 @@
 $('input[name=\'path\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
-			url: 'admin/catalog/categoryblog/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
+			url: 'catalog/categoryblog/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
 			dataType: 'json',
 			success: function(json) {
 				json.unshift({
@@ -291,7 +291,7 @@ $('input[name=\'path\']').autocomplete({
 $('input[name=\'filter\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
-			url: 'admin/catalog/filter/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
+			url: 'catalog/filter/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
 			dataType: 'json',
 			success: function(json) {
 				response($.map(json, function(item) {

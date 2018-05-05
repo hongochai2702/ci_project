@@ -60,7 +60,7 @@ class Location_model extends CI_Model {
 	public function getTotalLocations() {
 		// $query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "location");
 
-		// return $query->row('total');
+		// return $query->row['total'];
 		return $this->db->count_all('location');
 	}
 }

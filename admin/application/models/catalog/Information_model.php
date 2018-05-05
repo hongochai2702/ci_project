@@ -177,13 +177,13 @@ class Information_model extends CI_Model {
 		return $this->db->count_all('information');
 		// $query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "information");
 
-		// return $query->row('total');
+		// return $query->row['total'];
 	}
 
 	public function getTotalInformationsByLayoutId($layout_id) {
 		return $this->db->where('layout_id', (int)$layout_id)->count_all('information');
 		// $query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "information_to_layout WHERE layout_id = '" . (int)$layout_id . "'");
 
-		// return $query->row('total');
+		// return $query->row['total'];
 	}
 }

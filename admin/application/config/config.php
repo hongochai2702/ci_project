@@ -532,7 +532,7 @@ define('HTTP_CATALOG', URL_HOME);
 
 // HTTPS
 define('HTTPS_SERVER', URL_HOME.'admin/');
-define('HTTPS_CATALOG', URL_HOME);
+define('HTTPS_CATALOG', URL_HOME );
 
 // DIR
 define('DIR_APPLICATION', DIR_HOME.'admin/application/');

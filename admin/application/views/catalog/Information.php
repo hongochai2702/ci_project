@@ -7,7 +7,7 @@ class Information extends MX_Controller {
 
 		$this->document->setTitle($this->lang->line('heading_title'));
 
-		$this->load->model('admin/catalog/information_model','model_catalog_information');
+		$this->load->model('catalog/information_model','model_catalog_information');
 
 		$this->getList();
 	}
@@ -17,7 +17,7 @@ class Information extends MX_Controller {
 
 		$this->document->setTitle($this->lang->line('heading_title'));
 
-		$this->load->model('admin/catalog/information_model','model_catalog_information');
+		$this->load->model('catalog/information_model','model_catalog_information');
 
 		if (($this->input->server('REQUEST_METHOD') == 'POST') && $this->validateForm()) {
 			$this->model_catalog_information->addInformation($this->input->post());
@@ -50,7 +50,7 @@ class Information extends MX_Controller {
 
 		$this->document->setTitle($this->lang->line('heading_title'));
 
-		$this->load->model('admin/catalog/information_model','model_catalog_information');
+		$this->load->model('catalog/information_model','model_catalog_information');
 
 		if (($this->input->server('REQUEST_METHOD') == 'POST') && $this->validateForm()) {
 			$this->model_catalog_information->editInformation($this->input->get('information_id'), $this->input->post());
@@ -83,7 +83,7 @@ $success_data = $this->lang->line('text_success');
 
 		$this->document->setTitle($this->lang->line('heading_title'));
 
-		$this->load->model('admin/catalog/information_model','model_catalog_information');
+		$this->load->model('catalog/information_model','model_catalog_information');
 
 		if ($this->input->post('selected') && $this->validateDelete()) {
 			foreach ($this->input->post('selected') as $information_id) {
@@ -255,11 +255,11 @@ $success_data = $this->lang->line('text_success');
 		$data['sort'] = $sort;
 		$data['order'] = $order;
 
-		$data['header'] = $this->load->controller('admin/common/header');
-		$data['column_left'] = $this->load->controller('admin/common/column_left');
-		$data['footer'] = $this->load->controller('admin/common/footer');
+		$data['header'] = $this->load->controller('common/header');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->load->view('admin/catalog/information_list', $data);
+		$this->load->view('catalog/information_list', $data);
 	}
 
 	protected function getForm() {
@@ -339,7 +339,7 @@ $success_data = $this->lang->line('text_success');
 
 		$data['user_token'] = $this->session->userdata('user_token');
 
-		$this->load->model('admin/localisation/language_model','model_localisation_language');
+		$this->load->model('localisation/language_model','model_localisation_language');
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
@@ -351,7 +351,7 @@ $success_data = $this->lang->line('text_success');
 			$data['information_description'] = array();
 		}
 
-		$this->load->model('admin/setting/store_model','model_setting_store');
+		$this->load->model('setting/store_model','model_setting_store');
 
 		$data['stores'] = $this->model_setting_store->getStores();
 
@@ -403,15 +403,15 @@ $success_data = $this->lang->line('text_success');
 			$data['information_layout'] = array();
 		}
 
-		$this->load->model('admin/design/layout_model','model_design_layout');
+		$this->load->model('design/layout_model','model_design_layout');
 
 		$data['layouts'] = $this->model_design_layout->getLayouts();
 
-		$data['header'] = $this->load->controller('admin/common/header');
-		$data['column_left'] = $this->load->controller('admin/common/column_left');
-		$data['footer'] = $this->load->controller('admin/common/footer');
+		$data['header'] = $this->load->controller('common/header');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->load->view('admin/catalog/information_form', $data);
+		$this->load->view('catalog/information_form', $data);
 	}
 
 	protected function validateForm() {
@@ -434,7 +434,7 @@ $success_data = $this->lang->line('text_success');
 		}
 
 		if (utf8_strlen($this->input->post('keyword')) > 0) {
-			$this->load->model('admin/catalog/seo_url_model','model_catalog_seo_url');
+			$this->load->model('catalog/seo_url_model','model_catalog_seo_url');
 
 			$seo_url_info = $this->model_catalog_seo_url->getUrlAlias($this->input->post('keyword'));
 
@@ -459,7 +459,7 @@ $success_data = $this->lang->line('text_success');
 			$this->error['warning'] = $this->lang->line('error_permission');
 		}
 
-		$this->load->model('admin/setting/store_model','model_setting_store');
+		$this->load->model('setting/store_model','model_setting_store');
 
 		foreach ($this->input->post('selected') as $information_id) {
 			if ($this->configs->get('config_account_id') == $information_id) {

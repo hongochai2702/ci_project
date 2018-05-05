@@ -1,13 +1,13 @@
 <?php
 class ModelCustomerCustomer extends Model {
 	public function addCustomer($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "customer SET customer_group_id = '" . (int)$data['customer_group_id'] . "', firstname = '" . $this->db->escape_str($data['firstname']) . "', lastname = '" . $this->db->escape_str($data['lastname']) . "', email = '" . $this->db->escape_str($data['email']) . "', telephone = '" . $this->db->escape_str($data['telephone']) . "', custom_field = '" . $this->db->escape_str(isset($data['custom_field']) ? json_encode($data['custom_field']) : json_encode(array())) . "', newsletter = '" . (int)$data['newsletter'] . "', salt = '" . $this->db->escape_str($salt = token(9)) . "', password = '" . $this->db->escape_str(sha1($salt . sha1($salt . sha1($data['password'])))) . "', status = '" . (int)$data['status'] . "', safe = '" . (int)$data['safe'] . "', date_added = NOW()");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "customer SET customer_group_id = '" . (int)$data['customer_group_id'] . "', firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', custom_field = '" . $this->db->escape(isset($data['custom_field']) ? json_encode($data['custom_field']) : json_encode(array())) . "', newsletter = '" . (int)$data['newsletter'] . "', salt = '" . $this->db->escape($salt = token(9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', status = '" . (int)$data['status'] . "', safe = '" . (int)$data['safe'] . "', date_added = NOW()");
 
 		$customer_id = $this->db->insert_id();
 
 		if (isset($data['address'])) {
 			foreach ($data['address'] as $address) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "address SET customer_id = '" . (int)$customer_id . "', firstname = '" . $this->db->escape_str($address['firstname']) . "', lastname = '" . $this->db->escape_str($address['lastname']) . "', company = '" . $this->db->escape_str($address['company']) . "', address_1 = '" . $this->db->escape_str($address['address_1']) . "', address_2 = '" . $this->db->escape_str($address['address_2']) . "', city = '" . $this->db->escape_str($address['city']) . "', postcode = '" . $this->db->escape_str($address['postcode']) . "', country_id = '" . (int)$address['country_id'] . "', zone_id = '" . (int)$address['zone_id'] . "', custom_field = '" . $this->db->escape_str(isset($address['custom_field']) ? json_encode($address['custom_field']) : json_encode(array())) . "'");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "address SET customer_id = '" . (int)$customer_id . "', firstname = '" . $this->db->escape($address['firstname']) . "', lastname = '" . $this->db->escape($address['lastname']) . "', company = '" . $this->db->escape($address['company']) . "', address_1 = '" . $this->db->escape($address['address_1']) . "', address_2 = '" . $this->db->escape($address['address_2']) . "', city = '" . $this->db->escape($address['city']) . "', postcode = '" . $this->db->escape($address['postcode']) . "', country_id = '" . (int)$address['country_id'] . "', zone_id = '" . (int)$address['zone_id'] . "', custom_field = '" . $this->db->escape(isset($address['custom_field']) ? json_encode($address['custom_field']) : json_encode(array())) . "'");
 
 				if (isset($address['default'])) {
 					$address_id = $this->db->insert_id();
@@ -18,24 +18,24 @@ class ModelCustomerCustomer extends Model {
 		}
 		
 		if ($data['affiliate']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "customer_affiliate SET customer_id = '" . (int)$customer_id . "', company = '" . $this->db->escape_str($data['company']) . "', website = '" . $this->db->escape_str($data['website']) . "', tracking = '" . $this->db->escape_str($data['tracking']) . "', commission = '" . (float)$data['commission'] . "', tax = '" . $this->db->escape_str($data['tax']) . "', payment = '" . $this->db->escape_str($data['payment']) . "', cheque = '" . $this->db->escape_str($data['cheque']) . "', paypal = '" . $this->db->escape_str($data['paypal']) . "', bank_name = '" . $this->db->escape_str($data['bank_name']) . "', bank_branch_number = '" . $this->db->escape_str($data['bank_branch_number']) . "', bank_swift_code = '" . $this->db->escape_str($data['bank_swift_code']) . "', bank_account_name = '" . $this->db->escape_str($data['bank_account_name']) . "', bank_account_number = '" . $this->db->escape_str($data['bank_account_number']) . "', custom_field = '" . $this->db->escape_str(isset($data['custom_field']) ? json_encode($data['custom_field']) : json_encode(array())) . "', status = '" . (int)$data['affiliate'] . "', date_added = NOW()");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "customer_affiliate SET customer_id = '" . (int)$customer_id . "', company = '" . $this->db->escape($data['company']) . "', website = '" . $this->db->escape($data['website']) . "', tracking = '" . $this->db->escape($data['tracking']) . "', commission = '" . (float)$data['commission'] . "', tax = '" . $this->db->escape($data['tax']) . "', payment = '" . $this->db->escape($data['payment']) . "', cheque = '" . $this->db->escape($data['cheque']) . "', paypal = '" . $this->db->escape($data['paypal']) . "', bank_name = '" . $this->db->escape($data['bank_name']) . "', bank_branch_number = '" . $this->db->escape($data['bank_branch_number']) . "', bank_swift_code = '" . $this->db->escape($data['bank_swift_code']) . "', bank_account_name = '" . $this->db->escape($data['bank_account_name']) . "', bank_account_number = '" . $this->db->escape($data['bank_account_number']) . "', custom_field = '" . $this->db->escape(isset($data['custom_field']) ? json_encode($data['custom_field']) : json_encode(array())) . "', status = '" . (int)$data['affiliate'] . "', date_added = NOW()");
 		}
 		
 		return $customer_id;
 	}
 
 	public function editCustomer($customer_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "customer SET customer_group_id = '" . (int)$data['customer_group_id'] . "', firstname = '" . $this->db->escape_str($data['firstname']) . "', lastname = '" . $this->db->escape_str($data['lastname']) . "', email = '" . $this->db->escape_str($data['email']) . "', telephone = '" . $this->db->escape_str($data['telephone']) . "', custom_field = '" . $this->db->escape_str(isset($data['custom_field']) ? json_encode($data['custom_field']) : json_encode(array())) . "', newsletter = '" . (int)$data['newsletter'] . "', status = '" . (int)$data['status'] . "', safe = '" . (int)$data['safe'] . "' WHERE customer_id = '" . (int)$customer_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "customer SET customer_group_id = '" . (int)$data['customer_group_id'] . "', firstname = '" . $this->db->escape($data['firstname']) . "', lastname = '" . $this->db->escape($data['lastname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', custom_field = '" . $this->db->escape(isset($data['custom_field']) ? json_encode($data['custom_field']) : json_encode(array())) . "', newsletter = '" . (int)$data['newsletter'] . "', status = '" . (int)$data['status'] . "', safe = '" . (int)$data['safe'] . "' WHERE customer_id = '" . (int)$customer_id . "'");
 
 		if ($data['password']) {
-			$this->db->query("UPDATE " . DB_PREFIX . "customer SET salt = '" . $this->db->escape_str($salt = token(9)) . "', password = '" . $this->db->escape_str(sha1($salt . sha1($salt . sha1($data['password'])))) . "' WHERE customer_id = '" . (int)$customer_id . "'");
+			$this->db->query("UPDATE " . DB_PREFIX . "customer SET salt = '" . $this->db->escape($salt = token(9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "' WHERE customer_id = '" . (int)$customer_id . "'");
 		}
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "address WHERE customer_id = '" . (int)$customer_id . "'");
 
 		if (isset($data['address'])) {
 			foreach ($data['address'] as $address) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "address SET address_id = '" . (int)$address['address_id'] . "', customer_id = '" . (int)$customer_id . "', firstname = '" . $this->db->escape_str($address['firstname']) . "', lastname = '" . $this->db->escape_str($address['lastname']) . "', company = '" . $this->db->escape_str($address['company']) . "', address_1 = '" . $this->db->escape_str($address['address_1']) . "', address_2 = '" . $this->db->escape_str($address['address_2']) . "', city = '" . $this->db->escape_str($address['city']) . "', postcode = '" . $this->db->escape_str($address['postcode']) . "', country_id = '" . (int)$address['country_id'] . "', zone_id = '" . (int)$address['zone_id'] . "', custom_field = '" . $this->db->escape_str(isset($address['custom_field']) ? json_encode($address['custom_field']) : json_encode(array())) . "'");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "address SET address_id = '" . (int)$address['address_id'] . "', customer_id = '" . (int)$customer_id . "', firstname = '" . $this->db->escape($address['firstname']) . "', lastname = '" . $this->db->escape($address['lastname']) . "', company = '" . $this->db->escape($address['company']) . "', address_1 = '" . $this->db->escape($address['address_1']) . "', address_2 = '" . $this->db->escape($address['address_2']) . "', city = '" . $this->db->escape($address['city']) . "', postcode = '" . $this->db->escape($address['postcode']) . "', country_id = '" . (int)$address['country_id'] . "', zone_id = '" . (int)$address['zone_id'] . "', custom_field = '" . $this->db->escape(isset($address['custom_field']) ? json_encode($address['custom_field']) : json_encode(array())) . "'");
 
 				if (isset($address['default'])) {
 					$address_id = $this->db->insert_id();
@@ -46,12 +46,12 @@ class ModelCustomerCustomer extends Model {
 		}
 		
 		if ($data['affiliate']) {
-			$this->db->query("REPLACE INTO " . DB_PREFIX . "customer_affiliate SET customer_id = '" . (int)$customer_id . "', company = '" . $this->db->escape_str($data['company']) . "', website = '" . $this->db->escape_str($data['website']) . "', tracking = '" . $this->db->escape_str($data['tracking']) . "', commission = '" . (float)$data['commission'] . "', tax = '" . $this->db->escape_str($data['tax']) . "', payment = '" . $this->db->escape_str($data['payment']) . "', cheque = '" . $this->db->escape_str($data['cheque']) . "', paypal = '" . $this->db->escape_str($data['paypal']) . "', bank_name = '" . $this->db->escape_str($data['bank_name']) . "', bank_branch_number = '" . $this->db->escape_str($data['bank_branch_number']) . "', bank_swift_code = '" . $this->db->escape_str($data['bank_swift_code']) . "', bank_account_name = '" . $this->db->escape_str($data['bank_account_name']) . "', bank_account_number = '" . $this->db->escape_str($data['bank_account_number']) . "', status = '" . (int)$data['affiliate'] . "', date_added = NOW()");
+			$this->db->query("REPLACE INTO " . DB_PREFIX . "customer_affiliate SET customer_id = '" . (int)$customer_id . "', company = '" . $this->db->escape($data['company']) . "', website = '" . $this->db->escape($data['website']) . "', tracking = '" . $this->db->escape($data['tracking']) . "', commission = '" . (float)$data['commission'] . "', tax = '" . $this->db->escape($data['tax']) . "', payment = '" . $this->db->escape($data['payment']) . "', cheque = '" . $this->db->escape($data['cheque']) . "', paypal = '" . $this->db->escape($data['paypal']) . "', bank_name = '" . $this->db->escape($data['bank_name']) . "', bank_branch_number = '" . $this->db->escape($data['bank_branch_number']) . "', bank_swift_code = '" . $this->db->escape($data['bank_swift_code']) . "', bank_account_name = '" . $this->db->escape($data['bank_account_name']) . "', bank_account_number = '" . $this->db->escape($data['bank_account_number']) . "', status = '" . (int)$data['affiliate'] . "', date_added = NOW()");
 		}		
 	}
 
 	public function editToken($customer_id, $token) {
-		$this->db->query("UPDATE " . DB_PREFIX . "customer SET token = '" . $this->db->escape_str($token) . "' WHERE customer_id = '" . (int)$customer_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "customer SET token = '" . $this->db->escape($token) . "' WHERE customer_id = '" . (int)$customer_id . "'");
 	}
 
 	public function deleteCustomer($customer_id) {
@@ -72,7 +72,7 @@ class ModelCustomerCustomer extends Model {
 	}
 
 	public function getCustomerByEmail($email) {
-		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "customer WHERE LCASE(email) = '" . $this->db->escape_str(utf8_strtolower($email)) . "'");
+		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "customer WHERE LCASE(email) = '" . $this->db->escape(utf8_strtolower($email)) . "'");
 
 		return $query->row;
 	}
@@ -89,11 +89,11 @@ class ModelCustomerCustomer extends Model {
 		$implode = array();
 
 		if (!empty($data['filter_name'])) {
-			$implode[] = "CONCAT(c.firstname, ' ', c.lastname) LIKE '%" . $this->db->escape_str($data['filter_name']) . "%'";
+			$implode[] = "CONCAT(c.firstname, ' ', c.lastname) LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
 		}
 
 		if (!empty($data['filter_email'])) {
-			$implode[] = "c.email LIKE '" . $this->db->escape_str($data['filter_email']) . "%'";
+			$implode[] = "c.email LIKE '" . $this->db->escape($data['filter_email']) . "%'";
 		}
 
 		if (isset($data['filter_newsletter']) && !is_null($data['filter_newsletter'])) {
@@ -109,7 +109,7 @@ class ModelCustomerCustomer extends Model {
 		}
 		
 		if (!empty($data['filter_ip'])) {
-			$implode[] = "c.customer_id IN (SELECT customer_id FROM " . DB_PREFIX . "customer_ip WHERE ip = '" . $this->db->escape_str($data['filter_ip']) . "')";
+			$implode[] = "c.customer_id IN (SELECT customer_id FROM " . DB_PREFIX . "customer_ip WHERE ip = '" . $this->db->escape($data['filter_ip']) . "')";
 		}
 
 		if (isset($data['filter_status']) && $data['filter_status'] !== '') {
@@ -117,7 +117,7 @@ class ModelCustomerCustomer extends Model {
 		}
 
 		if (!empty($data['filter_date_added'])) {
-			$implode[] = "DATE(c.date_added) = DATE('" . $this->db->escape_str($data['filter_date_added']) . "')";
+			$implode[] = "DATE(c.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
 		}
 
 		if ($implode) {
@@ -235,11 +235,11 @@ class ModelCustomerCustomer extends Model {
 		$implode = array();
 
 		if (!empty($data['filter_name'])) {
-			$implode[] = "CONCAT(firstname, ' ', lastname) LIKE '%" . $this->db->escape_str($data['filter_name']) . "%'";
+			$implode[] = "CONCAT(firstname, ' ', lastname) LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
 		}
 
 		if (!empty($data['filter_email'])) {
-			$implode[] = "email LIKE '" . $this->db->escape_str($data['filter_email']) . "%'";
+			$implode[] = "email LIKE '" . $this->db->escape($data['filter_email']) . "%'";
 		}
 
 		if (isset($data['filter_newsletter']) && !is_null($data['filter_newsletter'])) {
@@ -251,7 +251,7 @@ class ModelCustomerCustomer extends Model {
 		}
 
 		if (!empty($data['filter_ip'])) {
-			$implode[] = "customer_id IN (SELECT customer_id FROM " . DB_PREFIX . "customer_ip WHERE ip = '" . $this->db->escape_str($data['filter_ip']) . "')";
+			$implode[] = "customer_id IN (SELECT customer_id FROM " . DB_PREFIX . "customer_ip WHERE ip = '" . $this->db->escape($data['filter_ip']) . "')";
 		}
 
 		if (isset($data['filter_status']) && $data['filter_status'] !== '') {
@@ -259,7 +259,7 @@ class ModelCustomerCustomer extends Model {
 		}
 
 		if (!empty($data['filter_date_added'])) {
-			$implode[] = "DATE(date_added) = DATE('" . $this->db->escape_str($data['filter_date_added']) . "')";
+			$implode[] = "DATE(date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
 		}
 
 		if ($implode) {
@@ -272,7 +272,7 @@ class ModelCustomerCustomer extends Model {
 	}
         
         public function getAffliateByTracking($tracking) {
-                $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_affiliate WHERE tracking = '" . $this->db->escape_str($tracking) . "'");
+                $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_affiliate WHERE tracking = '" . $this->db->escape($tracking) . "'");
                 
                 return $query->row;
         }
@@ -289,7 +289,7 @@ class ModelCustomerCustomer extends Model {
 		$implode = array();
 
 		if (!empty($data['filter_name'])) {
-			$implode[] = "CONCAT(c.firstname, ' ', c.lastname) LIKE '%" . $this->db->escape_str($data['filter_name']) . "%'";
+			$implode[] = "CONCAT(c.firstname, ' ', c.lastname) LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
 		}		
 		
 		if ($implode) {
@@ -319,7 +319,7 @@ class ModelCustomerCustomer extends Model {
 		$implode = array();
 
 		if (!empty($data['filter_name'])) {
-			$implode[] = "CONCAT(c.firstname, ' ', c.lastname) LIKE '%" . $this->db->escape_str($data['filter_name']) . "%'";
+			$implode[] = "CONCAT(c.firstname, ' ', c.lastname) LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
 		}		
 		
 		if ($implode) {
@@ -354,7 +354,7 @@ class ModelCustomerCustomer extends Model {
 	}
 
 	public function addHistory($customer_id, $comment) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "customer_history SET customer_id = '" . (int)$customer_id . "', comment = '" . $this->db->escape_str(strip_tags($comment)) . "', date_added = NOW()");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "customer_history SET customer_id = '" . (int)$customer_id . "', comment = '" . $this->db->escape(strip_tags($comment)) . "', date_added = NOW()");
 	}
 
 	public function getHistories($customer_id, $start = 0, $limit = 10) {
@@ -378,7 +378,7 @@ class ModelCustomerCustomer extends Model {
 	}
 
 	public function addTransaction($customer_id, $description = '', $amount = '', $order_id = 0) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "customer_transaction SET customer_id = '" . (int)$customer_id . "', order_id = '" . (int)$order_id . "', description = '" . $this->db->escape_str($description) . "', amount = '" . (float)$amount . "', date_added = NOW()");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "customer_transaction SET customer_id = '" . (int)$customer_id . "', order_id = '" . (int)$order_id . "', description = '" . $this->db->escape($description) . "', amount = '" . (float)$amount . "', date_added = NOW()");
 	}
 
 	public function deleteTransactionByOrderId($order_id) {
@@ -418,7 +418,7 @@ class ModelCustomerCustomer extends Model {
 	}
 
 	public function addReward($customer_id, $description = '', $points = '', $order_id = 0) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "customer_reward SET customer_id = '" . (int)$customer_id . "', order_id = '" . (int)$order_id . "', points = '" . (int)$points . "', description = '" . $this->db->escape_str($description) . "', date_added = NOW()");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "customer_reward SET customer_id = '" . (int)$customer_id . "', order_id = '" . (int)$order_id . "', points = '" . (int)$points . "', description = '" . $this->db->escape($description) . "', date_added = NOW()");
 	}
 
 	public function deleteReward($order_id) {
@@ -469,18 +469,18 @@ class ModelCustomerCustomer extends Model {
 	}
 
 	public function getTotalCustomersByIp($ip) {
-		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer_ip WHERE ip = '" . $this->db->escape_str($ip) . "'");
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer_ip WHERE ip = '" . $this->db->escape($ip) . "'");
 
 		return $query->row['total'];
 	}
 
 	public function getTotalLoginAttempts($email) {
-		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "customer_login` WHERE `email` = '" . $this->db->escape_str($email) . "'");
+		$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "customer_login` WHERE `email` = '" . $this->db->escape($email) . "'");
 
 		return $query->row;
 	}
 
 	public function deleteLoginAttempts($email) {
-		$this->db->query("DELETE FROM `" . DB_PREFIX . "customer_login` WHERE `email` = '" . $this->db->escape_str($email) . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "customer_login` WHERE `email` = '" . $this->db->escape($email) . "'");
 	}
 }

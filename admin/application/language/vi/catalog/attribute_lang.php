@@ -1,26 +1,27 @@
 <?php
 // Heading
-$lang['heading_title']          = 'Attributes';
+$lang['heading_title']          = 'Đơn vị Thuộc tính';
 
 // Text
-$lang['text_success']           = 'Success: You have modified attributes!';
-$lang['text_list']              = 'Attribute List';
-$lang['text_add']               = 'Add Attribute';
-$lang['text_edit']              = 'Edit Attribute';
+$lang['text_success']           = 'Thành công: Thuộc tính đã được thay đổi!';
+$lang['text_list']              = 'Danh mục Thuộc tính';
+$lang['text_add']               = 'Thêm Thuộc tính';
+$lang['text_edit']              = 'Cập nhật Thuộc tính';
+
 
 // Column
-$lang['column_name']            = 'Attribute Name';
-$lang['column_attribute_group'] = 'Attribute Group';
-$lang['column_sort_order']      = 'Sort Order';
-$lang['column_action']          = 'Action';
+$lang['column_name']            = 'Tên thuộc tính';
+$lang['column_attribute_group'] = 'Nhóm thuộc tính';
+$lang['column_sort_order']      = 'Thứ tự';
+$lang['column_action']          = 'Chỉnh sửa';
 
 // Entry
-$lang['entry_name']             = 'Attribute Name';
-$lang['entry_attribute_group']  = 'Attribute Group';
-$lang['entry_sort_order']       = 'Sort Order';
+$lang['entry_name']            = 'Tên thuộc tính:';
+$lang['entry_attribute_group'] = 'Nhóm thuộc tính:';
+$lang['entry_sort_order']      = 'Thứ tự:';
 
 // Error
-$lang['error_permission']       = 'Warning: You do not have permission to modify attributes!';
-$lang['error_attribute_group']  = 'Attribute Group Required!';
-$lang['error_name']             = 'Attribute Name must be between 1 and 64 characters!';
-$lang['error_product']          = 'Warning: This attribute cannot be deleted as it is currently assigned to %s products!';
+$lang['error_permission']      = 'Cảnh báo: Bạn không được phép thay đổi các thuộc tính!';
+$lang['error_name']            = 'Tên thuộc tính phải có từ 3 và 64 ký tự!';
+$lang['error_product']         = 'Cảnh báo: không thể xóa, vì thuộc tính này đang được kết nối với %s sản phẩm!';
+?>

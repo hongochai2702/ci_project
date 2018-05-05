@@ -3,7 +3,7 @@ class Slideshow extends MX_Controller {
 	private $error = array();
 
 	public function index() {
-		$this->lang->load('module/slideshow');
+		$this->lang->load('extension/module/slideshow');
 
 		$this->document->setTitle($this->lang->line('heading_title'));
 
@@ -62,19 +62,19 @@ class Slideshow extends MX_Controller {
 		if (!$this->input->get('module_id')) {
 			$data['breadcrumbs'][] = array(
 				'text' => $this->lang->line('heading_title'),
-				'href' => $this->url->link('module/slideshow', 'user_token=' . $this->session->userdata('user_token'), true)
+				'href' => $this->url->link('extension/module/slideshow', 'user_token=' . $this->session->userdata('user_token'), true)
 			);
 		} else {
 			$data['breadcrumbs'][] = array(
 				'text' => $this->lang->line('heading_title'),
-				'href' => $this->url->link('module/slideshow', 'user_token=' . $this->session->userdata('user_token') . '&module_id=' . $this->input->get('module_id'), true)
+				'href' => $this->url->link('extension/module/slideshow', 'user_token=' . $this->session->userdata('user_token') . '&module_id=' . $this->input->get('module_id'), true)
 			);
 		}
 
 		if (!$this->input->get('module_id')) {
-			$data['action'] = $this->url->link('module/slideshow', 'user_token=' . $this->session->userdata('user_token'), true);
+			$data['action'] = $this->url->link('extension/module/slideshow', 'user_token=' . $this->session->userdata('user_token'), true);
 		} else {
-			$data['action'] = $this->url->link('module/slideshow', 'user_token=' . $this->session->userdata('user_token') . '&module_id=' . $this->input->get('module_id'), true);
+			$data['action'] = $this->url->link('extension/module/slideshow', 'user_token=' . $this->session->userdata('user_token') . '&module_id=' . $this->input->get('module_id'), true);
 		}
 
 		$data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->userdata('user_token') . '&type=module', true);
@@ -131,11 +131,11 @@ class Slideshow extends MX_Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->load->view('module/slideshow', $data);
+		$this->load->view('extension/module/slideshow', $data);
 	}
 
 	protected function validate() {
-		if (!$this->user->hasPermission('modify', 'module/slideshow')) {
+		if (!$this->user->hasPermission('modify', 'extension/module/slideshow')) {
 			$this->error['warning'] = $this->lang->line('error_permission');
 		}
 

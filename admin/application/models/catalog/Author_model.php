@@ -1,12 +1,12 @@
 <?php
 class Author_model extends CI_Model {
 	public function addAuthor($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "author SET name = '" . $this->db->escape_str($data['name']) . "', sort_order = '" . (int)$data['sort_order'] . "'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "author SET name = '" . $this->db->escape($data['name']) . "', sort_order = '" . (int)$data['sort_order'] . "'");
 
 		$author_id = $this->db->insert_id();
 
 		if (isset($data['image'])) {
-			$this->db->query("UPDATE " . DB_PREFIX . "author SET image = '" . $this->db->escape_str($data['image']) . "' WHERE author_id = '" . (int)$author_id . "'");
+			$this->db->query("UPDATE " . DB_PREFIX . "author SET image = '" . $this->db->escape($data['image']) . "' WHERE author_id = '" . (int)$author_id . "'");
 		}
 
 		if (isset($data['author_store'])) {
@@ -20,7 +20,7 @@ class Author_model extends CI_Model {
 			foreach ($data['author_seo_url'] as $store_id => $language) {
 				foreach ($language as $language_id => $keyword) {
 					if (!empty($keyword)) {
-						$this->db->query("INSERT INTO " . DB_PREFIX . "seo_url SET store_id = '" . (int)$store_id . "', language_id = '" . (int)$language_id . "', query = 'author_id=" . (int)$author_id . "', keyword = '" . $this->db->escape_str($keyword) . "'");
+						$this->db->query("INSERT INTO " . DB_PREFIX . "seo_url SET store_id = '" . (int)$store_id . "', language_id = '" . (int)$language_id . "', query = 'author_id=" . (int)$author_id . "', keyword = '" . $this->db->escape($keyword) . "'");
 					}
 				}
 			}
@@ -32,10 +32,10 @@ class Author_model extends CI_Model {
 	}
 
 	public function editAuthor($author_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "author SET name = '" . $this->db->escape_str($data['name']) . "', sort_order = '" . (int)$data['sort_order'] . "' WHERE author_id = '" . (int)$author_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "author SET name = '" . $this->db->escape($data['name']) . "', sort_order = '" . (int)$data['sort_order'] . "' WHERE author_id = '" . (int)$author_id . "'");
 
 		if (isset($data['image'])) {
-			$this->db->query("UPDATE " . DB_PREFIX . "author SET image = '" . $this->db->escape_str($data['image']) . "' WHERE author_id = '" . (int)$author_id . "'");
+			$this->db->query("UPDATE " . DB_PREFIX . "author SET image = '" . $this->db->escape($data['image']) . "' WHERE author_id = '" . (int)$author_id . "'");
 		}
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "author_to_store WHERE author_id = '" . (int)$author_id . "'");
@@ -52,7 +52,7 @@ class Author_model extends CI_Model {
 			foreach ($data['author_seo_url'] as $store_id => $language) {
 				foreach ($language as $language_id => $keyword) {
 					if (!empty($keyword)) {
-						$this->db->query("INSERT INTO `" . DB_PREFIX . "seo_url` SET store_id = '" . (int)$store_id . "', language_id = '" . (int)$language_id . "', query = 'author_id=" . (int)$author_id . "', keyword = '" . $this->db->escape_str($keyword) . "'");
+						$this->db->query("INSERT INTO `" . DB_PREFIX . "seo_url` SET store_id = '" . (int)$store_id . "', language_id = '" . (int)$language_id . "', query = 'author_id=" . (int)$author_id . "', keyword = '" . $this->db->escape($keyword) . "'");
 					}
 				}
 			}
@@ -79,7 +79,7 @@ class Author_model extends CI_Model {
 		$sql = "SELECT * FROM " . DB_PREFIX . "author";
 
 		if (!empty($data['filter_name'])) {
-			$sql .= " WHERE name LIKE '" . $this->db->escape_str($data['filter_name']) . "%'";
+			$sql .= " WHERE name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
 		}
 
 		$sort_data = array(

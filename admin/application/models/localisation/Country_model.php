@@ -81,7 +81,7 @@ class Country_model extends CI_Model {
 	public function getTotalCountries() {
 		// $query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "country");
 
-		// return $query->row('total');
+		// return $query->row['total'];
 		return $this->db->count_all('country');
 	}
 }

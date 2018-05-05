@@ -16,8 +16,8 @@
 			$this->document->setTitle($this->lang->line('heading_title'));
 			$this->load->model('design/layout_model');
 			if (($this->input->server('REQUEST_METHOD') == 'POST') && $this->validateForm()) {
-				$this->layout_model->addLayout($this->input->post);
-				// $this->session->userdata('success') = $this->lang->line('text_success');
+				$this->layout_model->addLayout($this->input->post());
+				$this->session->set_userdata('success', $this->lang->line('text_success'));
 				$url = '';
 				if ($this->input->get('sort')) {
 					$url .= '&sort=' . $this->input->get('sort');
@@ -36,11 +36,11 @@
 			$this->lang->load('design/layout');
 			$this->document->setTitle($this->lang->line('heading_title'));
 			$this->load->model('design/layout_model');
-			$session_success = $this->session->userdata('success');
+			// $this->session->set_userdata('success', $this->lang->line('text_success'));
 			
 			if (($this->input->server('REQUEST_METHOD') == 'POST') && $this->validateForm()) {
 				$this->layout_model->editLayout($this->input->get('layout_id'), $this->input->post());
-				$session_success = $this->lang->line('text_success');
+				$this->session->set_userdata('success', $this->lang->line('text_success'));
 				$url = '';
 				if ($this->input->get('sort')) {
 					$url .= '&sort=' . $this->input->get('sort');
@@ -229,7 +229,7 @@
 				$data['action'] = $this->url->link('design/layout/edit', 'user_token=' . $this->session->userdata('user_token') . '&layout_id=' . $this->input->get('layout_id') . $url, true);
 			}
 			$data['cancel'] = $this->url->link('design/layout', 'user_token=' . $this->session->userdata('user_token') . $url, true);
-			$data['token'] = $this->session->userdata('user_token');
+			$data['user_token'] = $this->session->userdata('user_token');
 			$this->load->model('designs/layout_model', 'layout_model');
 			if ($this->input->get('layout_id') && ($this->input->server('REQUEST_METHOD') != 'POST')) {
 				$layout_info = $this->layout_model->getLayout($this->input->get('layout_id'));
@@ -280,7 +280,6 @@
 				$layout_modules = $this->input->post('layout_module');
 			} elseif ($this->input->get('layout_id')) {
 				$layout_modules = $this->layout_model->getLayoutModules($this->input->get('layout_id'));
-				// var_dump($layout_modules);
 			} else {
 				$layout_modules = array();
 			}

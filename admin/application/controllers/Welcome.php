@@ -21,6 +21,6 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		// echo __METHOD__ . ' ADMIN';
-		 redirect('common/login');
+		 redirect('admin/common/login');
 	}
 }

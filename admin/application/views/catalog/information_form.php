@@ -52,7 +52,7 @@
                   <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>
                     <div class="col-sm-10">
-                      <textarea data-toggle="summernote" data-lang="vi-VN" name="information_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control summernote"><?php echo isset($information_description[$language['language_id']]) ? $information_description[$language['language_id']]['description'] : ''; ?></textarea>
+                      <textarea data-toggle="summernote" data-lang="<?php echo $language['code']; ?>" name="information_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control summernote"><?php echo isset($information_description[$language['language_id']]) ? $information_description[$language['language_id']]['description'] : ''; ?></textarea>
                       <?php if (isset($error_description[$language['language_id']])) { ?>
                       <div class="text-danger"><?php echo $error_description[$language['language_id']]; ?></div>
                       <?php } ?>
@@ -206,17 +206,17 @@
       </div>
     </div>
   </div>
-  <link href="public/javascript/codemirror/lib/codemirror.css" rel="stylesheet" />
-  <link href="public/javascript/codemirror/theme/monokai.css" rel="stylesheet" />
-  <script type="text/javascript" src="public/javascript/codemirror/lib/codemirror.js"></script> 
-  <script type="text/javascript" src="public/javascript/codemirror/lib/xml.js"></script> 
-  <script type="text/javascript" src="public/javascript/codemirror/lib/formatting.js"></script> 
-  <script type="text/javascript" src="public/javascript/summernote/summernote.js"></script>
-  <script type="text/javascript" src="public/javascript/summernote/summernote-image-attributes.js"></script> 
+  <link href="<?php echo base_url('public/javascript/codemirror/lib/codemirror.css'); ?>" rel="stylesheet" />
+  <link href="<?php echo base_url('public/javascript/codemirror/theme/monokai.css'); ?>" rel="stylesheet" />
+  <script type="text/javascript" src="<?php echo base_url('public/javascript/codemirror/lib/codemirror.js'); ?>"></script> 
+  <script type="text/javascript" src="<?php echo base_url('public/javascript/codemirror/lib/xml.js'); ?>"></script> 
+  <script type="text/javascript" src="<?php echo base_url('public/javascript/codemirror/lib/formatting.js'); ?>"></script> 
+  <script type="text/javascript" src="<?php echo base_url('public/javascript/summernote/summernote.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo base_url('public/javascript/summernote/summernote-image-attributes.js'); ?>"></script> 
 
-    <script type="text/javascript" src="public/javascript/summernote/summernote.js"></script>
-  <link href="public/javascript/summernote/summernote.css" rel="stylesheet" />
-  <script type="text/javascript" src="public/javascript/summernote/hitech.js"></script> 
+    <script type="text/javascript" src="<?php echo base_url('public/javascript/summernote/summernote.js'); ?>"></script>
+  <link href="<?php echo base_url('public/javascript/summernote/summernote.css'); ?>" rel="stylesheet" />
+  <script type="text/javascript" src="<?php echo base_url('public/javascript/summernote/hitech.js'); ?>"></script> 
   <script type="text/javascript"><!--
 $('#language a:first').tab('show');
 //--></script></div>

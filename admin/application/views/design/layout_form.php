@@ -25,6 +25,7 @@
       </div>
       <div class="panel-body">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-layout" class="form-horizontal">
+          <input type="hidden" name="test_post" value="post_test_value_123" />
           <fieldset>
             <legend><?php echo $text_route; ?></legend>
             <div class="form-group required">
@@ -144,7 +145,6 @@
                   </tfoot>
                 </table>
               </div>
-            </div>
             </div>
             <div class="row">
               <div class="col-lg-3 col-md-4 col-sm-12">
@@ -484,9 +484,9 @@ $('#module-column-left, #module-column-right, #module-content-top, #module-conte
 	var part = this.value.split('.');
 	
 	if (!part[1]) {
-		$(this).parent().find('a').attr('href', 'admin/extension/module/' + part[0] + '&token=<?php echo $token; ?>');
+		$(this).parent().find('a').attr('href', 'extension/module/' + part[0] + '?user_token=<?php echo $user_token; ?>');
 	} else {
-		$(this).parent().find('a').attr('href', 'admin/extension/module/' + part[0] + '&token=<?php echo $token; ?>&module_id=' + part[1]);
+		$(this).parent().find('a').attr('href', 'extension/module/' + part[0] + '?user_token=<?php echo $user_token; ?>&module_id=' + part[1]);
 	}
 });
 

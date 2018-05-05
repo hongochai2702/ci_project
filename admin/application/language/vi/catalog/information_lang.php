@@ -29,6 +29,8 @@ $lang['entry_sort_order']       = 'Sort Order';
 $lang['entry_layout']           = 'Layout Override';
 
 // Help
+$lang['help_keyword']           = 'Do not use spaces, instead replace spaces with - and make sure the SEO URL is globally unique.';
+$lang['help_bottom']            = 'Display in the bottom footer.';
 $lang['help_bottom']            = 'Display in the bottom footer.';
 
 // Error

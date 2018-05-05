@@ -334,21 +334,21 @@
       </div>
     </div>
   </div>
-  <link href="<?php echo base_url('public/admin/javascript/codemirror/lib/codemirror.css'); ?>" rel="stylesheet" />
-  <link href="<?php echo base_url('public/admin/javascript/codemirror/theme/monokai.css'); ?>" rel="stylesheet" />
-  <script type="text/javascript" src="<?php echo base_url('public/admin/javascript/codemirror/lib/codemirror.js'); ?>"></script> 
-  <script type="text/javascript" src="<?php echo base_url('public/admin/javascript/codemirror/lib/xml.js'); ?>"></script> 
-  <script type="text/javascript" src="<?php echo base_url('public/admin/javascript/codemirror/lib/formatting.js'); ?>"></script> 
-  <script type="text/javascript" src="<?php echo base_url('public/admin/javascript/summernote/summernote.js'); ?>"></script>
-  <link href="<?php echo base_url('public/admin/javascript/summernote/summernote.css'); ?>" rel="stylesheet" />
-  <script type="text/javascript" src="<?php echo base_url('public/admin/javascript/summernote/summernote-image-attributes.js'); ?>"></script> 
-  <script type="text/javascript" src="<?php echo base_url('public/admin/javascript/summernote/hitech.js'); ?>"></script> 
+  <link href="public/admin/javascript/codemirror/lib/codemirror.css" rel="stylesheet" />
+  <link href="public/admin/javascript/codemirror/theme/monokai.css" rel="stylesheet" />
+  <script type="text/javascript" src="public/admin/javascript/codemirror/lib/codemirror.js"></script> 
+  <script type="text/javascript" src="public/admin/javascript/codemirror/lib/xml.js"></script> 
+  <script type="text/javascript" src="public/admin/javascript/codemirror/lib/formatting.js"></script> 
+  <script type="text/javascript" src="public/admin/javascript/summernote/summernote.js"></script>
+  <link href="public/admin/javascript/summernote/summernote.css" rel="stylesheet" />
+  <script type="text/javascript" src="public/admin/javascript/summernote/summernote-image-attributes.js"></script> 
+  <script type="text/javascript" src="public/admin/javascript/summernote/hitech.js"></script> 
   <script type="text/javascript"><!--
 // Author
 $('input[name=\'author\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
-			url: 'admin/catalog/author/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
+			url: 'catalog/author/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
 			dataType: 'json',
 			success: function(json) {
 				json.unshift({
@@ -375,7 +375,7 @@ $('input[name=\'author\']').autocomplete({
 $('input[name=\'categoryblog\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
-			url: 'admin/catalog/categoryblog/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
+			url: 'catalog/categoryblog/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
 			dataType: 'json',
 			success: function(json) {
 				response($.map(json, function(item) {
@@ -407,7 +407,7 @@ $('#blog-categoryblog').delegate('.fa-minus-circle', 'click', function() {
 $('input[name=\'related\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
-			url: 'admin/catalog/blog/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
+			url: 'catalog/blog/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
 			dataType: 'json',
 			success: function(json) {
 				response($.map(json, function(item) {

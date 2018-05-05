@@ -69,7 +69,7 @@
                   </div>
                   <div class="form-group">
                     <label for="input-module_type"><?php echo $input_species; ?></label>
-                    <select name="module_type" id="input-module_type" class="form-control" onchange="$('#input-module_id').load(ci_var.base_url + 'admin/design/menu/species?user_token=<?php echo $user_token; ?>&module_type=' + this.value + '&module_id=&menu_id=<?php echo $menu_info['menu_id']; ?>&menu_group_id=');">
+                    <select name="module_type" id="input-module_type" class="form-control" onchange="$('#input-module_id').load(ci_var.base_url + 'design/menu/species?user_token=<?php echo $user_token; ?>&module_type=' + this.value + '&module_id=&menu_id=<?php echo $menu_info['menu_id']; ?>&menu_group_id=');">
                       <option value="link" <?php if($module_type=='link'){ echo 'selected'; } ?>><?php echo $text_links; ?></option>
                       <option value="product" <?php if($module_type=='product'){ echo 'selected'; } ?>><?php echo $text_product; ?></option>
                       <option value="category" <?php if($module_type=='category'){ echo 'selected'; } ?>><?php echo $text_category; ?></option>
@@ -79,7 +79,7 @@
                   </div>
                   <div class="form-group">
                     <label for="input-module_id"><?php echo $input_module; ?></label>
-                    <select name="module_id" id="input-module_id" class="form-control" onclick="$.get(ci_var.base_url + 'admin/design/menu/moduleurl?user_token=<?php echo $user_token; ?>&module_type=' + $('#input-module_type').val() + '&module_id=' + this.value + '&menu_id=<?php echo $menu_info['menu_id']; ?>', function(response_url){ $('#input-url').val(response_url); });"></select>
+                    <select name="module_id" id="input-module_id" class="form-control" onclick="$.get(ci_var.base_url + 'design/menu/moduleurl?user_token=<?php echo $user_token; ?>&module_type=' + $('#input-module_type').val() + '&module_id=' + this.value + '&menu_id=<?php echo $menu_info['menu_id']; ?>', function(response_url){ $('#input-url').val(response_url); });"></select>
                   </div>
                   <div class="form-group required">
                     <label for="input-url"><?php echo $input_url; ?></label>
@@ -87,7 +87,7 @@
                   </div>
                   <div class="form-group required">
                     <label for="input-keyword"><?php echo $input_keyword; ?></label>
-                    <input type="text" name="keyword" value="<?php echo $keyword; ?>" onfocus="$.get(ci_var.base_url + 'admin/design/menu/moduleseo?user_token=<?php echo $user_token; ?>&module_url=' + $('#input-url').val() + '&menu_id=<?php echo $menu_info['menu_id']; ?>', function(response_keyword){ $('#input-keyword').val(response_keyword); });" placeholder="<?php echo $input_keyword; ?>" id="input-keyword" class="form-control" />
+                    <input type="text" name="keyword" value="<?php echo $keyword; ?>" onfocus="$.get(ci_var.base_url + 'design/menu/moduleseo?user_token=<?php echo $user_token; ?>&module_url=' + $('#input-url').val() + '&menu_id=<?php echo $menu_info['menu_id']; ?>', function(response_keyword){ $('#input-keyword').val(response_keyword); });" placeholder="<?php echo $input_keyword; ?>" id="input-keyword" class="form-control" />
                   </div>
     		      <div class="form-group">
           			<a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
@@ -239,7 +239,7 @@
 </div>
 <?php if($menu_group){ ?>
 <script type="text/javascript">
-$('#input-module_id').load(ci_var.base_url + 'admin/design/menu/species?user_token=<?php echo $user_token; ?>&module_type=<?php echo $menu_group['module_type']; ?>&module_id=<?php echo $menu_group['module_id']; ?>&menu_id=<?php echo $menu_group['menu_id']; ?>&menu_group_id=<?php echo $menu_group['menu_group_id']; ?>');
+$('#input-module_id').load(ci_var.base_url + 'design/menu/species?user_token=<?php echo $user_token; ?>&module_type=<?php echo $menu_group['module_type']; ?>&module_id=<?php echo $menu_group['module_id']; ?>&menu_id=<?php echo $menu_group['menu_id']; ?>&menu_group_id=<?php echo $menu_group['menu_group_id']; ?>');
 </script>
 <?php } ?>
 
@@ -285,7 +285,7 @@ $('input[name=\'collective_type\']').on('change', function() {
 $('input[name=\'product\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
-			url: ci_var.base_url + 'admin/catalog/product/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
+			url: ci_var.base_url + 'catalog/product/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
 			dataType: 'json',
 			success: function(json) {
 				response($.map(json, function(item) {
@@ -311,7 +311,7 @@ $('#menu-product').delegate('.fa-minus-circle', 'click', function() {
 $('input[name=\'category\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
-			url: ci_var.base_url + 'admin/catalog/category/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
+			url: ci_var.base_url + 'catalog/category/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
 			dataType: 'json',
 			success: function(json) {
 				response($.map(json, function(item) {
@@ -337,7 +337,7 @@ $('#menu-category').delegate('.fa-minus-circle', 'click', function() {
 $('input[name=\'information\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
-			url: ci_var.base_url + 'admin/design/menu/autocompleteinformation?user_token=<?php echo $user_token; ?>&filter_title=' +  encodeURIComponent(request),
+			url: ci_var.base_url + 'design/menu/autocompleteinformation?user_token=<?php echo $user_token; ?>&filter_title=' +  encodeURIComponent(request),
 			dataType: 'json',
 			success: function(json) {
 				response($.map(json, function(item) {
@@ -363,7 +363,7 @@ $('#menu-information').delegate('.fa-minus-circle', 'click', function() {
 $('input[name=\'manufacturer\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
-			url: ci_var.base_url + 'admin/catalog/manufacturer/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
+			url: ci_var.base_url + 'catalog/manufacturer/autocomplete?user_token=<?php echo $user_token; ?>&filter_name=' +  encodeURIComponent(request),
 			dataType: 'json',
 			success: function(json) {
 				response($.map(json, function(item) {

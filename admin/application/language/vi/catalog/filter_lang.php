@@ -1,26 +1,24 @@
 <?php
 // Heading
-$lang['heading_title']     = 'Filters';
+$lang['heading_title']     = 'Quản lý bộ Lọc';
 
 // Text
-$lang['text_success']      = 'Success: You have modified filters!';
-$lang['text_list']         = 'Filter List';
-$lang['text_add']          = 'Add Filter';
-$lang['text_edit']         = 'Edit Filter';
-$lang['text_group']        = 'Filter Group';
-$lang['text_value']        = 'Filter Values';
+$lang['text_success']      = 'Chúc mừng! Bạn đã cập nhật thành công!';
+$lang['text_list']         = 'Danh mục chức năng Lọc';
+$lang['text_add']          = 'Thêm chức năng Lọc';
+$lang['text_edit']         = 'Cập nhật chức năng Lọc';
 
 // Column
-$lang['column_group']      = 'Filter Group';
-$lang['column_sort_order'] = 'Sort Order';
-$lang['column_action']     = 'Action';
+$lang['column_group']      = 'Nhóm chức năng Lọc';
+$lang['column_sort_order'] = 'Sắp xếp';
+$lang['column_action']     = 'Chỉnh sửa';
 
 // Entry
-$lang['entry_group']       = 'Filter Group Name';
-$lang['entry_name']        = 'Filter Name';
-$lang['entry_sort_order']  = 'Sort Order';
+$lang['entry_group']       = 'Tên Nhóm Chức năng Lọc';
+$lang['entry_name']        = 'Chức năng Lọc';
+$lang['entry_sort_order']  = 'Sắp xếp';
 
 // Error
-$lang['error_permission']  = 'Warning: You do not have permission to modify filters!';
-$lang['error_group']       = 'Filter Group Name must be between 1 and 64 characters!';
-$lang['error_name']        = 'Filter Name must be between 1 and 64 characters!';
+$lang['error_permission']  = 'Cảnh báo! Bạn không có quyền chỉnh sửa chức năng lọc!';
+$lang['error_group']       = 'Tên nhóm chức năng Lọc phải có từ 3 đến 64 ký tự!';
+$lang['error_name']        = 'Tên chức năng Lọc phải có từ 3 đến 64 ký tự!';

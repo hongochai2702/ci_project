@@ -39,7 +39,7 @@ class Extension extends MX_Controller {
 			$extension = basename($file, '.php');
 
 			// Compatibility code for old extension folders
-			$lang_module[$extension] = $this->lang->load('extension/' . $extension, false, true);
+			$lang_module[$extension] = $this->lang->load('extension/extension/' . $extension, false, true);
 
 			$data = array_merge($data, $lang_module);
 			// if ($this->user->hasPermission('access', 'module/' . $extension)) {

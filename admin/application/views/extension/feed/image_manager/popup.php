@@ -73,7 +73,7 @@
 							 <?php if (isset($_GET['thumb'])==true){
 								 $thumb = $_GET['thumb']; ?>
 									$.ajax({
-											url: ci_var.base_url + 'admin/feed/image_manager_plus/thumb?user_token='+ci_var.user_token + '&image=' + encodeURIComponent(b),
+											url: ci_var.base_url + 'feed/image_manager_plus/thumb?user_token='+ci_var.user_token + '&image=' + encodeURIComponent(b),
 											dataType: 'text',
 											success: function(data) {									
 												$('#<?php echo $thumb;?>>img').attr('src', data);

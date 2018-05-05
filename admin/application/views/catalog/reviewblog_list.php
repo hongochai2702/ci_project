@@ -203,7 +203,7 @@
   </div>
   <script type="text/javascript"><!--
 $('#button-filter').on('click', function() {
-	url = 'admin/catalog/reviewblog?user_token={{ user_token }}';
+	url = 'catalog/reviewblog?user_token={{ user_token }}';
 	
 	var filter_blog = $('input[name=\'filter_blog\']').val();
 	

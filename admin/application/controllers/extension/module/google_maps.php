@@ -11,7 +11,7 @@ class Google_Maps extends MX_Controller
 		}
 
 		//--Loading current active language file
-		$this->load->language('module/google_maps');
+		$this->load->language('extension/module/google_maps');
 
 		//--Load Helper
 		$this->load->helper('google_maps_helper');
@@ -83,7 +83,7 @@ class Google_Maps extends MX_Controller
 
 		$data['breadcrumbs'][] = array(
 			'text'      => $data['heading_title'],
-			'href'      => $this->url->link('module/google_maps', 'user_token=' . $this->session->userdata('user_token'), true)
+			'href'      => $this->url->link('extension/module/google_maps', 'user_token=' . $this->session->userdata('user_token'), true)
 		);
 		//--
 
@@ -134,6 +134,6 @@ class Google_Maps extends MX_Controller
 
 		$data['token'] = $this->session->userdata('user_token');
 
-		$this->load->view('module/google_maps', $data);
+		$this->load->view('extension/module/google_maps', $data);
 	}
 }

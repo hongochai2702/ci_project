@@ -6,11 +6,11 @@ class CategoryBlog_model extends CI_Model {
 		$categoryblog_id = $this->db->insert_id();
 
 		if (isset($data['image'])) {
-			$this->db->query("UPDATE " . DB_PREFIX . "categoryblog SET image = '" . $this->db->this->db->escape_str($data['image']) . "' WHERE categoryblog_id = '" . (int)$categoryblog_id . "'");
+			$this->db->query("UPDATE " . DB_PREFIX . "categoryblog SET image = '" . $this->db->escape_str($data['image']) . "' WHERE categoryblog_id = '" . (int)$categoryblog_id . "'");
 		}
 
 		foreach ($data['categoryblog_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "categoryblog_description SET categoryblog_id = '" . (int)$categoryblog_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->this->db->escape_str($value['name']) . "', description = '" . $this->db->this->db->escape_str($value['description']) . "', meta_title = '" . $this->db->this->db->escape_str($value['meta_title']) . "', meta_description = '" . $this->db->this->db->escape_str($value['meta_description']) . "', meta_keyword = '" . $this->db->this->db->escape_str($value['meta_keyword']) . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "categoryblog_description SET categoryblog_id = '" . (int)$categoryblog_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape_str($value['name']) . "', description = '" . $this->db->escape_str($value['description']) . "', meta_title = '" . $this->db->escape_str($value['meta_title']) . "', meta_description = '" . $this->db->escape_str($value['meta_description']) . "', meta_keyword = '" . $this->db->escape_str($value['meta_keyword']) . "'");
 		}
 
 		// MySQL Hierarchical Data Closure Table Pattern
@@ -46,7 +46,7 @@ class CategoryBlog_model extends CI_Model {
 		}
 
 		if (isset($data['keyword'])) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'categoryblog_id=" . (int)$categoryblog_id . "', keyword = '" . $this->db->this->db->escape_str($data['keyword']) . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'categoryblog_id=" . (int)$categoryblog_id . "', keyword = '" . $this->db->escape_str($data['keyword']) . "'");
 		}
 
 		$this->cache->delete('categoryblog');
@@ -58,13 +58,13 @@ class CategoryBlog_model extends CI_Model {
 		$this->db->query("UPDATE " . DB_PREFIX . "categoryblog SET parent_id = '" . (int)$data['parent_id'] . "', `top` = '" . (isset($data['top']) ? (int)$data['top'] : 0) . "', `column` = '" . (int)$data['column'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW() WHERE categoryblog_id = '" . (int)$categoryblog_id . "'");
 
 		if (isset($data['image'])) {
-			$this->db->query("UPDATE " . DB_PREFIX . "categoryblog SET image = '" . $this->db->this->db->escape_str($data['image']) . "' WHERE categoryblog_id = '" . (int)$categoryblog_id . "'");
+			$this->db->query("UPDATE " . DB_PREFIX . "categoryblog SET image = '" . $this->db->escape_str($data['image']) . "' WHERE categoryblog_id = '" . (int)$categoryblog_id . "'");
 		}
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "categoryblog_description WHERE categoryblog_id = '" . (int)$categoryblog_id . "'");
 
 		foreach ($data['categoryblog_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "categoryblog_description SET categoryblog_id = '" . (int)$categoryblog_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->this->db->escape_str($value['name']) . "', description = '" . $this->db->this->db->escape_str($value['description']) . "', meta_title = '" . $this->db->this->db->escape_str($value['meta_title']) . "', meta_description = '" . $this->db->this->db->escape_str($value['meta_description']) . "', meta_keyword = '" . $this->db->this->db->escape_str($value['meta_keyword']) . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "categoryblog_description SET categoryblog_id = '" . (int)$categoryblog_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape_str($value['name']) . "', description = '" . $this->db->escape_str($value['description']) . "', meta_title = '" . $this->db->escape_str($value['meta_title']) . "', meta_description = '" . $this->db->escape_str($value['meta_description']) . "', meta_keyword = '" . $this->db->escape_str($value['meta_keyword']) . "'");
 		}
 
 		// MySQL Hierarchical Data Closure Table Pattern
@@ -145,7 +145,7 @@ class CategoryBlog_model extends CI_Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'categoryblog_id=" . (int)$categoryblog_id . "'");
 
 		if ($data['keyword']) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'categoryblog_id=" . (int)$categoryblog_id . "', keyword = '" . $this->db->this->db->escape_str($data['keyword']) . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'categoryblog_id=" . (int)$categoryblog_id . "', keyword = '" . $this->db->escape_str($data['keyword']) . "'");
 		}
 
 		$this->cache->delete('categoryblog');
@@ -206,7 +206,7 @@ class CategoryBlog_model extends CI_Model {
 		$sql = "SELECT cp.categoryblog_id AS categoryblog_id, GROUP_CONCAT(cd1.name ORDER BY cp.level SEPARATOR '&nbsp;&nbsp;&gt;&nbsp;&nbsp;') AS name, c1.parent_id, c1.sort_order FROM " . DB_PREFIX . "categoryblog_path cp LEFT JOIN " . DB_PREFIX . "categoryblog c1 ON (cp.categoryblog_id = c1.categoryblog_id) LEFT JOIN " . DB_PREFIX . "categoryblog c2 ON (cp.path_id = c2.categoryblog_id) LEFT JOIN " . DB_PREFIX . "categoryblog_description cd1 ON (cp.path_id = cd1.categoryblog_id) LEFT JOIN " . DB_PREFIX . "categoryblog_description cd2 ON (cp.categoryblog_id = cd2.categoryblog_id) WHERE cd1.language_id = '" . (int)$this->configs->get('config_language_id') . "' AND cd2.language_id = '" . (int)$this->configs->get('config_language_id') . "'";
 
 		if (!empty($data['filter_name'])) {
-			$sql .= " AND cd2.name LIKE '%" . $this->db->this->db->escape_str($data['filter_name']) . "%'";
+			$sql .= " AND cd2.name LIKE '%" . $this->db->escape_str($data['filter_name']) . "%'";
 		}
 
 		$sql .= " GROUP BY cp.categoryblog_id";

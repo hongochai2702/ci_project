@@ -1,24 +1,25 @@
 <?php
 // Heading
-$lang['heading_title']     = 'Attribute Groups';
+$lang['heading_title']     = 'Nhóm thuộc tính';
 
 // Text
-$lang['text_success']      = 'Success: You have modified attribute groups!';
-$lang['text_list']         = 'Attribute Group List';
-$lang['text_add']          = 'Add Attribute Group';
-$lang['text_edit']         = 'Edit Attribute Group';
+$lang['text_success']      = 'Thành công: Nhóm thuộc tính đã được thay đổi!';
+$lang['text_list']         = 'Danh mục Nhóm thuộc tính';
+$lang['text_add']          = 'Thêm Nhóm thuộc tính';
+$lang['text_edit']         = 'Cập nhật Nhóm thuộc tính';
 
 // Column
-$lang['column_name']       = 'Attribute Group Name';
-$lang['column_sort_order'] = 'Sort Order';
-$lang['column_action']     = 'Action';
+$lang['column_name']       = 'Tên nhóm thuộc tính';
+$lang['column_sort_order'] = 'Thứ tự';
+$lang['column_action']     = 'Chỉnh sửa';
 
 // Entry
-$lang['entry_name']        = 'Attribute Group Name';
-$lang['entry_sort_order']  = 'Sort Order';
+$lang['entry_name']        = 'Tên nhóm thuộc tính:';
+$lang['entry_sort_order']  = 'Thứ tự:';
 
 // Error
-$lang['error_permission']  = 'Warning: You do not have permission to modify attribute groups!';
-$lang['error_name']        = 'Attribute Group Name must be between 1 and 64 characters!';
-$lang['error_attribute']   = 'Warning: This attribute group cannot be deleted as it is currently assigned to %s attributes!';
-$lang['error_product']     = 'Warning: This attribute group cannot be deleted as it is currently assigned to %s products!';
+$lang['error_permission']  = 'Cảnh báo: Bạn không được phép thay đổi các nhóm thuộc tính!';
+$lang['error_name']        = 'Thuộc tính Tên nhóm phải có từ 3 và 64 ký tự!';
+$lang['error_attribute']   = 'Cảnh báo: không thể xóa, vì nhóm thuộc tính này đang được kết nối với %s thuộc tính!';
+$lang['error_product']     = 'Cảnh báo: không thể xóa, vì nhóm thuộc tính này đang được kết nối với %s sản phẩm!';
+?>

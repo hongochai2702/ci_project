@@ -9,18 +9,18 @@ class Header extends MX_Controller {
 		$this->load->language('common/header');
 		$this->load->model('setting/extension_model');
 
-		// $data['analytics'] = array();
+		$data['analytics'] = array();
 
-		// $analytics = $this->extension_model->getExtensions('analytics');
+		$analytics = $this->extension_model->getExtensions('analytics');
 
-		// if($analytics) {
-		// 	foreach ($analytics as $analytic) {
-		// 		if ($this->configs->get('analytics_' . $analytic['code'] . '_status')) {
-		// 			$data['analytics'][] = $this->load->controller('extension/analytics/' . $analytic['code'], $this->configs->get('analytics_' . $analytic['code'] . '_status'));
-		// 		}
-		// 	}
+		if($analytics) {
+			foreach ($analytics as $analytic) {
+				if ($this->configs->get('analytics_' . $analytic['code'] . '_status')) {
+					$data['analytics'][] = $this->load->controller('extension/analytics/' . $analytic['code'], $this->configs->get('analytics_' . $analytic['code'] . '_status'));
+				}
+			}
 
-		//  }
+		 }
 		if ($this->input->server('HTTPS')) {
 			$server = HTTPS_SERVER;
 		} else {
@@ -76,12 +76,13 @@ class Header extends MX_Controller {
 		$data['email'] = $this->configs->get('config_email');
 		$data['comment'] = $this->configs->get('config_comment');
 
-
+		$data['menu_header'] = $this->load->controller('common/menu_header');
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');
-		$data['menu_header'] = $this->load->controller('common/menu_header');
-	
+
+
+
 
 		return $this->load->view('default/common/header', $data,true);
 	}

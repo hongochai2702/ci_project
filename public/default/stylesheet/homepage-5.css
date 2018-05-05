@@ -119,20 +119,10 @@
 	position: relative;
 }
 .about-figure::after, .about-figure::before, .fig-design::after, .fig-design:before {
-	background: #becad4;
+	
 	content: "";
-	display: block;
-	height: 1px;
-	position: absolute;
-	width: 43%;
-	right: -9px;
-	top: 0;
 }
 .about-figure::before {
-	transform: rotate(90deg);
-	-webkit-transform: rotate(90deg);
-	right: -24%;
-	top: 77px;
 }
 .fig-design {
 	overflow: visible;
@@ -143,21 +133,18 @@
 	top: auto;
 }
 .fig-design:before {
-	transform: rotate(90deg);
-	-webkit-transform: rotate(90deg);
-	bottom: 65px;
-	top: auto;
-	left: -24.5%;
 }
 .about-blog {
-	padding: 21px 0 0 52px;
+	padding: 3px 0 0 12px;
 }
 .about-blog .heading > h3 {
 	padding: 0 0 18px;
 	margin-bottom: 28px;
 }
 .about-blog > p {
-	letter-spacing: -0.4px;
+	letter-spacing: 0;
+	color:  #000;
+	font-size: 13px;
 	padding-right: 5px;
 	margin-bottom: 45px;
 }

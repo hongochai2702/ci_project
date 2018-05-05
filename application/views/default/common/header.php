@@ -17,31 +17,29 @@
 <?php if($keywords) { ?>
 <meta name="keywords" content="<?php echo $keywords; ?>" />
 <?php } ?>
-<script src="<?php echo base_url('public/catalog/default/javascript/jquery/jquery-2.1.1.min.js'); ?>" type="text/javascript"></script>
-<link href="<?php echo base_url('public/catalog/default/javascript/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen" />
-<script src="<?php echo base_url('public/catalog/default/javascript/bootstrap/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
-<link href="<?php echo base_url('public/catalog/default/javascript/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css" />
+<script src="<?php echo base_url('public/javascript/jquery/jquery-2.1.1.min.js'); ?>" type="text/javascript"></script>
+<link href="<?php echo base_url('public/javascript/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen" />
+<script src="<?php echo base_url('public/javascript/bootstrap/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
+<link href="<?php echo base_url('public/javascript/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
-<link href="<?php echo base_url('public/catalog/default/stylesheet/stylesheet.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('public/default/stylesheet/stylesheet.css'); ?>" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/default/stylesheet/settings.css'); ?>" media="screen" />
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/default/stylesheet/dropdown.css'); ?>" />
 
-
-
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/catalog/default/stylesheet/settings.css'); ?>" media="screen" />
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/catalog/default/stylesheet/dropdown.css'); ?>" />
-
-  <link rel="stylesheet" href="<?php echo base_url('public/catalog/default/stylesheet/global.css'); ?>" />
-  <link rel="stylesheet" href="<?php echo base_url('public/catalog/default/stylesheet/style.css'); ?>" />
-  <link rel="stylesheet" href="<?php echo base_url('public/catalog/default/stylesheet/homepage-5.css'); ?>" />
-  <link rel="stylesheet" href="<?php echo base_url('public/catalog/default/stylesheet/responsive.css'); ?>" />
-  <link href="<?php echo base_url('public/catalog/default/stylesheet/skin.less'); ?>" rel="stylesheet/less">
-
+  <link rel="stylesheet" href="<?php echo base_url('public/default/stylesheet/global.css'); ?>" />
+  <link rel="stylesheet" href="<?php echo base_url('public/default/stylesheet/style.css'); ?>" />
+  <link rel="stylesheet" href="<?php echo base_url('public/default/stylesheet/homepage-5.css'); ?>" />
+  <link rel="stylesheet" href="<?php echo base_url('public/default/stylesheet/responsive.css'); ?>" />
+ 
+  <link href="<?php echo base_url('public/default/stylesheet/skin.less'); ?>" rel="stylesheet/less">
+   <link rel="stylesheet" href="<?php echo base_url('public/default/stylesheet/customs.css'); ?>" />
 <?php foreach($styles as $style) { ?>
 <link href="<?php echo $style['hre']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>}" />
 <?php } ?>
 <?php foreach($scripts as $script) { ?>
 <script src="<?php echo $script; ?>" type="text/javascript"></script>
 <?php } ?>
-<script src="<?php echo base_url('public/catalog/default/javascript/common.js'); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('public/javascript/common.js'); ?>" type="text/javascript"></script>
 <?php foreach($links as $link) { ?>
 <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
 <?php } ?>

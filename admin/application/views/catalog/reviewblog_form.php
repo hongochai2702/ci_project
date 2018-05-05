@@ -136,7 +136,7 @@ $('.datetime').datetimepicker({
 $('input[name=\'blog\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({
-			url: 'admin/catalog/blog/autocomplete?user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
+			url: 'catalog/blog/autocomplete?user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
 			dataType: 'json',			
 			success: function(json) {
 				response($.map(json, function(item) {
