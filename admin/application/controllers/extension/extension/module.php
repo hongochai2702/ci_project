@@ -3,7 +3,7 @@ class Module extends MX_Controller {
 	private $error = array();
 
 	public function index() {
-		$this->lang->load('extension/extension/module');
+		$this->lang->load('extension/module');
 
 		$this->load->model('setting/extension_model','model_setting_extension');
 
@@ -13,7 +13,7 @@ class Module extends MX_Controller {
 	}
 
 	public function install() {
-		$this->lang->load('extension/extension/module');
+		$this->lang->load('extension/module');
 
 		$this->load->model('setting/extension_model','model_setting_extension');
 
@@ -25,8 +25,8 @@ class Module extends MX_Controller {
 
 			$this->load->model('user/user_group_model','model_user_user_group');
 
-			$this->model_user_user_group->addPermission($this->user->getGroupId(), 'access', 'module/' . $this->input->get('extension'));
-			$this->model_user_user_group->addPermission($this->user->getGroupId(), 'modify', 'module/' . $this->input->get('extension'));
+			$this->model_user_user_group->addPermission($this->user->getGroupId(), 'access', 'extension/module/' . $this->input->get('extension'));
+			$this->model_user_user_group->addPermission($this->user->getGroupId(), 'modify', 'extension/module/' . $this->input->get('extension'));
 
 			// Call install method if it exsits
 			// $this->load->controller('module/' . $this->input->get('extension') . '/install');
@@ -174,7 +174,7 @@ class Module extends MX_Controller {
 		$data = array_merge($data, $this->lang->loadAll());
 		array_multisort($sort_order, SORT_ASC, $data['extensions']);
 
-		$this->load->view('extension/extension/module', $data);
+		$this->load->view('extension/module', $data);
 	}
 
 	protected function validate() {

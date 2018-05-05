@@ -1,0 +1,25 @@
+.glmg {
+	margin-top:32px;
+	background:#F7F7F7;
+	padding:20px 5px;
+	border-top:1px solid #CCC;	
+	border-bottom:1px solid #CCC;	
+}
+select.gall {
+	padding-left:2px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;	
+	min-width:80px;
+}
+input.gall {
+	padding-left:4px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;	
+	margin-bottom:2px;
+	min-width:80px;
+}
+label.gall {
+	color:#121212;
+}

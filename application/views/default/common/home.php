@@ -4,13 +4,40 @@
                 <div class="banner">
                     <ul>
                         <li data-transition="random" data-slotamount="1">
-                            <img src="<?php echo base_url('image/catalog/slide/Slider.jpg'); ?>" alt="" />
-                            
+                            <img src="<?php echo base_url('image/catalog/slide/slide2.jpg'); ?>" alt="" />
+                            <span class="banner-overlay"></span>
+                            <div class="banner-text">
+                                <div class="caption sfb big_orange clearfix"  data-x="100" data-y="350" data-speed="500" data-start="1900" data-easing="Power4.easeInOut">
+                                    <h2><span>ONE STOP SOLUTION YOUR</span> TRANSPORT REQUIREMENTS </h2>
+                                </div>
+                                <div class="caption lfr medium_grey"  data-x="left" data-y="center" data-speed="300" data-start="2000">
+                                    <a href="service.html" class="services-link">request a qoute</a>
+                                </div>
+                            </div>
                         </li>
                         <li data-transition="random" data-slotamount="1">
-                            <img src="<?php echo base_url('image/catalog/slide/Slider2.jpg'); ?>" alt="" />
+                            <img src="<?php echo base_url('public/catalog/default/images/banner-5.jpg'); ?>" alt="" />
                             <span class="banner-overlay"></span>
-                            
+                            <div class="banner-text">
+                                <div class="caption sfb big_orange clearfix"  data-x="100" data-y="350" data-speed="500" data-start="1900" data-easing="Power4.easeInOut">
+                                    <h2><span>ONE STOP SOLUTION YOUR</span> TRANSPORT REQUIREMENTS </h2>
+                                </div>
+                                <div class="caption lfr medium_grey" data-x="left" data-y="center" data-speed="300" data-start="2000">
+                                    <a href="service.html" class="services-link">request a qoute</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li data-transition="random" data-slotamount="1">
+                            <img src="<?php echo base_url('public/catalog/default/images/banner-5.jpg'); ?>" alt="" />
+                            <span class="banner-overlay"></span>
+                            <div class="banner-text">
+                                <div class="caption sfb big_orange clearfix"  data-x="100" data-y="350" data-speed="500" data-start="1900" data-easing="Power4.easeInOut">
+                                    <h2><span>ONE STOP SOLUTION YOUR</span> TRANSPORT REQUIREMENTS </h2>
+                                </div>
+                                <div class="caption lfr medium_grey"  data-x="left" data-y="center" data-speed="300" data-start="2000">
+                                    <a href="service.html" class="services-link">request a qoute</a>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -26,7 +53,7 @@
                                 <div class="col-sm-4 left-spacer">
                                     <div class="about-figure">
                                         <figure class="fig-design">
-                                            <a href="#"> <img alt="" src="<?php echo base_url('public/default/images/train-5.jpg'); ?>" /> </a>
+                                            <a href="#"> <img alt="" src="<?php echo base_url('public/catalog/default/images/train-5.jpg'); ?>" /> </a>
                                         </figure>
                                     </div>
                                 </div>
@@ -154,7 +181,7 @@
                             <div id="services-slides" class="services-slider">
                                 <div class="slides-tab zoom">
                                     <figure>
-                                        <a href="#"><img src="<?php echo base_url('public/default/images/slider-ship.jpg'); ?>" alt="" /></a>
+                                        <a href="#"><img src="<?php echo base_url('public/catalog/default/images/slider-ship.jpg'); ?>" alt="" /></a>
                                     </figure>
                                     <div class="slides-text">
                                         <h5><a href="blog-post.html">QUALITY CARGO SERVICES AT AFFORDABLE PRICE</a></h5>
@@ -172,7 +199,7 @@
                                 </div>
                                 <div class="slides-tab zoom">
                                     <figure>
-                                        <a href="#"><img src="<?php echo base_url('public/default/images/slider-train.jpg'); ?>" alt="" /></a>
+                                        <a href="#"><img src="<?php echo base_url('public/catalog/default/images/slider-train.jpg'); ?>" alt="" /></a>
                                     </figure>
                                     <div class="slides-text">
                                         <h5><a href="blog-post.html">WE HAVE STARTED NEW IN GROUND SHIPPING</a></h5>
@@ -190,7 +217,7 @@
                                 </div>
                                 <div class="slides-tab zoom">
                                     <figure>
-                                        <a href="#"><img src="<?php echo base_url('public/default/images/slider-truck.jpg'); ?>" alt="" /></a>
+                                        <a href="#"><img src="<?php echo base_url('public/catalog/default/images/slider-truck.jpg'); ?>" alt="" /></a>
                                     </figure>
                                     <div class="slides-text">
                                         <h5><a href="blog-post.html">CARGO SHIPPING AVAILABLE AT GOOD DISCOUNTS</a></h5>
@@ -208,7 +235,7 @@
                                 </div>
                                 <div class="slides-tab zoom">
                                     <figure>
-                                        <a href="#"><img src="<?php echo base_url('public/default/images/slider-ship.jpg'); ?>" alt="" /></a>
+                                        <a href="#"><img src="<?php echo base_url('public/catalog/default/images/slider-ship.jpg'); ?>" alt="" /></a>
                                     </figure>
                                     <div class="slides-text">
                                         <h5><a href="blog-post.html">QUALITY CARGO SERVICES AT AFFORDABLE PRICE</a></h5>
@@ -226,7 +253,7 @@
                                 </div>
                                 <div class="slides-tab zoom">
                                     <figure>
-                                        <a href="#"><img src="<?php echo base_url('public/default/images/slider-train.jpg'); ?>" alt="" /></a>
+                                        <a href="#"><img src="<?php echo base_url('public/catalog/default/images/slider-train.jpg'); ?>" alt="" /></a>
                                     </figure>
                                     <div class="slides-text">
                                         <h5><a href="blog-post.html">WE HAVE STARTED NEW IN GROUND SHIPPING</a></h5>
@@ -244,7 +271,7 @@
                                 </div>
                                 <div class="slides-tab zoom">
                                     <figure>
-                                        <a href="#"><img src="<?php echo base_url('public/default/images/slider-truck.jpg'); ?>" alt="" /></a>
+                                        <a href="#"><img src="<?php echo base_url('public/catalog/default/images/slider-truck.jpg'); ?>" alt="" /></a>
                                     </figure>
                                     <div class="slides-text">
                                         <h5><a href="blog-post.html">CARGO SHIPPING AVAILABLE AT GOOD DISCOUNTS</a></h5>
@@ -262,7 +289,7 @@
                                 </div>
                                 <div class="slides-tab zoom">
                                     <figure>
-                                        <a href="#"><img src="<?php echo base_url('public/default/images/slider-ship.jpg'); ?>" alt="" /></a>
+                                        <a href="#"><img src="<?php echo base_url('public/catalog/default/images/slider-ship.jpg'); ?>" alt="" /></a>
                                     </figure>
                                     <div class="slides-text">
                                         <h5><a href="blog-post.html">QUALITY CARGO SERVICES AT AFFORDABLE PRICE</a></h5>
@@ -280,7 +307,7 @@
                                 </div>
                                 <div class="slides-tab zoom">
                                     <figure>
-                                        <a href="#"><img src="<?php echo base_url('public/default/images/slider-train.jpg'); ?>" alt="" /></a>
+                                        <a href="#"><img src="<?php echo base_url('public/catalog/default/images/slider-train.jpg'); ?>" alt="" /></a>
                                     </figure>
                                     <div class="slides-text">
                                         <h5><a href="blog-post.html">WE HAVE STARTED NEW IN GROUND SHIPPING</a></h5>
@@ -298,7 +325,7 @@
                                 </div>
                                 <div class="slides-tab zoom">
                                     <figure>
-                                        <a href="#"><img src="<?php echo base_url('public/default/images/slider-truck.jpg'); ?>" alt="" /></a>
+                                        <a href="#"><img src="<?php echo base_url('public/catalog/default/images/slider-truck.jpg'); ?>" alt="" /></a>
                                     </figure>
                                     <div class="slides-text">
                                         <h5><a href="blog-post.html">CARGO SHIPPING AVAILABLE AT GOOD DISCOUNTS</a></h5>
@@ -334,7 +361,7 @@
                                 <div class="feedback clearfix">
                                     <div class="feebback-person">
                                         <figure>
-                                            <a href="#"><img class="img-circle" src="<?php echo base_url('public/default/images/person-2.jpg'); ?>" alt="" /></a>
+                                            <a href="#"><img class="img-circle" src="<?php echo base_url('public/catalog/default/images/person-2.jpg'); ?>" alt="" /></a>
                                         </figure>
                                     </div>
                                     <div class="feedback-text">
@@ -355,7 +382,7 @@
                                 <div class="feedback clearfix">
                                     <div class="feebback-person">
                                         <figure>
-                                            <a href="#"><img class="img-circle" src="<?php echo base_url('public/default/images/person-3.jpg'); ?>" alt="" /></a>
+                                            <a href="#"><img class="img-circle" src="<?php echo base_url('public/catalog/default/images/person-3.jpg'); ?>" alt="" /></a>
                                         </figure>
                                     </div>
                                     <div class="feedback-text">
@@ -376,7 +403,7 @@
                                 <div class="feedback clearfix">
                                     <div class="feebback-person">
                                         <figure>
-                                            <a href="#"><img class="img-circle" src="<?php echo base_url('public/default/images/person-2.jpg'); ?>" alt="" /></a>
+                                            <a href="#"><img class="img-circle" src="<?php echo base_url('public/catalog/default/images/person-2.jpg'); ?>" alt="" /></a>
                                         </figure>
                                     </div>
                                     <div class="feedback-text">
@@ -397,7 +424,7 @@
                                 <div class="feedback clearfix">
                                     <div class="feebback-person">
                                         <figure>
-                                            <a href="#"><img class="img-circle" src="<?php echo base_url('public/default/images/person-3.jpg'); ?>" alt="" /></a>
+                                            <a href="#"><img class="img-circle" src="<?php echo base_url('public/catalog/default/images/person-3.jpg'); ?>" alt="" /></a>
                                         </figure>
                                     </div>
                                     <div class="feedback-text">
@@ -418,7 +445,7 @@
                                 <div class="feedback clearfix">
                                     <div class="feebback-person">
                                         <figure>
-                                            <a href="#"><img class="img-circle" src="<?php echo base_url('public/default/images/person-2.jpg'); ?>" alt="" /></a>
+                                            <a href="#"><img class="img-circle" src="<?php echo base_url('public/catalog/default/images/person-2.jpg'); ?>" alt="" /></a>
                                         </figure>
                                     </div>
                                     <div class="feedback-text">
@@ -439,7 +466,7 @@
                                 <div class="feedback clearfix">
                                     <div class="feebback-person">
                                         <figure>
-                                            <a href="#"><img class="img-circle" src="<?php echo base_url('public/default/images/person-3.jpg'); ?>" alt="" /></a>
+                                            <a href="#"><img class="img-circle" src="<?php echo base_url('public/catalog/default/images/person-3.jpg'); ?>" alt="" /></a>
                                         </figure>
                                     </div>
                                     <div class="feedback-text">
@@ -500,4 +527,4 @@
                 </div>
                 <!--Section box ends Here -->
             </section>
-<?php echo $footer; ?>
+         

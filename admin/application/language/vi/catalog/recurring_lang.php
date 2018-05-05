@@ -1,42 +1,42 @@
 <?php
 // Heading
-$lang['heading_title']			= 'Thanh toán Định kỳ';
+$lang['heading_title']         = 'Recurring Profiles';
 
 // Text
-$lang['text_success']          = 'Chúc mừng! Bạn đã cập nhật Thành công!';
-$lang['text_list']             = 'Danh mục Thanh toán Định kỳ';
-$lang['text_add']              = 'Thêm Thanh toán Định kỳ';
-$lang['text_edit']             = 'Cập nhật Thanh toán Định kỳ';
-$lang['text_day']				= 'Ngày';
-$lang['text_week']				= 'Tuần';
-$lang['text_semi_month']		= 'Nửa Tháng';
-$lang['text_month']			= 'Tháng';
-$lang['text_year']				= 'Năm';
-$lang['text_recurring']	    = '<p><i class="fa fa-info-circle"></i> Lượng định kỳ được tính theo tần số và chu kỳ .</p><p>Ví dụ, nếu bạn sử dụng một tần số " tuần " và một chu kỳ " 2 " , sau đó người dùng sẽ được lập hoá đơn mỗi 2 tuần .</p><p>Thời gian là số lần người dùng sẽ thực hiện thanh toán , thiết lập là 0 nếu bạn muốn thanh toán cho đến khi họ được hủy bỏ.</p>';
-$lang['text_profile']			= 'Thanh toán Định kỳ';
-$lang['text_trial']			= 'Thanh toán thử Định kỳ';
+$lang['text_success']          = 'Success: You have modified recurring profiles!';
+$lang['text_list']             = 'Recurring Profile List';
+$lang['text_add']              = 'Add Recurring Profile';
+$lang['text_edit']             = 'Edit Recurring Profile';
+$lang['text_day']              = 'Day';
+$lang['text_week']             = 'Week';
+$lang['text_semi_month']       = 'Semi Month';
+$lang['text_month']            = 'Month';
+$lang['text_year']             = 'Year';
+$lang['text_recurring']        = '<p><i class="fa fa-info-circle"></i> Recurring amounts are calculated by the frequency and cycles.</p><p>For example if you use a frequency of "week" and a cycle of "2", then the user will be billed every 2 weeks.</p><p>The duration is the number of times the user will make a payment, set this to 0 if you want payments until they are cancelled.</p>';
+$lang['text_profile']          = 'Recurring Profile';
+$lang['text_trial']            = 'Trial Profile';
 
 // Entry
-$lang['entry_name']			= 'Tên';
-$lang['entry_price']			= 'Giá';
-$lang['entry_duration']		= 'Thời hạn';
-$lang['entry_cycle']			= 'Chu kỳ';
-$lang['entry_frequency']		= 'Khoảng thời gian';
-$lang['entry_trial_price']		= 'Giá dùng thử';
-$lang['entry_trial_duration']	= 'Thời gian Dùng thử';
-$lang['entry_trial_status']	= 'Trang thái';
-$lang['entry_trial_cycle']	    = 'Chu kỳ Dùng thử';
-$lang['entry_trial_frequency']	= 'Khoảng thời gian Dùng thử';
-$lang['entry_status']			= 'Tắt/Bật';
-$lang['entry_sort_order']		= 'Sắp xếp';
+$lang['entry_name']            = 'Name';
+$lang['entry_price']           = 'Price';
+$lang['entry_duration']        = 'Duration';
+$lang['entry_cycle']           = 'Cycle';
+$lang['entry_frequency']       = 'Frequency';
+$lang['entry_trial_price']     = 'Trial price';
+$lang['entry_trial_duration']  = 'Trial duration';
+$lang['entry_trial_status']    = 'Trial status';
+$lang['entry_trial_cycle']     = 'Trial cycle';
+$lang['entry_trial_frequency'] = 'Trial frequency';
+$lang['entry_status']          = 'Status';
+$lang['entry_sort_order']      = 'Sort Order';
 
 // Column
-$lang['column_name']			= 'Tên';
-$lang['column_sort_order']	    = 'Sắp xếp';
-$lang['column_action']         = 'Chỉnh sửa';
+$lang['column_name']           = 'Name';
+$lang['column_sort_order']     = 'Sort Order';
+$lang['column_action']         = 'Action';
 
 // Error
-$lang['error_warning']         = 'Chú ý! Vui lòng kiểm tra các mục nội dung!';
-$lang['error_permission']		= 'Cảnh báo! Bạn không có quyền truy cập vào mục này!';
-$lang['error_name']			= 'Tên Phải có ít nhất từ 3 đến 20 ký tự!';
-$lang['error_product']			= 'Hồ sơ này không thể xóa vì nó đang được sử dụng bởi sản phẩm %s!';
+$lang['error_warning']         = 'Warning: Please check the form carefully for errors!';
+$lang['error_permission']      = 'Warning: You do not have permission to modify recurring profiles!';
+$lang['error_name']            = 'Profile Name must be greater than 3 and less than 255 characters!';
+$lang['error_product']         = 'Warning: This recurring profile cannot be deleted as it is currently assigned to %s products!';

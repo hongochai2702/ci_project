@@ -76,13 +76,12 @@ class Header extends MX_Controller {
 		$data['email'] = $this->configs->get('config_email');
 		$data['comment'] = $this->configs->get('config_comment');
 
-		$data['menu_header'] = $this->load->controller('common/menu_header');
+
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');
-
-
-
+		$data['menu_header'] = $this->load->controller('common/menu_header');
+	
 
 		return $this->load->view('default/common/header', $data,true);
 	}

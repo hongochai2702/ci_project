@@ -1,39 +1,36 @@
 <?php
 // Heading
-$lang['heading_title']       = 'Bình luận';
+$lang['heading_title']     = 'Reviews';
 
 // Text
-$lang['text_success']      = 'Thành công: Bình luận đã được thay đổi!';
-$lang['text_list']         = 'Danh mục Bình luận';
-$lang['text_add']          = 'Thêm Bình luận';
-$lang['text_edit']         = 'Cập nhật Bình luận';
+$lang['text_success']      = 'Success: You have modified reviews!';
+$lang['text_list']         = 'Review List';
+$lang['text_add']          = 'Add Review';
+$lang['text_edit']         = 'Edit Review';
+$lang['text_filter']       = 'Filter';
 
 // Column
-$lang['column_product']    = 'Sản phẩm';
-$lang['column_author']     = 'Tác giả';
-$lang['column_rating']     = 'Đánh giá';
-$lang['column_status']     = 'Trạng thái';
-$lang['column_date_added'] = 'Ngày thêm';
-$lang['column_action']     = 'Chỉnh sửa';
+$lang['column_product']    = 'Product';
+$lang['column_author']     = 'Author';
+$lang['column_rating']     = 'Rating';
+$lang['column_status']     = 'Status';
+$lang['column_date_added'] = 'Date Added';
+$lang['column_action']     = 'Action';
 
 // Entry
-$lang['entry_product']     = 'Sản phẩm:';
-$lang['entry_author']      = 'Khách hàng:';
-$lang['entry_rating']      = 'Đánh giá:';
-$lang['entry_status']      = 'Tắt/Bật:';
-$lang['entry_text']        = 'Nội dung:';
-$lang['entry_good']        = 'Tốt';
-$lang['entry_bad']         = 'Kém';
-$lang['entry_date_added']  = 'Ngày thêm';
-
+$lang['entry_product']     = 'Product';
+$lang['entry_author']      = 'Author';
+$lang['entry_rating']      = 'Rating';
+$lang['entry_status']      = 'Status';
+$lang['entry_text']        = 'Text';
+$lang['entry_date_added']  = 'Date Added';
 
 // Help
-$lang['help_product']      = 'Click để chọn Sản phẩm cần thêm hoặc cập nhật Bình luận';
+$lang['help_product']      = '(Autocomplete)';
 
 // Error
-$lang['error_permission']  = 'Cảnh báo: Bạn không được phép thay đổi các Bình luận';
-$lang['error_product']     = 'Sản phẩm phải được chọn!';
-$lang['error_author']      = 'Tên Tác giả phải lớn hơn 3 và nhỏ hơn 64 ký tự!';
-$lang['error_text']        = 'Nội dung Bình luận phải là ít nhất 1 ký tự!';
-$lang['error_rating']      = 'Mục Đánh giá phải được chọn!';
-?>
+$lang['error_permission']  = 'Warning: You do not have permission to modify reviews!';
+$lang['error_product']     = 'Product required!';
+$lang['error_author']      = 'Author must be between 3 and 64 characters!';
+$lang['error_text']        = 'Review Text must be at least 1 character!';
+$lang['error_rating']      = 'Review rating required!';

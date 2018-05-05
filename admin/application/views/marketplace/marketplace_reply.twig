@@ -1,0 +1,20 @@
+<div>
+  {% if replies %}
+  {% for reply in replies %}
+  <div class="media">
+    <div class="media-left"><img src="<?php echo $reply.image; ?>" alt="<?php echo $reply.member; ?>" title="<?php echo $reply.member; ?>" class="media-object" /></div>
+    <div class="media-body">
+      <p class="media-heading"><?php echo $reply.member; ?> <span><?php echo $reply.date_added; ?></span> </p>
+      <p><?php echo $reply.comment; ?></p>
+    </div>
+  </div>
+  <?php }  ?>
+  
+  {% if next %}
+  <div class="text-center"><a href="<?php echo $next; ?>" class="btn btn-block">see more replies...</a></div>
+  {% endif %}
+  
+  {% endif %}
+  
+  <a href="<?php echo $refresh; ?>" class="reply-refresh hide">refresh</a>
+</div>

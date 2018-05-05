@@ -1,7 +1,7 @@
 <?php
 class Currency_model extends CI_Model {
 	public function getCurrencyByCode($currency) {
-		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "currency WHERE code = '" . $this->db->escape($currency) . "'");
+		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "currency WHERE code = '" . $this->db->escape_str($currency) . "'");
 
 		return $query->first_row('array');
 	}

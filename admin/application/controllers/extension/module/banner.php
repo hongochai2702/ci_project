@@ -131,7 +131,7 @@ class Banner extends MX_Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		
 
-		$this->response->setOutput($this->load->view('extension/module/banner', $data));
+		$this->response->setOutput($this->load->view('module/banner', $data));
 	}
 
 	protected function validate() {

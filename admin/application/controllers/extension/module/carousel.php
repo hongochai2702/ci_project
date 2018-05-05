@@ -3,7 +3,7 @@ class Carousel extends MX_Controller {
 	private $error = array();
 
 	public function index() {
-		$this->lang->load('extension/module/carousel');
+		$this->lang->load('module/carousel');
 
 		$this->document->setTitle($this->lang->line('heading_title'));
 
@@ -62,19 +62,19 @@ class Carousel extends MX_Controller {
 		if (!$this->input->get('module_id')) {
 			$data['breadcrumbs'][] = array(
 				'text' => $this->lang->line('heading_title'),
-				'href' => $this->url->link('extension/module/carousel', 'user_token=' . $this->session->userdata('user_token'), true)
+				'href' => $this->url->link('module/carousel', 'user_token=' . $this->session->userdata('user_token'), true)
 			);
 		} else {
 			$data['breadcrumbs'][] = array(
 				'text' => $this->lang->line('heading_title'),
-				'href' => $this->url->link('extension/module/carousel', 'user_token=' . $this->session->userdata('user_token') . '&module_id=' . $this->input->get('module_id'), true)
+				'href' => $this->url->link('module/carousel', 'user_token=' . $this->session->userdata('user_token') . '&module_id=' . $this->input->get('module_id'), true)
 			);
 		}
 
 		if (!$this->input->get('module_id')) {
-			$data['action'] = $this->url->link('extension/module/carousel', 'user_token=' . $this->session->userdata('user_token'), true);
+			$data['action'] = $this->url->link('module/carousel', 'user_token=' . $this->session->userdata('user_token'), true);
 		} else {
-			$data['action'] = $this->url->link('extension/module/carousel', 'user_token=' . $this->session->userdata('user_token') . '&module_id=' . $this->input->get('module_id'), true);
+			$data['action'] = $this->url->link('module/carousel', 'user_token=' . $this->session->userdata('user_token') . '&module_id=' . $this->input->get('module_id'), true);
 		}
 
 		$data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->userdata('user_token') . '&type=module', true);
@@ -135,11 +135,11 @@ class Carousel extends MX_Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->load->view('extension/module/carousel', $data);
+		$this->load->view('module/carousel', $data);
 	}
 
 	protected function validate() {
-		if (!$this->user->hasPermission('modify', 'extension/module/carousel')) {
+		if (!$this->user->hasPermission('modify', 'module/carousel')) {
 			$this->error['warning'] = $this->lang->line('error_permission');
 		}
 

@@ -1,16 +1,16 @@
 <?php
 class Blog_model extends CI_Model {
 	public function addBlog($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "blog SET  location = '" . $this->db->escape($data['location']) . "', date_available = '" . $this->db->escape($data['date_available']) . "', author_id = '" . (int)$data['author_id'] . "',   status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', date_added = NOW(), date_modified = NOW()");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "blog SET  location = '" . $this->db->escape_str($data['location']) . "', date_available = '" . $this->db->escape_str($data['date_available']) . "', author_id = '" . (int)$data['author_id'] . "',   status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', date_added = NOW(), date_modified = NOW()");
 
 		$blog_id = $this->db->insert_id();
 
 		if (isset($data['image'])) {
-			$this->db->query("UPDATE " . DB_PREFIX . "blog SET image = '" . $this->db->escape($data['image']) . "' WHERE blog_id = '" . (int)$blog_id . "'");
+			$this->db->query("UPDATE " . DB_PREFIX . "blog SET image = '" . $this->db->escape_str($data['image']) . "' WHERE blog_id = '" . (int)$blog_id . "'");
 		}
 
 		foreach ($data['blog_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "blog_description SET blog_id = '" . (int)$blog_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "blog_description SET blog_id = '" . (int)$blog_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape_str($value['name']) . "', description = '" . $this->db->escape_str($value['description']) . "', tag = '" . $this->db->escape_str($value['tag']) . "', meta_title = '" . $this->db->escape_str($value['meta_title']) . "', meta_description = '" . $this->db->escape_str($value['meta_description']) . "', meta_keyword = '" . $this->db->escape_str($value['meta_keyword']) . "'");
 		}
 
 		if (isset($data['blog_store'])) {
@@ -31,7 +31,7 @@ class Blog_model extends CI_Model {
 
 		if (isset($data['blog_image'])) {
 			foreach ($data['blog_image'] as $blog_image) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "blog_image SET blog_id = '" . (int)$blog_id . "', image = '" . $this->db->escape($blog_image['image']) . "', sort_order = '" . (int)$blog_image['sort_order'] . "'");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "blog_image SET blog_id = '" . (int)$blog_id . "', image = '" . $this->db->escape_str($blog_image['image']) . "', sort_order = '" . (int)$blog_image['sort_order'] . "'");
 			}
 		}
 
@@ -61,7 +61,7 @@ class Blog_model extends CI_Model {
 			foreach ($data['blog_seo_url'] as $store_id => $language) {
 				foreach ($language as $language_id => $keyword) {
 					if (!empty($keyword)) {
-						$this->db->query("INSERT INTO " . DB_PREFIX . "seo_url SET store_id = '" . (int)$store_id . "', language_id = '" . (int)$language_id . "', query = 'blog_id=" . (int)$blog_id . "', keyword = '" . $this->db->escape($keyword) . "'");
+						$this->db->query("INSERT INTO " . DB_PREFIX . "seo_url SET store_id = '" . (int)$store_id . "', language_id = '" . (int)$language_id . "', query = 'blog_id=" . (int)$blog_id . "', keyword = '" . $this->db->escape_str($keyword) . "'");
 					}
 				}
 			}
@@ -80,16 +80,16 @@ class Blog_model extends CI_Model {
 	}
 
 	public function editBlog($blog_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "blog SET model = '" . $this->db->escape($data['model']) . "', location = '" . $this->db->escape($data['location']) . "',   date_available = '" . $this->db->escape($data['date_available']) . "', author_id = '" . (int)$data['author_id'] . "',  status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', date_modified = NOW() WHERE blog_id = '" . (int)$blog_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "blog SET model = '" . $this->db->escape_str($data['model']) . "', location = '" . $this->db->escape_str($data['location']) . "',   date_available = '" . $this->db->escape_str($data['date_available']) . "', author_id = '" . (int)$data['author_id'] . "',  status = '" . (int)$data['status'] . "', sort_order = '" . (int)$data['sort_order'] . "', date_modified = NOW() WHERE blog_id = '" . (int)$blog_id . "'");
 
 		if (isset($data['image'])) {
-			$this->db->query("UPDATE " . DB_PREFIX . "blog SET image = '" . $this->db->escape($data['image']) . "' WHERE blog_id = '" . (int)$blog_id . "'");
+			$this->db->query("UPDATE " . DB_PREFIX . "blog SET image = '" . $this->db->escape_str($data['image']) . "' WHERE blog_id = '" . (int)$blog_id . "'");
 		}
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "blog_description WHERE blog_id = '" . (int)$blog_id . "'");
 
 		foreach ($data['blog_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "blog_description SET blog_id = '" . (int)$blog_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape($value['name']) . "', description = '" . $this->db->escape($value['description']) . "', tag = '" . $this->db->escape($value['tag']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "blog_description SET blog_id = '" . (int)$blog_id . "', language_id = '" . (int)$language_id . "', name = '" . $this->db->escape_str($value['name']) . "', description = '" . $this->db->escape_str($value['description']) . "', tag = '" . $this->db->escape_str($value['tag']) . "', meta_title = '" . $this->db->escape_str($value['meta_title']) . "', meta_description = '" . $this->db->escape_str($value['meta_description']) . "', meta_keyword = '" . $this->db->escape_str($value['meta_keyword']) . "'");
 		}
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "blog_to_store WHERE blog_id = '" . (int)$blog_id . "'");
@@ -113,7 +113,7 @@ class Blog_model extends CI_Model {
 
 		if (isset($data['blog_image'])) {
 			foreach ($data['blog_image'] as $blog_image) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "blog_image SET blog_id = '" . (int)$blog_id . "', image = '" . $this->db->escape($blog_image['image']) . "', sort_order = '" . (int)$blog_image['sort_order'] . "'");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "blog_image SET blog_id = '" . (int)$blog_id . "', image = '" . $this->db->escape_str($blog_image['image']) . "', sort_order = '" . (int)$blog_image['sort_order'] . "'");
 			}
 		}
 
@@ -146,7 +146,7 @@ class Blog_model extends CI_Model {
 			foreach ($data['blog_seo_url']as $store_id => $language) {
 				foreach ($language as $language_id => $keyword) {
 					if (!empty($keyword)) {
-						$this->db->query("INSERT INTO " . DB_PREFIX . "seo_url SET store_id = '" . (int)$store_id . "', language_id = '" . (int)$language_id . "', query = 'blog_id=" . (int)$blog_id . "', keyword = '" . $this->db->escape($keyword) . "'");
+						$this->db->query("INSERT INTO " . DB_PREFIX . "seo_url SET store_id = '" . (int)$store_id . "', language_id = '" . (int)$language_id . "', query = 'blog_id=" . (int)$blog_id . "', keyword = '" . $this->db->escape_str($keyword) . "'");
 					}
 				}
 			}
@@ -227,11 +227,11 @@ class Blog_model extends CI_Model {
 		$sql = "SELECT * FROM " . DB_PREFIX . "blog p LEFT JOIN " . DB_PREFIX . "blog_description pd ON (p.blog_id = pd.blog_id) WHERE pd.language_id = '" . (int)$this->configs->get('config_language_id') . "'";
 
 		if (!empty($data['filter_name'])) {
-			$sql .= " AND pd.name LIKE " . $this->db->escape($data['filter_name']) . "";
+			$sql .= " AND pd.name LIKE " . $this->db->escape_str($data['filter_name']) . "";
 		}
 
 		if (!empty($data['filter_model'])) {
-			$sql .= " AND p.model LIKE " . $this->db->escape($data['filter_model']) . "";
+			$sql .= " AND p.model LIKE " . $this->db->escape_str($data['filter_model']) . "";
 		}
 
 		
@@ -388,11 +388,11 @@ class Blog_model extends CI_Model {
 		$sql .= " WHERE pd.language_id = '" . (int)$this->configs->get('config_language_id') . "'";
 
 		if (!empty($data['filter_name'])) {
-			$sql .= " AND pd.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
+			$sql .= " AND pd.name LIKE '" . $this->db->escape_str($data['filter_name']) . "%'";
 		}
 
 		if (!empty($data['filter_model'])) {
-			$sql .= " AND p.model LIKE '" . $this->db->escape($data['filter_model']) . "%'";
+			$sql .= " AND p.model LIKE '" . $this->db->escape_str($data['filter_model']) . "%'";
 		}
 
 	

@@ -55,7 +55,7 @@ class Information extends MX_Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data = array_merge($data, $this->lang->loadAll());
 
-		$this->load->view('extension/module/information', $data);
+		$this->load->view('module/information', $data);
 	}
 
 	protected function validate() {

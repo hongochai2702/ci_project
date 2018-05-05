@@ -50,7 +50,7 @@ $(document).ready(function() {
 							$('#modal-image').remove();
 							
 							$.ajax({
-								url: '/ci_project/admin/common/filemanager?user_token=' + getURLVar('user_token'),
+								url: 'common/filemanager?user_token=' + getURLVar('user_token'),
 								dataType: 'html',
 								beforeSend: function() {
 									$('#button-image i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');

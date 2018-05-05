@@ -1,17 +1,17 @@
 <?php
 class ModelExtensionEvent extends Model {
 	public function addEvent($code, $trigger, $action, $status = 1) {
-		$this->db->query("INSERT INTO `" . DB_PREFIX . "event` SET `code` = '" . $this->db->escape($code) . "', `trigger` = '" . $this->db->escape($trigger) . "', `action` = '" . $this->db->escape($action) . "', `status` = '" . (int)$status . "', `date_added` = now()");
+		$this->db->query("INSERT INTO `" . DB_PREFIX . "event` SET `code` = '" . $this->db->escape_str($code) . "', `trigger` = '" . $this->db->escape_str($trigger) . "', `action` = '" . $this->db->escape_str($action) . "', `status` = '" . (int)$status . "', `date_added` = now()");
 	
 		return $this->db->getLastId();
 	}
 
 	public function deleteEvent($code) {
-		$this->db->query("DELETE FROM `" . DB_PREFIX . "event` WHERE `code` = '" . $this->db->escape($code) . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "event` WHERE `code` = '" . $this->db->escape_str($code) . "'");
 	}
 	
 	public function getEvent($code, $trigger, $action) {
-		$event = $this->db->query("SELECT * FROM `" . DB_PREFIX . "event` WHERE `code` = '" . $this->db->escape($code) . "' AND `trigger` = '" . $this->db->escape($trigger) . "' AND `action` = '" . $this->db->escape($action) . "'");
+		$event = $this->db->query("SELECT * FROM `" . DB_PREFIX . "event` WHERE `code` = '" . $this->db->escape_str($code) . "' AND `trigger` = '" . $this->db->escape_str($trigger) . "' AND `action` = '" . $this->db->escape_str($action) . "'");
 		
 		return $event->rows;
 	}
@@ -25,8 +25,8 @@ class ModelExtensionEvent extends Model {
 	}
 	
 	public function uninstall($type, $code) {
-		$this->db->query("DELETE FROM " . DB_PREFIX . "extension WHERE `type` = '" . $this->db->escape($type) . "' AND `code` = '" . $this->db->escape($code) . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "setting WHERE `code` = '" . $this->db->escape($code) . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "extension WHERE `type` = '" . $this->db->escape_str($type) . "' AND `code` = '" . $this->db->escape_str($code) . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "setting WHERE `code` = '" . $this->db->escape_str($code) . "'");
 	}
 		
 	public function getEvents($data = array()) {

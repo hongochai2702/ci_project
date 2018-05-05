@@ -1,0 +1,473 @@
+<?php echo $header; ?><?php echo $column_left; ?>
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right"><a href="<?php echo $cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i> <?php echo $button_cancel; ?></a></div>
+      <h1><?php echo $heading_title; ?></h1>
+      <ul class="breadcrumb">
+        <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+        <li><a href="<?php echo $breadcrumb.href; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+        <?php }  ?>
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-list"></i> <?php echo $heading_title; ?></h3>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped table-bordered">
+          {% if lines %}
+          <tr>
+            <td><?php echo $text_product_lines; ?></td>
+            <td><table class="table table-striped table-bordered">
+                {% set i = 0 %}
+                {% for k,v in lines %}
+                  {% if i == 0 %}
+                    <thead>
+                      <tr>
+                        {% for k,row in v %}
+                          {% if k == 'L_EBAYITEMTXNID' %} <td class="left"><?php echo $text_ebay_txn_id; ?></td> {% endif %}
+                          {% if k == 'L_NAME' %} <td class="left"><?php echo $text_name; ?></td> {% endif %}
+                          {% if k == 'L_NUMBER' %} <td class="left"><?php echo $text_number; ?></td> {% endif %}
+                          {% if k == 'L_QTY' %} <td class="left"><?php echo $text_qty; ?></td> {% endif %}
+                          {% if k == 'L_COUPONID' %} <td class="left"><?php echo $text_coupon_id; ?></td> {% endif %}
+                          {% if k == 'L_COUPONAMOUNT' %} <td class="left"><?php echo $text_coupon_amount; ?></td> {% endif %}
+                          {% if k == 'L_COUPONAMOUNTCURRENCY' %} <td class="left"><?php echo $text_coupon_currency; ?></td> {% endif %}
+                          {% if k == 'L_LOYALTYCARDDISCOUNTAMOUNT' %} <td class="left"><?php echo $text_loyalty_disc_amt; ?></td> {% endif %}
+                          {% if k == 'L_LOYALTYCARDISCOUNTCURRENCY' %} <td class="left"><?php echo $text_loyalty_currency; ?></td> {% endif %}
+                          {% if k == 'L_AMT' %} <td class="left"><?php echo $text_amount; ?></td> {% endif %}
+                          {% if k == 'L_OPTIONSNAME' %} <td class="left"><?php echo $text_options_name; ?></td> {% endif %}
+                          {% if k == 'L_TAXAMT' %} <td class="left"><?php echo $text_tax_amt; ?></td> {% endif %}
+                          {% if k == 'L_CURRENCYCODE' %} <td class="left"><?php echo $text_currency_code; ?></td> {% endif %}
+                        <?php }  ?>
+						{% set i = i + 1 %}
+                      </tr>
+                    </thead>
+                  {% endif %}
+                <tr>
+                  {% for k,row in v %}
+                  {% if k == 'L_EBAYITEMTXNID' %} <td class="left"><?php echo $row; ?></td> {% endif %}
+                  {% if k == 'L_NAME' %} <td class="left"><?php echo $row; ?></td> {% endif %}
+                  {% if k == 'L_NUMBER' %} <td class="left"><?php echo $row; ?></td> {% endif %}
+                  {% if k == 'L_QTY' %} <td class="left"><?php echo $row; ?></td> {% endif %}
+                  {% if k == 'L_COUPONID' %} <td class="left"><?php echo $row; ?></td> {% endif %}
+                  {% if k == 'L_COUPONAMOUNT' %} <td class="left"><?php echo $row; ?></td> {% endif %}
+                  {% if k == 'L_COUPONAMOUNTCURRENCY' %} <td class="left"><?php echo $row; ?></td> {% endif %}
+                  {% if k == 'L_LOYALTYCARDDISCOUNTAMOUNT' %} <td class="left"><?php echo $row; ?></td> {% endif %}
+                  {% if k == 'L_LOYALTYCARDISCOUNTCURRENCY' %} <td class="left"><?php echo $row; ?></td>{% endif %}
+                  {% if k == 'L_AMT' %} <td class="left"><?php echo $row; ?></td> {% endif %}
+                  {% if k == 'L_OPTIONSNAME' %} <td class="left"><?php echo $row; ?></td> {% endif %}
+                  {% if k == 'L_OPTIONSVALUE' %} <td class="left"><?php echo $row; ?></td> {% endif %}
+                  {% if k == 'L_TAXAMT' %} <td class="left"><?php echo $row; ?></td> {% endif %}
+                  {% if k == 'L_CURRENCYCODE' %} <td class="left"><?php echo $row; ?></td>{% endif %}
+                  <?php }  ?>
+				  {% set i = i + 1 %}
+                </tr>
+                <?php }  ?>
+              </table></td>
+          </tr>
+          {% endif %}
+          {% if transaction.GIFTMESSAGE %}
+          <tr>
+            <td><?php echo $text_gift_msg; ?></td>
+            <td><?php echo $transaction.GIFTMESSAGE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.GIFTRECEIPTENABLE %}
+          <tr>
+            <td><?php echo $text_gift_receipt; ?></td>
+            <td><?php echo $transaction.GIFTRECEIPTENABLE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.GIFTWRAPNAME %}
+          <tr>
+            <td><?php echo $text_gift_wrap_name; ?></td>
+            <td><?php echo $transaction.GIFTWRAPNAME; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.GIFTWRAPAMOUNT %}
+          <tr>
+            <td><?php echo $text_gift_wrap_amt; ?></td>
+            <td><?php echo $transaction.GIFTWRAPAMOUNT; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.BUYERMARKETINGEMAIL %}
+          <tr>
+            <td><?php echo $text_buyer_email_market; ?></td>
+            <td><?php echo $transaction.BUYERMARKETINGEMAIL; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SURVEYQUESTION %}
+          <tr>
+            <td><?php echo $text_survey_question; ?></td>
+            <td><?php echo $transaction.SURVEYQUESTION; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SURVEYCHOICESELECTED %}
+          <tr>
+            <td><?php echo $text_survey_chosen; ?></td>
+            <td><?php echo $transaction.SURVEYCHOICESELECTED; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.RECEIVERBUSINESS %}
+          <tr>
+            <td><?php echo $text_receiver_business; ?></td>
+            <td><?php echo $transaction.RECEIVERBUSINESS; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.RECEIVEREMAIL %}
+          <tr>
+            <td><?php echo $text_receiver_email; ?></td>
+            <td><?php echo $transaction.RECEIVEREMAIL; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.RECEIVERID %}
+          <tr>
+            <td><?php echo $text_receiver_id; ?></td>
+            <td><?php echo $transaction.RECEIVERID; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.EMAIL %}
+          <tr>
+            <td><?php echo $text_buyer_email; ?></td>
+            <td><?php echo $transaction.EMAIL; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.PAYERID %}
+          <tr>
+            <td><?php echo $text_payer_id; ?></td>
+            <td><?php echo $transaction.PAYERID; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.PAYERSTATUS %}
+          <tr>
+            <td><?php echo $text_payer_status; ?></td>
+            <td><?php echo $transaction.PAYERSTATUS; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.COUNTRYCODE %}
+          <tr>
+            <td><?php echo $text_country_code; ?></td>
+            <td><?php echo $transaction.COUNTRYCODE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.PAYERBUSINESS %}
+          <tr>
+            <td><?php echo $text_payer_business; ?></td>
+            <td><?php echo $transaction.PAYERBUSINESS; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SALUTATION %}
+          <tr>
+            <td><?php echo $text_payer_salute; ?></td>
+            <td><?php echo $transaction.SALUTATION; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.FIRSTNAME %}
+          <tr>
+            <td><?php echo $text_payer_firstname; ?></td>
+            <td><?php echo $transaction.FIRSTNAME; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.MIDDLENAME %}
+          <tr>
+            <td><?php echo $text_payer_middlename; ?></td>
+            <td><?php echo $transaction.MIDDLENAME; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.LASTNAME %}
+          <tr>
+            <td><?php echo $text_payer_lastname; ?></td>
+            <td><?php echo $transaction.LASTNAME; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SUFFIX %}
+          <tr>
+            <td><?php echo $text_payer_suffix; ?></td>
+            <td><?php echo $transaction.SUFFIX; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.ADDRESSOWNER %}
+          <tr>
+            <td><?php echo $text_address_owner; ?></td>
+            <td><?php echo $transaction.ADDRESSOWNER; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.ADDRESSSTATUS %}
+          <tr>
+            <td><?php echo $text_address_status; ?></td>
+            <td><?php echo $transaction.ADDRESSSTATUS; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOSECONDARYNAME %}
+          <tr>
+            <td><?php echo $text_ship_sec_name; ?></td>
+            <td><?php echo $transaction.SHIPTOSECONDARYNAME; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTONAME %}
+          <tr>
+            <td><?php echo $text_ship_name; ?></td>
+            <td><?php echo $transaction.SHIPTONAME; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOSTREET %}
+          <tr>
+            <td><?php echo $text_ship_street1; ?></td>
+            <td><?php echo $transaction.SHIPTOSTREET; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOSECONDARYADDRESSLINE1 %}
+          <tr>
+            <td><?php echo $text_ship_sec_add1; ?></td>
+            <td><?php echo $transaction.SHIPTOSECONDARYADDRESSLINE1; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOSTREET2 %}
+          <tr>
+            <td><?php echo $text_ship_street2; ?></td>
+            <td><?php echo $transaction.SHIPTOSTREET2; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOSECONDARYADDRESSLINE2 %}
+          <tr>
+            <td><?php echo $text_ship_sec_add2; ?></td>
+            <td><?php echo $transaction.SHIPTOSECONDARYADDRESSLINE2; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOCITY %}
+          <tr>
+            <td><?php echo $text_ship_city; ?></td>
+            <td><?php echo $transaction.SHIPTOCITY; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOSECONDARYCITY %}
+          <tr>
+            <td><?php echo $text_ship_sec_city; ?></td>
+            <td><?php echo $transaction.SHIPTOSECONDARYCITY; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOSTATE %}
+          <tr>
+            <td><?php echo $text_ship_state; ?></td>
+            <td><?php echo $transaction.SHIPTOSTATE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOSECONDARYSTATE %}
+          <tr>
+            <td><?php echo $text_ship_sec_state; ?></td>
+            <td><?php echo $transaction.SHIPTOSECONDARYSTATE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOZIP %}
+          <tr>
+            <td><?php echo $text_ship_zip; ?></td>
+            <td><?php echo $transaction.SHIPTOZIP; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOSECONDARYZIP %}
+          <tr>
+            <td><?php echo $text_ship_sec_zip; ?></td>
+            <td><?php echo $transaction.SHIPTOSECONDARYZIP; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOCOUNTRYCODE %}
+          <tr>
+            <td><?php echo $text_ship_country; ?></td>
+            <td><?php echo $transaction.SHIPTOCOUNTRYCODE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOSECONDARYCOUNTRYCODE %}
+          <tr>
+            <td><?php echo $text_ship_sec_country; ?></td>
+            <td><?php echo $transaction.SHIPTOSECONDARYCOUNTRYCODE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOPHONENUM %}
+          <tr>
+            <td><?php echo $text_ship_phone; ?></td>
+            <td><?php echo $transaction.SHIPTOPHONENUM; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SHIPTOSECONDARYPHONENUM %}
+          <tr>
+            <td><?php echo $text_ship_sec_phone; ?></td>
+            <td><?php echo $transaction.SHIPTOSECONDARYPHONENUM; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.TRANSACTIONID %}
+          <tr>
+            <td><?php echo $text_trans_id; ?></td>
+            <td><?php echo $transaction.TRANSACTIONID; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.PARENTTRANSACTIONID %}
+          <tr>
+            <td><?php echo $text_parent_trans_id; ?></td>
+            <td><a href="<?php echo $view_link ~ '&transaction_id=' ~ transaction.PARENTTRANSACTIONID; ?>"><?php echo $transaction.PARENTTRANSACTIONID; ?></a></td>
+          </tr>
+          {% endif %}
+          {% if transaction.RECEIPTID %}
+          <tr>
+            <td><?php echo $text_receipt_id; ?></td>
+            <td><?php echo $transaction.RECEIPTID; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.TRANSACTIONTYPE %}
+          <tr>
+            <td><?php echo $text_trans_type; ?></td>
+            <td><?php echo $transaction.TRANSACTIONTYPE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.PAYMENTTYPE %}
+          <tr>
+            <td><?php echo $text_payment_type; ?></td>
+            <td><?php echo $transaction.PAYMENTTYPE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.ORDERTIME %}
+          <tr>
+            <td><?php echo $text_order_time; ?></td>
+            <td><?php echo $transaction.ORDERTIME; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.AMT %}
+          <tr>
+            <td><?php echo $text_amount; ?></td>
+            <td><?php echo $transaction.AMT; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.CURRENCYCODE %}
+          <tr>
+            <td><?php echo $text_currency_code; ?></td>
+            <td><?php echo $transaction.CURRENCYCODE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.FEEAMT %}
+          <tr>
+            <td><?php echo $text_fee_amount; ?></td>
+            <td><?php echo $transaction.FEEAMT; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SETTLEAMT %}
+          <tr>
+            <td><?php echo $text_settle_amount; ?></td>
+            <td><?php echo $transaction.SETTLEAMT; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.TAXAMT %}
+          <tr>
+            <td><?php echo $text_tax_amount; ?></td>
+            <td><?php echo $transaction.TAXAMT; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.EXCHANGERATE %}
+          <tr>
+            <td><?php echo $text_exchange; ?></td>
+            <td><?php echo $transaction.EXCHANGERATE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.PAYMENTSTATUS %}
+          <tr>
+            <td><?php echo $text_payment_status; ?></td>
+            <td><?php echo $transaction.PAYMENTSTATUS; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.PENDINGREASON %}
+          <tr>
+            <td><?php echo $text_pending_reason; ?></td>
+            <td><?php echo $transaction.PENDINGREASON; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.REASONCODE %}
+          <tr>
+            <td><?php echo $text_reason_code; ?></td>
+            <td><?php echo $transaction.REASONCODE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.PROTECTIONELIGIBILITY %}
+          <tr>
+            <td><?php echo $text_protect_elig; ?></td>
+            <td><?php echo $transaction.PROTECTIONELIGIBILITY; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.PROTECTIONELIGIBILITYTYPE %}
+          <tr>
+            <td><?php echo $text_protect_elig_type; ?></td>
+            <td><?php echo $transaction.PROTECTIONELIGIBILITYTYPE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.STOREID %}
+          <tr>
+            <td><?php echo $text_store_id; ?></td>
+            <td><?php echo $transaction.STOREID; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.TERMINALID %}
+          <tr>
+            <td><?php echo $text_terminal_id; ?></td>
+            <td><?php echo $transaction.TERMINALID; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.INVNUM %}
+          <tr>
+            <td><?php echo $text_invoice_number; ?></td>
+            <td><?php echo $transaction.INVNUM; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.CUSTOM %}
+          <tr>
+            <td><?php echo $text_custom; ?></td>
+            <td><?php echo $transaction.CUSTOM; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.NOTE %}
+          <tr>
+            <td><?php echo $text_note; ?></td>
+            <td><?php echo $transaction.NOTE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.SALESTAX %}
+          <tr>
+            <td><?php echo $text_sales_tax; ?></td>
+            <td><?php echo $transaction.SALESTAX; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.BUYERID %}
+          <tr>
+            <td><?php echo $text_buyer_id; ?></td>
+            <td><?php echo $transaction.BUYERID; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.CLOSINGDATE %}
+          <tr>
+            <td><?php echo $text_close_date; ?></td>
+            <td><?php echo $transaction.CLOSINGDATE; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.MULTIITEM %}
+          <tr>
+            <td><?php echo $text_multi_item; ?></td>
+            <td><?php echo $transaction.MULTIITEM; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.AMOUNT %}
+          <tr>
+            <td><?php echo $text_sub_amt; ?></td>
+            <td><?php echo $transaction.AMOUNT; ?></td>
+          </tr>
+          {% endif %}
+          {% if transaction.PERIOD %}
+          <tr>
+            <td><?php echo $text_sub_period; ?></td>
+            <td><?php echo $transaction.PERIOD; ?></td>
+          </tr>
+          {% endif %}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<?php echo $footer; ?>
