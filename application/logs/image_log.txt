@@ -1,0 +1,107 @@
+At time: [02.05 16:22]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 16:25]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 16:25]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 16:35]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 16:35]
+	ADDED: C:\xampp\htdocs\ci_project/image/catalog\demo_folder\chuc_nang_ban_hang.PNG
+
+At time: [02.05 16:35]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 16:39]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 17:48]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 17:41]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 17:21]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 17:29]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 17:27]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 17:32]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 17:40]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 17:44]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 17:58]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 17:00]
+	User Access: system
+	IP Address: ::1
+
+At time: [02.05 17:08]
+	User Access: system
+	IP Address: ::1
+
+At time: [03.05 08:47]
+	User Access: system
+	IP Address: ::1
+
+At time: [03.05 08:49]
+	User Access: system
+	IP Address: ::1
+
+At time: [03.05 08:54]
+	User Access: system
+	IP Address: ::1
+
+At time: [03.05 08:56]
+	User Access: system
+	IP Address: ::1
+
+At time: [03.05 08:06]
+	User Access: system
+	IP Address: ::1
+
+At time: [03.05 08:52]
+	User Access: system
+	IP Address: ::1
+
+At time: [03.05 08:58]
+	User Access: system
+	IP Address: ::1
+
+At time: [03.05 08:05]
+	User Access: system
+	IP Address: ::1
+
+At time: [03.05 08:40]
+	User Access: system
+	IP Address: ::1
+
