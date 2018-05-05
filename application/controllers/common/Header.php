@@ -9,18 +9,18 @@ class Header extends MX_Controller {
 		$this->load->language('common/header');
 		$this->load->model('setting/extension_model');
 
-		$data['analytics'] = array();
+		// $data['analytics'] = array();
 
-		$analytics = $this->extension_model->getExtensions('analytics');
+		// $analytics = $this->extension_model->getExtensions('analytics');
 
-		if($analytics) {
-			foreach ($analytics as $analytic) {
-				if ($this->configs->get('analytics_' . $analytic['code'] . '_status')) {
-					$data['analytics'][] = $this->load->controller('extension/analytics/' . $analytic['code'], $this->configs->get('analytics_' . $analytic['code'] . '_status'));
-				}
-			}
+		// if($analytics) {
+		// 	foreach ($analytics as $analytic) {
+		// 		if ($this->configs->get('analytics_' . $analytic['code'] . '_status')) {
+		// 			$data['analytics'][] = $this->load->controller('extension/analytics/' . $analytic['code'], $this->configs->get('analytics_' . $analytic['code'] . '_status'));
+		// 		}
+		// 	}
 
-		 }
+		//  }
 		if ($this->input->server('HTTPS')) {
 			$server = HTTPS_SERVER;
 		} else {
