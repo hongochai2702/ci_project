@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://'.$_SERVER['HTTP_HOST'] . '/app/ci_project4/';
+$config['base_url'] = 'http://'.$_SERVER['HTTP_HOST'] . '/ci_project/';
 
 /*
 |--------------------------------------------------------------------------
@@ -527,7 +527,7 @@ define('DS', DIRECTORY_SEPARATOR);
 
 $config['proxy_ips'] = '';
 $config['modules_locations'] = array(APPPATH.'modules/' => '../modules/',);
-define('URL_HOME','http://'.$_SERVER['HTTP_HOST'].'/app/ci_project4/');
+define('URL_HOME','http://'.$_SERVER['HTTP_HOST'].'/ci_project/');
 define('DIR_HOME', APPPATH . '/');
 define('HTTP_SERVER',URL_HOME);
 define('HTTP_CATALOG', URL_HOME);

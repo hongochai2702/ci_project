@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://'.$_SERVER['HTTP_HOST'] . '/app/ci_project4/admin/';
+$config['base_url'] = 'http://'.$_SERVER['HTTP_HOST'] . '/ci_project/admin/';
 
 /*
 |--------------------------------------------------------------------------
@@ -523,7 +523,7 @@ define('APP_CONTROLLERS', APPPATH . '/controllers');
 define('APP_VIEWS', APPPATH . '/views');
 
 define('DB_PREFIX', 'ci_');
-define('URL_HOME','http://'.$_SERVER['HTTP_HOST'].'/app/ci_project4/');
+define('URL_HOME','http://'.$_SERVER['HTTP_HOST'].'/ci_project/');
 define('URL_IMAGE',URL_HOME .'image/');
 define('DIR_HOME', PATH_BASE);
 // HTTP
