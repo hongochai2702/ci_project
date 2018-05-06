@@ -3,7 +3,7 @@ class Information extends MX_Controller {
 	private $error = array();
 
 	public function index() {
-		$this->lang->load('module/information');
+		$this->lang->load('extension/module/information');
 		$this->document->setTitle($this->lang->line('heading_title'));
 
 		$this->load->model('setting/setting_model','model_setting_setting');

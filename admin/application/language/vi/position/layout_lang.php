@@ -1,0 +1,31 @@
+<?php
+$lang['text_top1']			= 'Đầu trang 1';
+$lang['text_top2']			= 'Đầu trang 2';
+$lang['text_menu']			= 'Trình đơn';
+$lang['text_content_buttom2']			= 'Nội dung dưới cùng';
+$lang['text_slide']			= 'Banner chính';
+$lang['text_footer_top']			= 'Cuối trang trên';
+$lang['text_footer_bottom']			= 'Cuối trang dưới';
+$lang['text_descripotion_all']			= 'Mô tả';
+$lang['text_descripotion_layout']			= 'Mô tả giao diện';
+$lang['button_cancel']			= 'Đóng';
+$lang['button_apply']			= 'Lưu và tiếp tục chỉnh sửa';
+$lang['error_permission']      = 'Cảnh báo: Bạn không có quyền truy cập để chỉnh sửa chức năng này!';
+$lang['top_column_left']      = 'Đầu cột trái';
+$lang['top_column_right']      = 'Đầu cột phải';
+$lang['top_column_center']      = 'Đầu cột giữa';
+$lang['text_menu_left']      = 'Trình đơn trái';
+$lang['text_menu_right']      = 'Trình đơn chính';
+$lang['text_menu_center']      = 'Trình đơn giữa';
+$lang['text_footer_top_col1']  = 'Chân trang trên, cột 1';
+$lang['text_footer_top_col2']  = 'Chân trang trên, cột 2';
+$lang['text_footer_top_col3']  = 'Chân trang trên, cột 3';
+$lang['text_between_footer_col1']  = 'Chân trang giữa, cột 1';
+$lang['text_between_footer_col2']  = 'Chân trang giữa, cột 2';
+$lang['text_between_footer_col3']  = 'Chân trang giữa, cột 3';
+$lang['text_between_footer_col4']  = 'Chân trang giữa, cột 4';
+$lang['text_last_footer_col1'] = 'Chân trang cuối, cột 1';
+$lang['text_last_footer_col2'] = 'Chân trang cuối, cột 2';
+$lang['text_copyright']   = 'Thông tin bản quyền';
+$lang['text_identified'] = 'Nhận diện';
+

@@ -7,7 +7,7 @@ class Image_Manager extends MX_Controller {
 		$this->load->model('tool/image_model','model_tool_image');
 
 		if ($this->input->get('image')) {
-			$this->response->setOutput($this->model_tool_image->resize(html_entity_decode($this->input->get('image'), ENT_QUOTES, 'UTF-8'), 100, 100));
+			$this->output->set_output($this->model_tool_image->resize(str_replace(URL_HOME . 'image/', '', html_entity_decode($this->input->get('image'), ENT_QUOTES, 'UTF-8')), 100, 100));
 		}
 	
 	}

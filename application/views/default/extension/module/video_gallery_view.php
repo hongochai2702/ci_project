@@ -7,56 +7,30 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('public/catalog/default/javascript/jquery/owl-carousel/assets/owl.carousel.min.css'); ?>" />
 <script type="text/javascript" src="<?php echo base_url('public/catalog/default/javascript/jquery/owl-carousel/owl.carousel.min.js'); ?>"></script>
 
-<div id="module-video-1">
-
+<div id="module-video-<?php echo $module; ?>">
 	<div class="wrapper-video">
 		<div class="video-heading">
 			<span>TAKE A TOUR</span>
 			<h2>Our Videos</h2>
 		</div>
-		<div class="video-item big-video">
-			<a data-fancybox="iframe" href="https://www.youtube.com/watch?v=_1GKHMTpTtw" class="fancybox fancy-video iframe">
-				<img src="<?php echo base_url('image/catalog/demo/video-demo1.jpg'); ?>" alt="video-demo" />
+		<?php if ( $videos['featured'] ) { ?>
+		<div class="video-item big-video video-id-<?php echo $videos['featured']['id']; ?>">
+			<a data-fancybox="iframe" href="<?php echo $videos['featured']['link']; ?>" class="fancybox fancy-video iframe">
+				<img src="<?php echo $videos['featured']['image']; ?>" alt="video-demo" />
 			</a>
 		</div>
+		<?php } ?>
 		<div class="wrapper-carousel-video owl-carousel">
-			<!-- /.video-item -->
-			<div class="video-item">
-				<a data-fancybox="iframe" href="https://www.youtube.com/watch?v=_1GKHMTpTtw" class="fancybox fancy-video iframe">
-					<img class="owl-lazy" data-src="<?php echo base_url('image/catalog/demo/video-demo1.jpg'); ?>" alt="video-demo" />
-				</a>
-			</div>
-			<!-- /.video-item -->
-			<div class="video-item">
-				<a data-fancybox="iframe" href="https://www.youtube.com/watch?v=_1GKHMTpTtw" class="fancybox fancy-video iframe">
-					<img class="owl-lazy" data-src="<?php echo base_url('image/catalog/demo/video-demo1.jpg'); ?>" alt="video-demo" />
-				</a>
-			</div>
-			<!-- /.video-item -->
-			<div class="video-item">
-				<a data-fancybox="iframe" href="https://www.youtube.com/watch?v=_1GKHMTpTtw" class="fancybox fancy-video iframe">
-					<img class="owl-lazy" data-src="<?php echo base_url('image/catalog/demo/video-demo1.jpg'); ?>" alt="video-demo" />
-				</a>
-			</div>
-			<!-- /.video-item -->
-			<div class="video-item">
-				<a data-fancybox="iframe" href="https://www.youtube.com/watch?v=_1GKHMTpTtw" class="fancybox fancy-video iframe">
-					<img class="owl-lazy" data-src="<?php echo base_url('image/catalog/demo/video-demo1.jpg'); ?>" alt="video-demo" />
-				</a>
-			</div>
-			<!-- /.video-item -->
-			<div class="video-item">
-				<a data-fancybox="iframe" href="https://www.youtube.com/watch?v=_1GKHMTpTtw" class="fancybox fancy-video iframe">
-					<img class="owl-lazy" data-src="<?php echo base_url('image/catalog/demo/video-demo1.jpg'); ?>" alt="video-demo" />
-				</a>
-			</div>
-			<!-- /.video-item -->
-			<div class="video-item">
-				<a data-fancybox="iframe" href="https://www.youtube.com/watch?v=_1GKHMTpTtw" class="fancybox fancy-video iframe">
-					<img class="owl-lazy" data-src="<?php echo base_url('image/catalog/demo/video-demo1.jpg'); ?>" alt="video-demo" />
-				</a>
-			</div>
-			<!-- /.video-item -->
+			<?php if ( $videos['list_videos'] ) { ?>
+			<?php foreach( $videos['list_videos'] as $video ) { ?>
+				<!-- /.video-item -->
+				<div class="video-item big-video video-id-<?php echo $video['id']; ?>">
+					<a data-fancybox="iframe" href="<?php echo $video['link']; ?>" class="fancybox fancy-video iframe">
+						<img src="<?php echo $video['image']; ?>" alt="video-demo" />
+					</a>
+				</div>
+			<?php } ?>
+			<?php } ?>
 		</div>
 	</div>
 </div>

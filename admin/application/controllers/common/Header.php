@@ -16,7 +16,7 @@ class Header extends MX_Controller {
 
 		// Nhúng thư viện FileManager vào.
 		$routes = $this->uri->segment_array();
-		$ignore_routes = array('edit','add');
+		$ignore_routes = array('edit','add','html');
 		foreach ($ignore_routes as $ignore) {
 			if (in_array($ignore, $routes)) {
 				$this->document->addScript('public/javascript/plugins/elFinder/jquery/jquery-migrate-1.2.1.min.js');

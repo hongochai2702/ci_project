@@ -1,7 +1,7 @@
 <footer>
   <div class="container">
     <div class="row">
-      <?php if($informations) { ?>
+      <!-- <?php if($informations) { ?>
       <div class="col-sm-3">
         <h5><?php echo $text_information; ?></h5>
         <ul class="list-unstyled">
@@ -10,7 +10,7 @@
           <?php } ?>
         </ul>
       </div>
-      <?php } ?>
+      <?php } ?> -->
       <div class="col-sm-3">
         <h5><?php echo $text_service; ?></h5>
         <ul class="list-unstyled">

@@ -187,7 +187,7 @@ class FileManager extends MX_Controller {
 
 		$ignore_status = true;
 		$referer = (isset($this->request->server['HTTP_REFERER']))?$this->request->server['HTTP_REFERER']:'';
-		if (strpos($referer,'edit') || strpos($referer,'add') ) {
+		if (strpos($referer,'edit') || strpos($referer,'add') || strpos($referer,'html') ) {
 			$ignore_status = false;
 		}
 		$data['ignore_image'] = false;

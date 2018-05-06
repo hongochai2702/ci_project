@@ -2,7 +2,6 @@
 class Image_model extends CI_model {
 
 	public function resize2($filename, $width, $height) {
-		var_dump(substr(str_replace('\\', '/', realpath(DIR_IMAGE . $filename))));
 
 		if (!is_file(DIR_IMAGE . $filename) || substr(str_replace('\\', '/', realpath(DIR_IMAGE . $filename)), 0, strlen(DIR_IMAGE)) != DIR_IMAGE) {
 			return;
@@ -49,6 +48,7 @@ class Image_model extends CI_model {
 		if (!is_file(DIR_IMAGE . $filename) || substr(str_replace('\\', '/', realpath(DIR_IMAGE . $filename)), 0, strlen(DIR_IMAGE)) != str_replace('\\', '/', DIR_IMAGE)) {
 			return;
 		}
+		
 
 		$extension = pathinfo($filename, PATHINFO_EXTENSION);
 

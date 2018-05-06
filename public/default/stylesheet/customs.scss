@@ -1,4 +1,19 @@
 $mainColor : #F1C30F;
+
+// Global
+.heading-wrapper {
+	display: block;
+	span {
+		color: #F1C30F;
+	    font-size: 14px;
+	}
+	h2 {
+		font-size: 38px;
+	    font-weight: 500;
+	    line-height: 1.2;
+	    padding: 16px 16px;
+	}
+}
 // ========================== ABOUT SECTION ========================== //
 .about-section {
 	.heading-left {
@@ -10,20 +25,15 @@ $mainColor : #F1C30F;
 	.heading-wrapper {
 		display: block;
 		span {
-			color: #F1C30F;
-		    position: absolute;
-		    font-size: 14px;
-		    left: -21px;
+	    	position: absolute;
 		    top: 54px;
+		    left: -18px;
 		    letter-spacing: 1px;
 		    -webkit-transform: rotate(-90deg);
 		    transform: rotate(-90deg)
 		 /* Standard syntax */;
 		}
 		h2 {
-			font-size: 38px;
-		    font-weight: 500;
-		    line-height: 1.2;
 		    padding: 16px 16px;
 		    padding-left: 35px;
 		}
@@ -35,3 +45,25 @@ $mainColor : #F1C30F;
 	}
 }
 // ========================== ABOUT SECTION ========================== //
+
+.benefit-section {
+	.heading-wrapper {
+		display: block;
+		text-align: center;
+		span {
+	    	letter-spacing: 2px;
+    		text-transform: uppercase;
+		 
+		}
+		h2 {
+			padding-top: 4px;
+		}
+	}
+	.benefit-content-slider {
+		margin-top: 20px;
+	}
+}
+
+#module-video-0 {
+    background: #252525;
+}

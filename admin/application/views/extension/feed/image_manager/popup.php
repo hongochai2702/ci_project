@@ -64,16 +64,16 @@
                      // current directory file menu
                      files: [<?php echo $mutiimage;  ?><?php echo $insertfiles;?> 'getfile', '|', 'open', 'quicklook', '|', 'download', '|', 'copy', 'cut', 'paste', 'duplicate', '|','rm', '|', 'edit', 'rename', '|', 'archive', 'extract', '|', 'info']
                  },
-		 dirimage: '<?php echo $http_image;?>',
+		 // dirimage: '<?php echo $http_image;?>',
 		 getFileCallback: function (a) { 			
 					 <?php if (isset($_GET['target'])==true){ 
 						 $field = $_GET['target']; ?>
-						   var b = decodeURIComponent(a.replace('<?php echo $http_image;?>',''));
+						   var b = decodeURIComponent(a.replace('<?php echo URL_HOME . 'image/';?>',''));
 							$('#<?php echo $field;?>').attr('value', b);
 							 <?php if (isset($_GET['thumb'])==true){
 								 $thumb = $_GET['thumb']; ?>
 									$.ajax({
-											url: ci_var.base_url + 'feed/image_manager_plus/thumb?user_token='+ci_var.user_token + '&image=' + encodeURIComponent(b),
+											url: 'extension/feed/image_manager/thumb?user_token='+ci_var.user_token + '&image=' + encodeURIComponent(b),
 											dataType: 'text',
 											success: function(data) {									
 												$('#<?php echo $thumb;?>>img').attr('src', data);
@@ -84,8 +84,8 @@
 							<?php } ?>
 					<?php }?>
 					<?php 	$bulk_insert = isset($_GET['bulk_insert'])?true:false;
-                                                $thumb_insert = isset($_GET['thumb'])?true:false;
-                                                $target_insert = isset($_GET['target'])?true:false;
+                            $thumb_insert = isset($_GET['thumb'])?true:false;
+                            $target_insert = isset($_GET['target'])?true:false;
 					 if ($bulk_insert==false && $thumb_insert==false && $thumb_insert==false && !isset($_GET['editor'])){ ?> 
 							var range, sel = window.getSelection(); 
 							if (sel.rangeCount) { 

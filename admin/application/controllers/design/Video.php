@@ -174,7 +174,7 @@ class Video extends MX_Controller {
 		$video_total = $this->model_design_video->getTotalVideos();
 
 		$results = $this->model_design_video->getVideos($filter_data);
-
+			
 		foreach ($results as $result) {
 			$data['videos'][] = array(
 				'video_id' => $result['video_id'],
@@ -339,11 +339,18 @@ class Video extends MX_Controller {
 		} else {
 			$video_images = array();
 		}
-		// var_dump($video_images);
 		$data['video_images'] = array();
-
+		if( $this->input->server('HTTPS') && ( 
+			 	($this->input->server('HTTPS') == 'on') || ($this->input->server('HTTPS') == '1'))) 
+		{
+			$http_image = URL_HOME . 'image/';
+		} else {
+			$http_image = URL_HOME . 'image/';
+		}
 		foreach ($video_images as $key => $value) {
+
 			foreach ($value as $video_image) {
+				$video_image['image'] = str_replace($http_image, '', $video_image['image']);
 				if (is_file(DIR_IMAGE . $video_image['image'])) {
 					$image = $video_image['image'];
 					$thumb = $video_image['image'];
