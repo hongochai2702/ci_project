@@ -4,13 +4,13 @@
 <meta charset="UTF-8" />
 <title></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-<script type="text/javascript" src="../../public/javascript/jquery/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="../../public/javascript/angular/angular.min.js"></script>
-<script type="text/javascript" src="../../public/javascript/angular/app.js"></script>
-<script type="text/javascript" src="../../public/javascript/bootstrap/js/bootstrap.min.js"></script>
-<link href="../../public/stylesheet/bootstrap.css" type="text/css" rel="stylesheet" />
-<link href="../../public/javascript/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
-<link type="text/css" href="../../public/stylesheet/login.css" rel="stylesheet" media="screen" />
+<script type="text/javascript" src="<?php echo base_url('public/javascript/jquery/jquery-2.1.1.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('public/javascript/angular/angular.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('public/javascript/angular/app.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('public/javascript/bootstrap/js/bootstrap.min.js'); ?>"></script>
+<link href="<?php echo base_url('public/stylesheet/bootstrap.css'); ?>" type="text/css" rel="stylesheet" />
+<link href="<?php echo base_url('public/javascript/font-awesome/css/font-awesome.min.css'); ?>" type="text/css" rel="stylesheet" />
+<link type="text/css" href="<?php echo base_url('public/stylesheet/login.css'); ?>" rel="stylesheet" media="screen" />
 </head>
 <body>
 <div class="overlay"></div>

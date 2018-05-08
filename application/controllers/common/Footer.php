@@ -4,18 +4,6 @@ class Footer extends MX_Controller {
 	public function index() {
 		$this->lang->load('common/footer');
 
-		// $this->load->model('information_model');
-
-		// $data['informations'] = array();
-
-		// foreach ($this->information_model->getInformations() as $result) {
-		// 	if ($result['bottom']) {
-		// 		$data['informations'][] = array(
-		// 			'title' => $result['title'],
-		// 			'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id'])
-		// 		);
-		// 	}
-		// }
 		$data['contact'] = $this->url->link('information/contact');
 		$data['return'] = $this->url->link('account/return/add', '', true);
 		$data['sitemap'] = $this->url->link('information/sitemap');
@@ -47,34 +35,10 @@ class Footer extends MX_Controller {
 		$data['text_affiliate'] = $this->lang->line('text_affiliate');
 		$data['text_special'] = $this->lang->line('text_special');
 
-		$data['powered'] = sprintf($this->lang->line('text_powered'), $this->configs->get('config_name'), date('Y', time()));
-
-		// Whos Online
-		/*if ($this->configs->get('config_customer_online')) {
-			$this->load->model('tool/online');
-
-			if (($this->input->server('REMOTE_ADDR'))) {
-				$ip = $this->input->server('REMOTE_ADDR');
-			} else {
-				$ip = '';
-			}
-
-			if (($this->input->server('HTTP_HOST')) && ($this->input->server('REQUEST_URI'))) {
-				$url = ($this->input->server('HTTPS') ? 'https://' : 'http://') . $this->input->server('HTTP_HOST') . $this->input->server('REQUEST_URI');
-			} else {
-				$url = '';
-			}
-
-			if (($this->input->server('HTTP_REFERER'))) {
-				$referer = $this->input->server('HTTP_REFERER');
-			} else {
-				$referer = '';
-			}
-
-			$this->model_tool_online->addOnline($ip, $this->customer->getId(), $url, $referer);
-		}*/
 
 		$data['scripts'] = $this->document->getScripts('footer');
+		$data['footer_top'] = $this->load->controller('common/footer_top');
+		$data['footer_bottom'] = $this->load->controller('common/footer_bottom');
 		
 		return $this->load->view('default/common/footer', $data, true);
 	}

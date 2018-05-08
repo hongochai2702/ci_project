@@ -1,9 +1,9 @@
 <?php
 // Heading
-$_['heading_title'] = 'Extensions';
+$lang['heading_title'] = 'Tiện ích mở rộng';
 
 // Text
-$_['text_success']  = 'Success: You have modified extensions!';
-$_['text_list']     = 'Extension List';
-$_['text_type']     = 'Choose the extension type';
-$_['text_filter']   = 'Filter';
+$lang['text_success']  = 'Success: You have modified extensions!';
+$lang['text_list']     = 'Danh sách tiện ích mở rộng';
+$lang['text_type']     = 'Chọn 1 loại tiện ích mở rộng';
+$lang['text_filter']   = 'Lọc nhanh';

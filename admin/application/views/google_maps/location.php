@@ -77,7 +77,7 @@
 											<div class="form-group">
 												<div class="col-sm-2"></div>
 												<div class="col-sm-10">
-													<div id="gmap-location-picker-<?php echo $map_row; ?>" class="gmap-location-picker"><img src="<?php echo URL_PUBLIC; ?>/image/google_maps/activate_map.jpg" style="cursor:pointer;" onclick="activateGMap('gmap-location-picker-<?php echo $map_row; ?>', <?php echo isset($gmap['latitude']) ? $gmap['latitude'] : '0'; ?>, <?php echo isset($gmap['longitude']) ? $gmap['longitude'] : '0'; ?>, <?php echo $map_row; ?>, '<?php echo isset($gmap['address']) ? $gmap['address'] : ''; ?>');" /></div>
+													<div id="gmap-location-picker-<?php echo $map_row; ?>" class="gmap-location-picker"><img src="<?php echo URL_HOME; ?>/image/google_maps/activate_map.jpg" style="cursor:pointer;" onclick="activateGMap('gmap-location-picker-<?php echo $map_row; ?>', <?php echo isset($gmap['latitude']) ? $gmap['latitude'] : '0'; ?>, <?php echo isset($gmap['longitude']) ? $gmap['longitude'] : '0'; ?>, <?php echo $map_row; ?>, '<?php echo isset($gmap['address']) ? $gmap['address'] : ''; ?>');" /></div>
 												</div> 
 											</div>
                                                                                     <script type="text/javascript">
@@ -162,7 +162,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="<?php echo $button_close; ?>"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title" id="aboutLabel"><?php echo $text_about_title; ?></h4>
 			</div>
-			<div class="modal-body"><img src="<?php echo URL_PUBLIC; ?>/image/google_maps/google_maps_markers_logo.jpg" /><br /><?php echo $gmaps_about; ?></div>
+			<div class="modal-body"><img src="<?php echo URL_HOME; ?>/image/google_maps/google_maps_markers_logo.jpg" /><br /><?php echo $gmaps_about; ?></div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo $button_close; ?></button>
 			</div>
@@ -222,7 +222,7 @@
 			if ($aa_language == 0) $first_language = $language['language_id'];
 			$aa_language++;
 		?>
-		html +='			<li><a href="#language-'+ map_row + '-<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="<?php echo URL_PUBLIC; ?>/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>';
+		html +='			<li><a href="#language-'+ map_row + '-<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="<?php echo URL_HOME; ?>/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>';
 		<?php } ?>
 		html +='	</ul>';
 		html +='	<div class="tab-content">';
@@ -247,7 +247,7 @@
 		html += '		<div class="form-group">';
 		html += '			<div class="col-sm-2"></div>';
 		html += '			<div class="col-sm-10">';
-		html += '				<div id="gmap-location-picker-' + map_row + '" class="gmap-location-picker"><img src="<?php echo URL_PUBLIC; ?>/image/google_maps/activate_map.jpg" style="cursor:pointer;" onclick="activateGMap(\'gmap-location-picker-' + map_row + '\', 0, 0, ' + map_row + ', \'\');" /></div>';
+		html += '				<div id="gmap-location-picker-' + map_row + '" class="gmap-location-picker"><img src="<?php echo URL_HOME; ?>/image/google_maps/activate_map.jpg" style="cursor:pointer;" onclick="activateGMap(\'gmap-location-picker-' + map_row + '\', 0, 0, ' + map_row + ', \'\');" /></div>';
 		html += '			</div>';
 		html += '		</div>';
 		html += '		<div class="form-group required">';

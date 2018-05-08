@@ -58,7 +58,7 @@
 		public function delete() {
 			$this->load->language('design/layout');
 			$this->document->setTitle($this->lang->line('heading_title'));
-			$this->load->model('design/layout');
+			$this->load->model('design/layout_model');
 			if ($this->input->post('selected') && $this->validateDelete()) {
 				foreach ($this->input->post('selected') as $layout_id) {
 					$this->layout_model->deleteLayout($layout_id);
@@ -330,27 +330,27 @@
 			if (!$this->user->hasPermission('modify', 'design/layout')) {
 				$this->error['warning'] = $this->lang->line('error_permission');
 			}
-			$this->load->model('setting/store');
-			$this->load->model('catalog/product');
-			$this->load->model('catalog/category');
-			$this->load->model('catalog/information');
+			$this->load->model('setting/store_model');
+			$this->load->model('catalog/product_model');
+			$this->load->model('catalog/category_model');
+			$this->load->model('catalog/information_model');
 			foreach ($this->input->post('selected') as $layout_id) {
-				if ($this->config->get('config_layout_id') == $layout_id) {
+				if ($this->configs->get('config_layout_id') == $layout_id) {
 					$this->error['warning'] = $this->lang->line('error_default');
 				}
-				$store_total = $this->model_setting_store->getTotalStoresByLayoutId($layout_id);
+				$store_total = $this->store_model->getTotalStoresByLayoutId($layout_id);
 				if ($store_total) {
 					$this->error['warning'] = sprintf($this->lang->line('error_store'), $store_total);
 				}
-				$product_total = $this->model_catalog_product->getTotalProductsByLayoutId($layout_id);
+				$product_total = $this->product_model->getTotalProductsByLayoutId($layout_id);
 				if ($product_total) {
 					$this->error['warning'] = sprintf($this->lang->line('error_product'), $product_total);
 				}
-				$category_total = $this->model_catalog_category->getTotalCategoriesByLayoutId($layout_id);
+				$category_total = $this->category_model->getTotalCategoriesByLayoutId($layout_id);
 				if ($category_total) {
 					$this->error['warning'] = sprintf($this->lang->line('error_category'), $category_total);
 				}
-				$information_total = $this->model_catalog_information->getTotalInformationsByLayoutId($layout_id);
+				$information_total = $this->information_model->getTotalInformationsByLayoutId($layout_id);
 				if ($information_total) {
 					$this->error['warning'] = sprintf($this->lang->line('error_information'), $information_total);
 				}

@@ -1,6 +1,6 @@
 <?php
 // Heading
-$lang['heading_title'] = 'World Map';
+$lang['heading_title'] = 'Bản đồ';
 
-$lang['text_order']    = 'Orders';
-$lang['text_sale']     = 'Sales';
+$lang['text_order']    = 'Đơn hàng';
+$lang['text_sale']     = 'Giá trị';

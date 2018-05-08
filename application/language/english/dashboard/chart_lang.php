@@ -1,11 +1,11 @@
 <?php
 // Heading
-$lang['heading_title'] = 'Sales Analytics';
+$lang['heading_title'] = 'Thống kê Bán hàng';
 
 // Text
-$lang['text_order']    = 'Orders';
-$lang['text_customer'] = 'Customers';
-$lang['text_day']      = 'Today';
-$lang['text_week']     = 'Week';
-$lang['text_month']    = 'Month';
-$lang['text_year']     = 'Year';
+$lang['text_order']    = 'Đơn Hàng';
+$lang['text_customer'] = 'Khách hàng';
+$lang['text_day']      = 'Hôm nay';
+$lang['text_week']     = 'Tuần';
+$lang['text_month']    = 'Tháng';
+$lang['text_year']     = 'Năm';

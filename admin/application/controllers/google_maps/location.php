@@ -27,9 +27,9 @@ class Location extends MX_Controller
 		{
 			$this->model_setting_setting->editSetting('google_maps', $this->input->post());
 
-			$this->session->data['success'] = $this->lang->line('text_success');
+			$this->session->set_userdata('success', $this->lang->line('text_success'));
 
-			$this->response->redirect($this->url->link('module/google_maps', 'user_token=' . $this->session->userdata('user_token'), 'SSL'));
+			$this->response->redirect($this->url->link('extension/module/google_maps', 'user_token=' . $this->session->userdata('user_token'), 'SSL'));
 		}
 
 
@@ -148,7 +148,7 @@ class Location extends MX_Controller
 
 		$data['breadcrumbs'][] = array(
 			'text'      => $this->lang->line('heading_title'),
-			'href'      => $this->url->link('module/google_maps', 'user_token=' . $this->session->userdata('user_token'), 'SSL')
+			'href'      => $this->url->link('extension/module/google_maps', 'user_token=' . $this->session->userdata('user_token'), 'SSL')
 		);
 
 		$data['breadcrumbs'][] = array(
@@ -159,7 +159,7 @@ class Location extends MX_Controller
 
 
 		$data['action'] = $this->url->link('google_maps/location', 'user_token=' . $this->session->userdata('user_token'), 'SSL');
-		$data['cancel'] = $this->url->link('module/google_maps', 'user_token=' . $this->session->userdata('user_token'), 'SSL');
+		$data['cancel'] = $this->url->link('extension/module/google_maps', 'user_token=' . $this->session->userdata('user_token'), 'SSL');
 
 
 
@@ -171,8 +171,9 @@ class Location extends MX_Controller
 		}
 		elseif ($this->configs->has('google_maps_module_map'))
 		{
-			$data['gmaps'] = $this->config->get('google_maps_module_map');
+			$data['gmaps'] = $this->configs->get('google_maps_module_map');
 		}
+		var_dump($data['gmaps']);
 		//--
 
 

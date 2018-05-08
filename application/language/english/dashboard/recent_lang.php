@@ -1,11 +1,11 @@
 <?php
 // Heading
-$lang['heading_title']     = 'Latest Orders';
+$lang['heading_title']     = 'Đơn hàng mới nhất';
 
 // Column
-$lang['column_order_id']   = 'Order ID';
-$lang['column_customer']   = 'Customer';
-$lang['column_status']     = 'Status';
-$lang['column_total']      = 'Total';
-$lang['column_date_added'] = 'Date Added';
-$lang['column_action']     = 'Action';
+$lang['column_order_id']   = 'Mã Đơn Hàng';
+$lang['column_customer']   = 'Tên Khách Hàng';
+$lang['column_status']     = 'Tắt/Bật';
+$lang['column_total']      = 'Thành Tiền';
+$lang['column_date_added'] = 'Thời gian Đặt hàng';
+$lang['column_action']     = 'Chỉnh sửa';

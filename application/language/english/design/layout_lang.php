@@ -1,36 +1,38 @@
 <?php
 // Heading
-$lang['heading_title']       = 'Layouts';
+$lang['heading_title']     = 'Bố cục';
 
 // Text
-$lang['text_success']        = 'Success: You have modified layouts!';
-$lang['text_list']           = 'Layout List';
-$lang['text_add']            = 'Add Layout';
-$lang['text_edit']           = 'Edit Layout';
-$lang['text_remove']         = 'Remove';
-$lang['text_route']          = 'Choose the store and routes to be used with this layout';
-$lang['text_module']         = 'Choose the position of the modules';
+$lang['text_success']      = 'Thành công: Bạn đã thay đổi bố cục!';
+$lang['text_default']      = 'Mặc định';
+$lang['text_list']           = 'Danh mục Bố cục';
+$lang['text_add']            = 'Thêm Bố cục mới';
+$lang['text_edit']           = 'Cập nhật Bố cục';
 $lang['text_default']        = 'Default';
 $lang['text_content_top']    = 'Content Top';
 $lang['text_content_bottom'] = 'Content Bottom';
 $lang['text_column_left']    = 'Column Left';
 $lang['text_column_right']   = 'Column Right';
 
+
 // Column
-$lang['column_name']         = 'Layout Name';
-$lang['column_action']       = 'Action';
+$lang['column_name']       = 'Tên bố cục';
+$lang['column_action']     = 'Thao tác';
 
 // Entry
-$lang['entry_name']          = 'Layout Name';
-$lang['entry_store']         = 'Store';
-$lang['entry_route']         = 'Route';
-$lang['entry_module']        = 'Module';
+$lang['entry_name']        = 'Tên bố cục:';
+$lang['entry_store']       = 'Cửa hàng:';
+$lang['entry_route']       = 'Tuyến:';
+$lang['entry_module']        = 'Chức năng';
+$lang['entry_position']      = 'Vị trí';
+$lang['entry_sort_order']    = 'Thứ tự';
 
 // Error
-$lang['error_permission']    = 'Warning: You do not have permission to modify layouts!';
-$lang['error_name']          = 'Layout Name must be between 3 and 64 characters!';
-$lang['error_default']       = 'Warning: This layout cannot be deleted as it is currently assigned as the default store layout!';
-$lang['error_store']         = 'Warning: This layout cannot be deleted as it is currently assigned to %s stores!';
-$lang['error_product']       = 'Warning: This layout cannot be deleted as it is currently assigned to %s products!';
-$lang['error_category']      = 'Warning: This layout cannot be deleted as it is currently assigned to %s categories!';
-$lang['error_information']   = 'Warning: This layout cannot be deleted as it is currently assigned to %s information pages!';
+$lang['error_permission']  = 'Cảnh báo: Bạn không có quyền sửa đổi bố cục!';
+$lang['error_name']        = 'Tên phải được trình bày từ 3 đến 64 ký tự!';
+$lang['error_default']     = 'Cảnh báo: bố trí này không thể bị xóa vì nó đang được giao mặc định lưu trữ!';
+$lang['error_store']       = 'Cảnh báo: cách trình bày này không thể bị xóa khi nó hiện thời được gán tới %s kho.!';
+$lang['error_product']     = 'Cảnh báo: cách trình bày này không thể bị xóa khi nó hiện thời được gán tới %s ssản phẩm.!';
+$lang['error_category']    = 'Cảnh báo: cách trình bày này không thể đã bị xóa khi nó hiện thời được gán tới %s Danh mục.!';
+$lang['error_information'] = 'Cảnh báo: cách trình bày này không thể bị xóa khi nó hiện thời được gán tới %s trang thông tin.!';
+?>

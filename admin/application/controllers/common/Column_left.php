@@ -36,6 +36,40 @@ class Column_left extends MX_Controller {
 				);
 			}
 
+			// Portfolio menu.
+			$admin_menu_portfolio = array();
+			if ($this->user->hasPermission('access', 'post_type/portfolio/portfolio')) {
+				$admin_menu_portfolio[] = array(
+					'name'	   => $this->lang->line('text_all_portfolio'),
+					'href'     => $this->url->link('post_type/portfolio/portfolio', 'user_token=' . $this->session->userdata('user_token'), true),
+					'children' => array()		
+				);
+			}
+
+			if ($this->user->hasPermission('access', 'post_type/portfolio/portfolio/add')) {
+				$admin_menu_portfolio[] = array(
+					'name'	   => $this->lang->line('text_add_portfolio'),
+					'href'     => $this->url->link('post_type/portfolio/portfolio/add', 'user_token=' . $this->session->userdata('user_token'), true),
+					'children' => array()		
+				);
+			}
+			
+			if ($this->user->hasPermission('access', 'post_type/portfolio/portfolio_cat')) {
+				$admin_menu_portfolio[] = array(
+					'name'	   => $this->lang->line('text_portfolio_cat'),
+					'href'     => $this->url->link('post_type/portfolio/portfolio_cat', 'user_token=' . $this->session->userdata('user_token'), true),
+					'children' => array()		
+				);
+			}
+
+			if ($this->user->hasPermission('access', 'post_type/portfolio/portfolio_tag')) {
+				$admin_menu_portfolio[] = array(
+					'name'	   => $this->lang->line('text_portfolio_tag'),
+					'href'     => $this->url->link('post_type/portfolio/portfolio_tag', 'user_token=' . $this->session->userdata('user_token'), true),
+					'children' => array()		
+				);
+			}
+
 			
 			$catalogblog = array();
 			if ($this->user->hasPermission('access', 'catalog/categoryblog')) {
@@ -186,6 +220,15 @@ class Column_left extends MX_Controller {
 					'name'	   => $this->lang->line('text_catalogblog'),
 					'href'     => '',
 					'children' => $catalogblog
+				);		
+			}
+			if ($admin_menu_portfolio) {
+				$data['menus'][] = array(
+					'id'       => 'menu-portfolio',
+					'icon'	   => 'fa-tags', 
+					'name'	   => $this->lang->line('text_portfolio'),
+					'href'     => '',
+					'children' => $admin_menu_portfolio
 				);		
 			}
 			if ($activity) {

@@ -3,7 +3,7 @@
 <!--[if IE 8 ]><html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" class="ie8"><![endif]-->
 <!--[if IE 9 ]><html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" class="ie9"><![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
+<html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>" ng-app="myApp">
 <!--<![endif]-->
 <head>
 <meta charset="UTF-8" />
@@ -18,7 +18,9 @@
 <meta name="keywords" content="<?php echo $keywords; ?>" />
 <?php } ?>
 <script src="<?php echo base_url('public/javascript/jquery/jquery-2.1.1.min.js'); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('public/javascript/angular/angular.min.js'); ?>" type="text/javascript"></script>
 <link href="<?php echo base_url('public/javascript/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen" />
+<script src="<?php echo base_url('public/javascript/angular/app.js'); ?>" type="text/javascript"></script>
 <script src="<?php echo base_url('public/javascript/bootstrap/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
 <link href="<?php echo base_url('public/javascript/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
@@ -34,12 +36,13 @@
   <link href="<?php echo base_url('public/default/stylesheet/skin.less'); ?>" rel="stylesheet/less">
    <link rel="stylesheet" href="<?php echo base_url('public/default/stylesheet/customs.css'); ?>" />
 <?php foreach($styles as $style) { ?>
-<link href="<?php echo $style['hre']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>}" />
+<link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>}" />
 <?php } ?>
 <?php foreach($scripts as $script) { ?>
 <script src="<?php echo $script; ?>" type="text/javascript"></script>
 <?php } ?>
 <script src="<?php echo base_url('public/javascript/common.js'); ?>" type="text/javascript"></script>
+<script src="<?php echo base_url('public/javascript/angular/Controller.js'); ?>" type="text/javascript"></script>
 <?php foreach($links as $link) { ?>
 <link href="<?php echo $link['href']; ?>" rel="<?php echo $link['rel']; ?>" />
 <?php } ?>
@@ -47,8 +50,8 @@
 <?php echo $analytic; ?>
 <?php } ?>
 </head>
-<body>
-<div id="wrapper" class="homepage homepage-5">
+<body class="<?php echo $class; ?>">
+  <div id="wrapper" class="homepage homepage-5">
 
             <header id="header" class="header header-style-4 header-style-5">
               <div class="primary-header">

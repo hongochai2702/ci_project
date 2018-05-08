@@ -61,7 +61,7 @@ $autoload['packages'] = array();
 */
 
 // $autoload['libraries'] = array('database');
-$autoload['libraries'] = array('database','response', 'email', 'session', 'document','response','user','configs','event','currency','url','customer');
+$autoload['libraries'] = array('database','response', 'email', 'session', 'document','response','user','configs','event','currency','url','customer','tax');
 
 
 /*

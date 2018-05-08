@@ -1,21 +1,21 @@
 <?php
 // Heading
-$lang['heading_title']    = 'Modules';
+$lang['heading_title']    = 'Các chức năng';
 
 // Text
 $lang['text_success']     = 'Success: You have modified modules!';
 $lang['text_layout']      = 'After you have installed and configured a module you can add it to a layout <a href="%s" class="alert-link">here</a>!';
-$lang['text_add']         = 'Add Module';
-$lang['text_list']        = 'Module List';
+$lang['text_add']         = 'Thêm chức năng';
+$lang['text_list']        = 'Danh sách chức năng';
 
 // Column
-$lang['column_name']      = 'Module Name';
-$lang['column_status']    = 'Status';
-$lang['column_action']    = 'Action';
+$lang['column_name']      = 'Tên chức năng';
+$lang['column_status']    = 'Trạng thái';
+$lang['column_action']    = 'Thao tác';
 
 // Entry
 $lang['entry_code']       = 'Module';
-$lang['entry_name']       = 'Module Name';
+$lang['entry_name']       = 'Tên chức năng';
 
 // Error
 $lang['error_permission'] = 'Warning: You do not have permission to modify modules!';

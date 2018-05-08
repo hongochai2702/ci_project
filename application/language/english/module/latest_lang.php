@@ -1,21 +1,21 @@
 <?php
 // Heading
-$lang['heading_title']    = 'Latest Product';
+$lang['heading_title']    = 'Latest';
 
 // Text
-$lang['text_module']      = 'Các chức năng';
-$lang['text_success']     = 'Thành công: Bạn đã chỉnh sửa chức năng mới nhất!';
-$lang['text_edit']        = 'Chỉnh sửa chức năng mới nhất';
+$lang['text_extension']   = 'Extensions';
+$lang['text_success']     = 'Success: You have modified latest module!';
+$lang['text_edit']        = 'Edit Latest Module';
 
 // Entry
-$lang['entry_name']       = 'Tên chức năng';
-$lang['entry_limit']      = 'Giới hạn';
-$lang['entry_width']      = 'Chiều rộng';
-$lang['entry_height']     = 'Chiều cao';
-$lang['entry_status']     = 'Tắt/Bật';
+$lang['entry_name']       = 'Module Name';
+$lang['entry_limit']      = 'Limit';
+$lang['entry_width']      = 'Width';
+$lang['entry_height']     = 'Height';
+$lang['entry_status']     = 'Status';
 
 // Error
-$lang['error_permission'] = 'Cảnh báo: Bạn khôn có quyền chỉnh sửa chức năng mới nhất!';
-$lang['error_name']       = 'Tên chức năng nên có từ 3 tới 64 ký tự!';
-$lang['error_width']      = 'Yêu cầu chiều rộng!';
-$lang['error_height']     = 'yêu cầu chiều cao!';
+$lang['error_permission'] = 'Warning: You do not have permission to modify latest module!';
+$lang['error_name']       = 'Module Name must be between 3 and 64 characters!';
+$lang['error_width']      = 'Width required!';
+$lang['error_height']     = 'Height required!';

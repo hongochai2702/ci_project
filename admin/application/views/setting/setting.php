@@ -167,6 +167,7 @@
                     <?php } ?>
                     <?php } ?>
                   </select>
+
                 </div>
               </div>
               <div class="form-group">
@@ -189,6 +190,20 @@
                     <?php } ?>
                   </select>
                 </div>
+              </div>
+               <div class="form-group">
+               
+                
+                  <select name="config_language_id" id="input-language" class="form-control hidden">
+                    <?php foreach ($languages as $language) { ?>
+                    <?php if ($language['code'] == $config_language) { ?>
+                    <option value="<?php echo $language['language_id']; ?>" selected="selected"><?php echo $language['name']; ?></option>
+                    <?php } else { ?>
+                    <option value="<?php echo $language['language_id']; ?>"><?php echo $language['name']; ?></option>
+                    <?php } ?>
+                    <?php } ?>
+                  </select>
+               
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-admin-language"><?php echo $entry_admin_language; ?></label>

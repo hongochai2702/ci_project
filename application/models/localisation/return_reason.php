@@ -1,5 +1,5 @@
 <?php
-class ModelLocalisationReturnReason extends Model {
+class ModelLocalisationReturnReason extends CI_Model {
 	public function getReturnReasons($data = array()) {
 		if ($data) {
 			$sql = "SELECT * FROM " . DB_PREFIX . "return_reason WHERE language_id = '" . (int)$this->config->get('config_language_id') . "'";
@@ -26,14 +26,14 @@ class ModelLocalisationReturnReason extends Model {
 
 			$query = $this->db->query($sql);
 
-			return $query->rows;
+			return $query->result_array();
 		} else {
 			$return_reason_data = $this->cache->get('return_reason.' . (int)$this->config->get('config_language_id'));
 
 			if (!$return_reason_data) {
 				$query = $this->db->query("SELECT return_reason_id, name FROM " . DB_PREFIX . "return_reason WHERE language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY name");
 
-				$return_reason_data = $query->rows;
+				$return_reason_data = $query->result_array();
 
 				$this->cache->set('return_reason.' . (int)$this->config->get('config_language_id'), $return_reason_data);
 			}

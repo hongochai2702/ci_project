@@ -3,6 +3,7 @@
 $lang['heading_title']     = 'Extension Installer';
 
 // Text
+$lang['text_upload']          = 'Upload your extensions';
 $lang['text_progress']     = 'Install Progress';
 $lang['text_upload']       = 'Upload your extensions';
 $lang['text_history']      = 'Install History';
@@ -17,7 +18,7 @@ $lang['column_action']     = 'Action';
 // Entry
 $lang['entry_upload']      = 'Upload File';
 $lang['entry_progress']    = 'Progress';
-
+$lang['entry_overwrite']   = 'Files that will be overwritten';
 // Help
 $lang['help_upload']       = 'Requires a modification file with extension \'.ocmod.zip\'.';
 
@@ -27,6 +28,3 @@ $lang['error_install']     = 'Extension installation taking place please wait a 
 $lang['error_upload']      = 'File could not be uploaded!';
 $lang['error_filetype']    = 'Invalid file type!';
 $lang['error_file']        = 'File could not be found!';
-$lang['text_loading']      = 'Loading...';
-$lang['text_no_results']   = 'No results!';
-$lang['button_upload']     = 'Upload';

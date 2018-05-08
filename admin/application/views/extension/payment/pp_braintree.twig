@@ -1,0 +1,1031 @@
+<?php echo $header; ?><?php echo $column_left; ?>
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-braintree" data-toggle="tooltip" title="<?php echo $button_save; ?>" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="<?php echo $cancel; ?>" data-toggle="tooltip" title="<?php echo $button_cancel; ?>" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1><?php echo $heading_title; ?></h1>
+      <ul class="breadcrumb">
+        <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+          <li><a href="<?php echo $breadcrumb.href; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+        <?php }  ?>
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+      <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      </div>
+    {% endif %}
+    {% if success %}
+      <div class="alert alert-success alert-dismissible"><i class="fa fa-check"></i> <?php echo $success; ?>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> <?php echo $text_edit; ?></h3>
+      </div>
+      <div class="panel-body">
+        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-braintree" class="form-horizontal">
+          <ul class="nav nav-tabs" id="tabs">
+            <li class="active"><a href="#tab-setting" data-toggle="tab"><?php echo $tab_setting; ?></a></li>
+            {% if payment_pp_braintree_access_token is empty %}
+              <li><a href="#tab-currency" data-toggle="tab"><?php echo $tab_currency; ?></a></li>
+            {% endif %}
+			      <li><a href="#tab-order-status" data-toggle="tab"><?php echo $tab_order_status; ?></a></li>
+            <li><a href="#tab-3ds" data-toggle="tab"><?php echo $tab_3ds; ?></a></li>
+            <li><a href="#tab-vault" data-toggle="tab"><?php echo $tab_vault; ?></a></li>
+            <li><a href="#tab-paypal" data-toggle="tab"><?php echo $tab_paypal; ?></a></li>
+            <li><a href="#tab-transaction" data-toggle="tab"><?php echo $tab_transaction; ?></a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab-setting">
+              {% if payment_pp_braintree_access_token is not empty %}
+                <input type="hidden" name="payment_pp_braintree_access_token" value="<?php echo $payment_pp_braintree_access_token; ?>" />
+                <input type="hidden" name="payment_pp_braintree_refresh_token" value="<?php echo $payment_pp_braintree_refresh_token; ?>" />
+                <input type="hidden" name="payment_pp_braintree_merchant_id" value="<?php echo $payment_pp_braintree_merchant_id; ?>" />
+                <input type="hidden" name="payment_pp_braintree_public_key" value="" />
+                <input type="hidden" name="payment_pp_braintree_private_key" value="" />
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"><?php echo $entry_connection; ?></label>
+                  <div class="col-sm-10">
+                    <div class="alert alert-info"><i class="fa fa-check"></i> <?php echo $text_app_connected; ?> (<?php echo $text_merchant_connected; ?><?php echo $payment_pp_braintree_merchant_id; ?>) <div class="btn btn-sm btn-danger pull-right" id="delete-link"><?php echo $text_unlink; ?></div></div>
+                  </div>
+                </div>
+              {% else %}
+                <input type="hidden" name="payment_pp_braintree_access_token" value="" />
+                <input type="hidden" name="payment_pp_braintree_refresh_token" value="" />
+                <div class="form-group">
+                  <label class="col-sm-2"><?php echo $text_braintree_learn; ?></label>
+                  <div class="col-sm-10" id="bt-connect"></div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-merchant-id"><?php echo $entry_merchant_id; ?></label>
+                  <div class="col-sm-10">
+                    <input type="text" name="payment_pp_braintree_merchant_id" value="<?php echo $payment_pp_braintree_merchant_id; ?>" placeholder="<?php echo $entry_merchant_id; ?>" id="input-merchant-id" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-public-key"><?php echo $entry_public_key; ?></label>
+                  <div class="col-sm-10">
+                    <input type="text" name="payment_pp_braintree_public_key" value="<?php echo $payment_pp_braintree_public_key; ?>" placeholder="<?php echo $entry_public_key; ?>" id="input-public-key" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-private-key"><?php echo $entry_private_key; ?></label>
+                  <div class="col-sm-10">
+                    <input type="text" name="payment_pp_braintree_private_key" value="<?php echo $payment_pp_braintree_private_key; ?>" placeholder="<?php echo $entry_private_key; ?>" id="input-private-key" class="form-control" />
+                  </div>
+                </div>
+              {% endif %}
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-environment"><?php echo $entry_environment; ?></label>
+                  <div class="col-sm-10">
+                    {% if payment_pp_braintree_access_token is not empty and payment_pp_braintree_environment is not empty %}
+                      <label class="control-label"><?php echo $payment_pp_braintree_environment; ?></label>
+                      <input type="hidden" name="payment_pp_braintree_environment" value="<?php echo $payment_pp_braintree_environment; ?>" />
+                    {% else %}
+                      <select name="payment_pp_braintree_environment" id="input-environment" class="form-control">
+                        {% if payment_pp_braintree_environment == 'production' %}
+                          <option value="sandbox"><?php echo $text_sandbox; ?></option>
+                          <option value="production" selected="selected"><?php echo $text_production; ?></option>
+                        {% else %}
+                          <option value="sandbox" selected="selected"><?php echo $text_sandbox; ?></option>
+                          <option value="production"><?php echo $text_production; ?></option>
+                        {% endif %}
+                      </select>
+                    {% endif %}
+                  </div>
+                </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-settlement-immediate"><span data-toggle="tooltip" title="<?php echo $help_settlement_type; ?>"><?php echo $entry_settlement_type; ?></span></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_settlement_immediate" id="input-settlement-immediate" class="form-control">
+                    {% if payment_pp_braintree_settlement_immediate == 1 %}
+					            <option value="1" selected="selected"><?php echo $text_immediate; ?></option>
+                      <option value="0"><?php echo $text_deferred; ?></option>
+                    {% else %}
+					            <option value="1"><?php echo $text_immediate; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_deferred; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-debug"><span data-toggle="tooltip" title="<?php echo $help_debug; ?>"><?php echo $entry_debug; ?></span></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_debug" id="input-debug" class="form-control">
+                    {% if payment_pp_braintree_debug %}
+                      <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                      <option value="0"><?php echo $text_disabled; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_enabled; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-total"><span data-toggle="tooltip" title="<?php echo $help_total; ?>"><?php echo $entry_total; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="payment_pp_braintree_total" value="<?php echo $payment_pp_braintree_total; ?>" placeholder="<?php echo $entry_total; ?>" id="input-total" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-geo-zone"><?php echo $entry_geo_zone; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_geo_zone_id" id="input-geo-zone" class="form-control">
+                  <option value="0"><?php echo $text_all_zones; ?></option>
+                  {% for geo_zone in geo_zones %}
+                    {% if geo_zone.geo_zone_id == payment_pp_braintree_geo_zone_id %}
+                      <option value="<?php echo $geo_zone.geo_zone_id; ?>" selected="selected"><?php echo $geo_zone.name; ?></option>
+                     {% else %}
+                      <option value="<?php echo $geo_zone.geo_zone_id; ?>"><?php echo $geo_zone.name; ?></option>
+                    {% endif %}
+                  <?php }  ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_status" id="input-status" class="form-control">
+                    {% if payment_pp_braintree_status %}
+                      <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                      <option value="0"><?php echo $text_disabled; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_enabled; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="payment_pp_braintree_sort_order" value="<?php echo $payment_pp_braintree_sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-currency">
+			        <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+					            <td class="text-left"><?php echo $text_enabled; ?></td>
+                      <td class="text-left"><?php echo $text_currency; ?></td>
+                      <td class="text-center"><?php echo $text_merchant_account_id; ?></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for currency in currencies %}
+                      <tr>
+                        <td class="text-center">
+                          {% if payment_pp_braintree_account[currency.code].status == 1 %}
+                            <input type="checkbox" name="payment_pp_braintree_account[<?php echo $currency.code; ?>][status]" value="1" checked="checked" />
+                          {% else %}
+                            <input type="checkbox" name="payment_pp_braintree_account[<?php echo $currency.code; ?>][status]" value="1" />
+                          {% endif %}
+                        </td>
+                        <td class="text-left"><?php echo $currency.code; ?></td>
+                        <td class="text-left">
+                          <input type="text" name="payment_pp_braintree_account[<?php echo $currency.code; ?>][merchant_account_id]" value="<?php echo $payment_pp_braintree_account[currency.code].merchant_account_id; ?>" placeholder="<?php echo $text_merchant_account_id; ?>" class="form-control" />
+                          {% if error_account[currency.code] %}
+                            <div class="text-danger"><?php echo $error_account[currency.code]; ?></div>
+                          {% endif %}
+                        </td>
+                      </tr>
+                    <?php }  ?>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-order-status">
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-order-status-authorization-expired"><?php echo $entry_authorization_expired; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_authorization_expired_id" id="input-order-status-authorization-expired" class="form-control">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_pp_braintree_authorization_expired_id %}
+                        <option value="<?php echo $order_status.order_status_id; ?>" selected="selected"><?php echo $order_status.name; ?></option>
+                      {% else %}
+                        <option value="<?php echo $order_status.order_status_id; ?>"><?php echo $order_status.name; ?></option>
+                      {% endif %}
+                    <?php }  ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-order-status-authorized"><?php echo $entry_authorized; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_authorized_id" id="input-order-status-authorized" class="form-control">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_pp_braintree_authorized_id %}
+                        <option value="<?php echo $order_status.order_status_id; ?>" selected="selected"><?php echo $order_status.name; ?></option>
+                      {% else %}
+                        <option value="<?php echo $order_status.order_status_id; ?>"><?php echo $order_status.name; ?></option>
+                      {% endif %}
+                    <?php }  ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-order-status-authorizing"><?php echo $entry_authorizing; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_authorizing_id" id="input-order-status-authorizing" class="form-control">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_pp_braintree_authorizing_id %}
+                        <option value="<?php echo $order_status.order_status_id; ?>" selected="selected"><?php echo $order_status.name; ?></option>
+                      {% else %}
+                        <option value="<?php echo $order_status.order_status_id; ?>"><?php echo $order_status.name; ?></option>
+                      {% endif %}
+                    <?php }  ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-order-status-settlement-pending"><?php echo $entry_settlement_pending; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_settlement_pending_id" id="input-order-status-settlement-pending" class="form-control">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_pp_braintree_settlement_pending_id %}
+                        <option value="<?php echo $order_status.order_status_id; ?>" selected="selected"><?php echo $order_status.name; ?></option>
+                      {% else %}
+                        <option value="<?php echo $order_status.order_status_id; ?>"><?php echo $order_status.name; ?></option>
+                      {% endif %}
+                    <?php }  ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-order-status-failed"><?php echo $entry_failed; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_failed_id" id="input-order-status-failed" class="form-control">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_pp_braintree_failed_id %}
+                        <option value="<?php echo $order_status.order_status_id; ?>" selected="selected"><?php echo $order_status.name; ?></option>
+                      {% else %}
+                        <option value="<?php echo $order_status.order_status_id; ?>"><?php echo $order_status.name; ?></option>
+                      {% endif %}
+                    <?php }  ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-order-status-gateway-rejected"><?php echo $entry_gateway_rejected; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_gateway_rejected_id" id="input-order-status-gateway-rejected" class="form-control">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_pp_braintree_gateway_rejected_id %}
+                        <option value="<?php echo $order_status.order_status_id; ?>" selected="selected"><?php echo $order_status.name; ?></option>
+                      {% else %}
+                        <option value="<?php echo $order_status.order_status_id; ?>"><?php echo $order_status.name; ?></option>
+                      {% endif %}
+                    <?php }  ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-order-status-processor-declined"><?php echo $entry_processor_declined; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_processor_declined_id" id="input-order-status-processor-declined" class="form-control">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_pp_braintree_processor_declined_id %}
+                        <option value="<?php echo $order_status.order_status_id; ?>" selected="selected"><?php echo $order_status.name; ?></option>
+                      {% else %}
+                        <option value="<?php echo $order_status.order_status_id; ?>"><?php echo $order_status.name; ?></option>
+                      {% endif %}
+                    <?php }  ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-order-status-settled"><?php echo $entry_settled; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_settled_id" id="input-order-status-settled" class="form-control">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_pp_braintree_settled_id %}
+                        <option value="<?php echo $order_status.order_status_id; ?>" selected="selected"><?php echo $order_status.name; ?></option>
+                      {% else %}
+                        <option value="<?php echo $order_status.order_status_id; ?>"><?php echo $order_status.name; ?></option>
+                      {% endif %}
+                    <?php }  ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-order-status-settling"><?php echo $entry_settling; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_settling_id" id="input-order-status-settling" class="form-control">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_pp_braintree_settling_id %}
+                        <option value="<?php echo $order_status.order_status_id; ?>" selected="selected"><?php echo $order_status.name; ?></option>
+                      {% else %}
+                        <option value="<?php echo $order_status.order_status_id; ?>"><?php echo $order_status.name; ?></option>
+                      {% endif %}
+                    <?php }  ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-order-status-submitted-for-settlement"><?php echo $entry_submitted_for_settlement; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_submitted_for_settlement_id" id="input-order-status-submitted-for-settlement" class="form-control">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_pp_braintree_submitted_for_settlement_id %}
+                        <option value="<?php echo $order_status.order_status_id; ?>" selected="selected"><?php echo $order_status.name; ?></option>
+                      {% else %}
+                        <option value="<?php echo $order_status.order_status_id; ?>"><?php echo $order_status.name; ?></option>
+                      {% endif %}
+                    <?php }  ?>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-order-status-voided"><?php echo $entry_voided; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_voided_id" id="input-order-status-voided" class="form-control">
+                    {% for order_status in order_statuses %}
+                      {% if order_status.order_status_id == payment_pp_braintree_voided_id %}
+                        <option value="<?php echo $order_status.order_status_id; ?>" selected="selected"><?php echo $order_status.name; ?></option>
+                      {% else %}
+                        <option value="<?php echo $order_status.order_status_id; ?>"><?php echo $order_status.name; ?></option>
+                      {% endif %}
+                    <?php }  ?>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-3ds">
+              {% if braintree_config.three_d_secure_enabled == 0 %}
+                <div class="alert alert-info"><?php echo $error_braintree_account_3ds; ?></div>
+                <input type="hidden" name="payment_pp_braintree_3ds_status" value="0" />
+              {% else %}
+			        <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-3ds-status"><?php echo $entry_3ds_status; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_3ds_status" id="input-3ds-status" class="form-control">
+                    {% if payment_pp_braintree_3ds_status == 1 %}
+                      <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                      <option value="0"><?php echo $text_disabled; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_enabled; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                    {% endif %}
+                  </select>
+                  <p><?php echo $text_3ds_ssl; ?></p>
+                </div>
+              </div>
+              <div class="form-group three-ds-status">
+                <label class="col-sm-2 control-label" for="input-3ds-unsupported-card"><?php echo $entry_3ds_unsupported_card; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_3ds_unsupported_card" id="input-3ds-unsupported-card" class="form-control">
+                    {% if payment_pp_braintree_3ds_unsupported_card == 1 %}
+                      <option value="1" selected="selected"><?php echo $text_accept; ?></option>
+                      <option value="0"><?php echo $text_decline; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_accept; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_decline; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group three-ds-status">
+                <label class="col-sm-2 control-label" for="input-3ds-lookup-error"><?php echo $entry_3ds_lookup_error; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_3ds_lookup_error" id="input-3ds-lookup-error" class="form-control">
+                    {% if payment_pp_braintree_3ds_lookup_error == 1 %}
+                      <option value="1" selected="selected"><?php echo $text_accept; ?></option>
+                      <option value="0"><?php echo $text_decline; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_accept; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_decline; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group three-ds-status">
+                <label class="col-sm-2 control-label" for="input-3ds-lookup-enrolled"><?php echo $entry_3ds_lookup_enrolled; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_3ds_lookup_enrolled" id="input-3ds-lookup-enrolled" class="form-control">
+                    {% if payment_pp_braintree_3ds_lookup_enrolled == 1 %}
+                      <option value="1" selected="selected"><?php echo $text_accept; ?></option>
+                      <option value="0"><?php echo $text_decline; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_accept; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_decline; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group three-ds-status">
+                <label class="col-sm-2 control-label" for="input-3ds-lookup-not-enrolled"><?php echo $entry_3ds_lookup_not_enrolled; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_3ds_lookup_not_enrolled" id="input-3ds-lookup-not-enrolled" class="form-control">
+                    {% if payment_pp_braintree_3ds_lookup_not_enrolled == 1 %}
+                      <option value="1" selected="selected"><?php echo $text_accept; ?></option>
+                      <option value="0"><?php echo $text_decline; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_accept; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_decline; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group three-ds-status">
+                <label class="col-sm-2 control-label" for="input-3ds-not-participating"><?php echo $entry_3ds_not_participating; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_3ds_not_participating" id="input-3ds-not-participating" class="form-control">
+                    {% if payment_pp_braintree_3ds_not_participating == 1 %}
+                      <option value="1" selected="selected"><?php echo $text_accept; ?></option>
+                      <option value="0"><?php echo $text_decline; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_accept; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_decline; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group three-ds-status">
+                <label class="col-sm-2 control-label" for="input-3ds-unavailable"><?php echo $entry_3ds_unavailable; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_3ds_unavailable" id="input-3ds-unavailable" class="form-control">
+                    {% if payment_pp_braintree_3ds_unavailable == 1 %}
+                      <option value="1" selected="selected"><?php echo $text_accept; ?></option>
+                      <option value="0"><?php echo $text_decline; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_accept; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_decline; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group three-ds-status">
+                <label class="col-sm-2 control-label" for="input-3ds-signature-failed"><?php echo $entry_3ds_signature_failed; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_3ds_signature_failed" id="input-3ds-signature-failed" class="form-control">
+                    {% if payment_pp_braintree_3ds_signature_failed == 1 %}
+                      <option value="1" selected="selected"><?php echo $text_accept; ?></option>
+                      <option value="0"><?php echo $text_decline; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_accept; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_decline; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group three-ds-status">
+                <label class="col-sm-2 control-label" for="input-3ds-successful"><?php echo $entry_3ds_successful; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_3ds_successful" id="input-3ds-successful" class="form-control">
+                    {% if payment_pp_braintree_3ds_successful == 1 %}
+                      <option value="1" selected="selected"><?php echo $text_accept; ?></option>
+                      <option value="0"><?php echo $text_decline; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_accept; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_decline; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group three-ds-status">
+                <label class="col-sm-2 control-label" for="input-3ds-attempt-successful"><?php echo $entry_3ds_attempt_successful; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_3ds_attempt_successful" id="input-3ds-attempt-successful" class="form-control">
+                    {% if payment_pp_braintree_3ds_attempt_successful == 1 %}
+                      <option value="1" selected="selected"><?php echo $text_accept; ?></option>
+                      <option value="0"><?php echo $text_decline; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_accept; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_decline; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group three-ds-status">
+                <label class="col-sm-2 control-label" for="input-3ds-failed"><?php echo $entry_3ds_failed; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_3ds_failed" id="input-3ds-failed" class="form-control">
+                    {% if payment_pp_braintree_3ds_failed == 1 %}
+                      <option value="1" selected="selected"><?php echo $text_accept; ?></option>
+                      <option value="0"><?php echo $text_decline; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_accept; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_decline; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group three-ds-status">
+                <label class="col-sm-2 control-label" for="input-3ds-unable-to-auth"><?php echo $entry_3ds_unable_to_auth; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_3ds_unable_to_auth" id="input-3ds-unable-to-auth" class="form-control">
+                    {% if payment_pp_braintree_3ds_unable_to_auth == 1 %}
+                      <option value="1" selected="selected"><?php echo $text_accept; ?></option>
+                      <option value="0"><?php echo $text_decline; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_accept; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_decline; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group three-ds-status">
+                <label class="col-sm-2 control-label" for="input-3ds-error"><?php echo $entry_3ds_error; ?></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_3ds_error" id="input-3ds-error" class="form-control">
+                    {% if payment_pp_braintree_3ds_error == 1 %}
+                      <option value="1" selected="selected"><?php echo $text_accept; ?></option>
+                      <option value="0"><?php echo $text_decline; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_accept; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_decline; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+            <div class="tab-pane" id="tab-vault">
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-card-vault"><span data-toggle="tooltip" title="<?php echo $help_card_vault; ?>"><?php echo $entry_card_vault; ?></span></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_card_vault" id="input-card-vault" class="form-control">
+                    {% if payment_pp_braintree_card_vault %}
+                      <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                      <option value="0"><?php echo $text_disabled; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_enabled; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-card-check-vault"><span data-toggle="tooltip" title="<?php echo $help_card_check_vault; ?>"><?php echo $entry_card_check_vault; ?></span></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_card_check_vault" id="input-card-check-vault" class="form-control">
+                    {% if payment_pp_braintree_card_check_vault %}
+                      <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                      <option value="0"><?php echo $text_disabled; ?></option>
+                    {% else %}
+                      <option value="1"><?php echo $text_enabled; ?></option>
+                      <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-vault-cvv-3ds"><span data-toggle="tooltip" title="<?php echo $help_vault_cvv_3ds; ?>"><?php echo $entry_vault_cvv_3ds; ?></span></label>
+                <div class="col-sm-10">
+                  <select name="payment_pp_braintree_vault_cvv_3ds" id="input-vault-cvv-3ds" class="form-control">
+                    {% if payment_pp_braintree_vault_cvv_3ds == "cvv" %}
+                      <option value="0"><?php echo $text_disabled; ?></option>
+                      <option value="cvv" selected="selected"><?php echo $text_cvv; ?></option>
+                      <option value="3ds"><?php echo $text_3ds; ?></option>
+                    {% elseif payment_pp_braintree_vault_cvv_3ds == "3ds" %}
+                      <option value="0"><?php echo $text_disabled; ?></option>
+                      <option value="cvv"><?php echo $text_cvv; ?></option>
+                      <option value="3ds" selected="selected"><?php echo $text_3ds; ?></option>
+                    {% else %}
+                      <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                      <option value="cvv"><?php echo $text_cvv; ?></option>
+                      <option value="3ds"><?php echo $text_3ds; ?></option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+
+              {% if braintree_config.paypal_enabled == 1 %}
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-paypal-vault"><span data-toggle="tooltip" title="<?php echo $help_paypal_vault; ?>"><?php echo $entry_paypal_vault; ?></span></label>
+                  <div class="col-sm-10">
+                    <select name="payment_pp_braintree_paypal_vault" id="input-paypal-vault" class="form-control">
+                      {% if payment_pp_braintree_paypal_vault %}
+                        <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                        <option value="0"><?php echo $text_disabled; ?></option>
+                      {% else %}
+                        <option value="1"><?php echo $text_enabled; ?></option>
+                        <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                      {% endif %}
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-paypal-check-vault"><span data-toggle="tooltip" title="<?php echo $help_paypal_check_vault; ?>"><?php echo $entry_paypal_check_vault; ?></span></label>
+                  <div class="col-sm-10">
+                    <select name="payment_pp_braintree_paypal_check_vault" id="input-paypal-check-vault" class="form-control">
+                      {% if payment_pp_braintree_paypal_check_vault %}
+                        <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                        <option value="0"><?php echo $text_disabled; ?></option>
+                      {% else %}
+                        <option value="1"><?php echo $text_enabled; ?></option>
+                        <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                      {% endif %}
+                    </select>
+                  </div>
+                </div>
+              {% else %}
+                <input type="hidden" name="payment_pp_braintree_paypal_vault" value="0" />
+                <input type="hidden" name="payment_pp_braintree_paypal_check_vault" value="0" />
+              {% endif %}
+            </div>
+            <div class="tab-pane" id="tab-paypal">
+              {% if braintree_config.paypal_enabled == 0 %}
+                <div class="alert alert-info"><?php echo $error_braintree_account_paypal; ?></div>
+                <input type="hidden" name="payment_pp_braintree_paypal_option" value="0" />
+              {% else %}
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-paypal-option"><span data-toggle="tooltip" title="<?php echo $help_paypal_option; ?>"><?php echo $entry_paypal_option; ?></span></label>
+                  <div class="col-sm-10">
+                    <select name="payment_pp_braintree_paypal_option" id="input-vault" class="form-control">
+                      {% if payment_pp_braintree_paypal_option %}
+                        <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                        <option value="0"><?php echo $text_disabled; ?></option>
+                      {% else %}
+                        <option value="1"><?php echo $text_enabled; ?></option>
+                        <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                      {% endif %}
+                    </select>
+                  </div>
+                </div>
+
+                <!-- required at a later date but must be empty -->
+                <input type="hidden" name="payment_pp_braintree_billing_agreement" value="" />
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-paypal-button-colour"><?php echo $entry_paypal_button_colour; ?></label>
+                  <div class="col-sm-10">
+                    <select name="payment_pp_braintree_paypal_button_colour" id="input-paypal-button-colour" class="form-control">
+                      <option value="gold"{% if payment_pp_braintree_paypal_button_colour == "gold" %} selected="selected"{% endif %}><?php echo $text_paypal_gold; ?></option>
+                      <option value="blue"{% if payment_pp_braintree_paypal_button_colour == "blue" %} selected="selected"{% endif %}><?php echo $text_paypal_blue; ?></option>
+                      <option value="silver"{% if payment_pp_braintree_paypal_button_colour == "silver" %} selected="selected"{% endif %}><?php echo $text_paypal_silver; ?></option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-paypal-button-size"><?php echo $entry_paypal_button_size; ?></label>
+                  <div class="col-sm-10">
+                    <select name="payment_pp_braintree_paypal_button_size" id="input-paypal-button-size" class="form-control">
+                      <option value="tiny"{% if payment_pp_braintree_paypal_button_size == "tiny" %} selected="selected"{% endif %}><?php echo $text_paypal_tiny; ?></option>
+                      <option value="small"{% if payment_pp_braintree_paypal_button_size == "small" %} selected="selected"{% endif %}><?php echo $text_paypal_small; ?></option>
+                      <option value="medium"{% if payment_pp_braintree_paypal_button_size == "medium" %} selected="selected"{% endif %}><?php echo $text_paypal_medium; ?></option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-paypal-button-shape"><?php echo $entry_paypal_button_shape; ?></label>
+                  <div class="col-sm-10">
+                    <select name="payment_pp_braintree_paypal_button_shape" id="input-paypal-button-shape" class="form-control">
+                      <option value="pill"{% if payment_pp_braintree_paypal_button_shape == "pill" %} selected="selected"{% endif %}><?php echo $text_paypal_pill; ?></option>
+                      <option value="rect"{% if payment_pp_braintree_paypal_button_shape == "rect" %} selected="selected"{% endif %}><?php echo $text_paypal_rectangular; ?></option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"><?php echo $text_paypal_preview; ?></label>
+                  <div class="col-sm-10">
+                    <script src="https://www.paypalobjects.com/api/button.js?"
+                       data-merchant="braintree"
+                       data-id="paypal-button"
+                       data-button="checkout"
+                       data-color="<?php echo $payment_pp_braintree_paypal_button_colour; ?>"
+                       data-size="<?php echo $payment_pp_braintree_paypal_button_size; ?>"
+                       data-shape="<?php echo $payment_pp_braintree_paypal_button_shape; ?>"
+                       data-button_type="submit"
+                       data-button_disabled="true"
+                   ></script>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-2"><a href="<?php echo $button_configure; ?>" target="_blank" class="btn btn-primary pull-right"><?php echo $button_enable; ?></a></div>
+                  <div class="col-sm-10"><p><?php echo $text_enable_button; ?></p></div>
+                </div>
+              {% endif %}
+            </div>
+            <div class="tab-pane" id="tab-transaction">
+              {% if braintree_config.paypal_enabled == 0 %}
+                <div class="alert alert-info"><?php echo $error_braintree_account_paypal; ?></div>
+              {% else %}
+                {% if payment_pp_braintree_status == 1 %}
+                <div class="well">
+                  <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                    <label class="control-label" for="input-transaction-id"><?php echo $entry_transaction_id; ?></label>
+                    <input type="text" name="filter_transaction_id" value="" placeholder="Transaction ID" id="input-transaction-id" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                    <label class="control-label" for="input-transaction-type"><?php echo $entry_transaction_type; ?></label>
+                    <select name="filter_transaction_type" id="input-transaction-type" class="form-control">
+                      <option value="*" selected="selected"><?php echo $text_all; ?></option>
+                      <option value="sale"><?php echo $text_sale; ?></option>
+                      <option value="credit"><?php echo $text_credit; ?></option>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                    <div class="col-sm-6" style="padding-left: 0;">
+                      <label class="control-label" for="input-date-from"><?php echo $entry_date_from; ?></label>
+                      <div class="input-group date">
+                        <input type="text" name="filter_date_from" value="" placeholder="From" data-date-format="YYYY-MM-DD" id="input-date-from" class="form-control" />
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="col-sm-6" style="padding-right: 0;">
+                      <label class="control-label" for="input-date-to"><?php echo $entry_date_to; ?></label>
+                      <div class="input-group date">
+                        <input type="text" name="filter_date_to" value="" placeholder="To" data-date-format="YYYY-MM-DD" id="input-date-to" class="form-control" />
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
+                        </span>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                    <label class="control-label" for="input-payment-type"><?php echo $entry_payment_type; ?></label>
+                    <select name="filter_payment_type" id="input-payment-type" class="form-control">
+                      <option value="*" selected="selected"><?php echo $text_all; ?></option>
+                      <option value="Credit Card"><?php echo $text_credit_card; ?></option>
+                      <option value="PayPal"><?php echo $text_paypal; ?></option>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                    <label class="control-label" for="input-card-type"><?php echo $entry_card_type; ?></label>
+                    <select name="filter_card_type" id="input-card-type" class="form-control">
+                      <option value="*"><?php echo $text_all; ?></option>
+                      {% for card_type in card_types %}
+                        <option value="<?php echo $card_type; ?>"><?php echo $card_type; ?></option>
+                      <?php }  ?>
+                    </select>
+                    </div>
+                    <div class="form-group">
+                    <div class="col-sm-6" style="padding-left: 0;">
+                      <label class="control-label" for="input-amount-from"><?php echo $entry_amount_from; ?></label>
+                      <input type="text" name="filter_amount_from" value="" placeholder="From" id="input-amount-from" class="form-control" />
+                    </div>
+                    <div class="col-sm-6" style="padding-right: 0;">
+                      <label class="control-label" for="input-amount-to"><?php echo $entry_amount_to; ?></label>
+                      <input type="text" name="filter_amount_to" value="" placeholder="To" id="input-amount-to" class="form-control" />
+                    </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                    <label class="control-label" for="input-card-type"><?php echo $entry_transaction_status; ?></label>
+                    <div class="well well-sm" style="height: 190px; overflow: auto; margin-bottom: 0;">
+                      {% for transaction_status in transaction_statuses %}
+                        <div class="checkbox">
+                          <label>
+                            <input class="filter-transaction-status" type="checkbox" name="filter_transaction_status[]" value="<?php echo $transaction_status; ?>" checked="checked" /> <?php echo $transaction_status; ?>
+                          </label>
+                        </div>
+                      <?php }  ?>
+                    </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                    <label class="control-label" for="input-merchant-account-id"><?php echo $entry_merchant_account_id; ?></label>
+                    <select name="filter_merchant_account_id" id="input-merchant-account-id" class="form-control">
+                      <option value="*">All</option>
+                      {% for pp_braintree_account_value in payment_pp_braintree_account %}
+                        {% if pp_braintree_account_value.merchant_account_id %}
+                          <option value="<?php echo $pp_braintree_account_value.merchant_account_id; ?>"><?php echo $pp_braintree_account_value.merchant_account_id; ?></option>
+                        {% endif %}
+                      <?php }  ?>
+                    </select>
+                    </div>
+                    <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button>
+                  </div>
+                  </div>
+                </div>
+                <div id="table-action"></div>
+                {% else %}
+                  <?php echo $text_enable_transactions; ?>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  #tab-transaction .form-group {
+	  margin-left: 0;
+	  margin-right: 0;
+  }
+</style>
+<script type="text/javascript"><!--
+$('#tabs a:first').tab('show');
+
+$('.date').datetimepicker({
+	language: '<?php echo $datepicker; ?>',
+	pickTime: false
+});
+
+$('#button-filter').on('click', function(event) {
+	event.preventDefault();
+
+	var url = 'index.php?route=extension/payment/pp_braintree/search&user_token=<?php echo $user_token; ?>';
+
+	var filter_transaction_id = $('input[name=\'filter_transaction_id\']').val();
+
+	if (filter_transaction_id) {
+		url += '&filter_transaction_id=' + encodeURIComponent(filter_transaction_id);
+	}
+
+	var filter_transaction_type = $('select[name=\'filter_transaction_type\']').val();
+
+	if (filter_transaction_type != '*') {
+		url += '&filter_transaction_type=' + encodeURIComponent(filter_transaction_type);
+	}
+
+	var filter_payment_type = $('select[name=\'filter_payment_type\']').val();
+
+	if (filter_payment_type != '*') {
+		url += '&filter_payment_type=' + encodeURIComponent(filter_payment_type);
+	}
+
+	var filter_card_type = $('select[name=\'filter_card_type\']').val();
+
+	if (filter_card_type != '*') {
+		url += '&filter_card_type=' + encodeURIComponent(filter_card_type);
+	}
+
+	var filter_merchant_account_id = $('select[name=\'filter_merchant_account_id\']').val();
+
+	if (filter_merchant_account_id != '*') {
+		url += '&filter_merchant_account_id=' + encodeURIComponent(filter_merchant_account_id);
+	}
+
+	$('.filter-transaction-status:checked').each(function(i) {
+		url += '&filter_transaction_status[' + i + ']=' + encodeURIComponent($(this).val());
+	});
+
+	var filter_date_from = $('input[name=\'filter_date_from\']').val();
+
+	if (filter_date_from) {
+		url += '&filter_date_from=' + encodeURIComponent(filter_date_from);
+	}
+
+	var filter_date_to = $('input[name=\'filter_date_to\']').val();
+
+	if (filter_date_to) {
+		url += '&filter_date_to=' + encodeURIComponent(filter_date_to);
+	}
+
+	var filter_amount_from = $('input[name=\'filter_amount_from\']').val();
+
+	if (filter_amount_from) {
+		url += '&filter_amount_from=' + encodeURIComponent(filter_amount_from);
+	}
+
+	var filter_amount_to = $('input[name=\'filter_amount_to\']').val();
+
+	if (filter_amount_to) {
+		url += '&filter_amount_to=' + encodeURIComponent(filter_amount_to);
+	}
+
+	$.ajax({
+		url: url,
+		dataType: 'json',
+		beforeSend: function() {
+			$('#button-filter').button('loading');
+
+			$('#table-action').html('<div style="width: 5em; margin: 0px auto;"><i class="braintree-loading fa fa-spinner fa-spin fa-5x" style="text-align: center; margin: 0 auto; width: 100%; font-size: 5em;"></i></div>');
+		},
+		complete: function() {
+			$('#button-filter').button('reset');
+		},
+		success: function(json) {
+			var html = '';
+
+			html += '<table class="table table-bordered">';
+			html +=   '<thead>';
+			html +=     '<tr>';
+			html +=       '<td class="text-left"><?php echo $column_transaction_id; ?></td>';
+			html +=       '<td class="text-left"><?php echo $column_amount; ?></td>';
+			html +=       '<td class="text-left"><?php echo $column_status; ?></td>';
+			html +=       '<td class="text-left"><?php echo $column_type; ?></td>';
+			html +=       '<td class="text-left"><?php echo $column_customer; ?></td>';
+			html +=       '<td class="text-left"><?php echo $column_order; ?></td>';
+			html +=       '<td class="text-left"><?php echo $column_date_added; ?></td>';
+			html +=     '</tr>';
+			html +=   '</thead>';
+			html +=   '<tbody>';
+			if (json.transactions) {
+				$(json.transactions).each(function(i) {
+					html += '<tr>';
+					html += '<td><a href="#" class="transaction-id" data-id="' + this.transaction_id + '">' + this.transaction_id + '</a></td>';
+					html += '<td>' + this.amount + ' ' + this.currency_iso + '</td>';
+					html += '<td>' + this.status + '</td>';
+					html += '<td>' + this.type + '</td>';
+
+					if (this.customer_url) {
+						html += '<td><a href="' + this.customer_url + '">' + this.customer + '</a></td>';
+					} else {
+						html += '<td>' + this.customer + '</td>';
+					}
+
+					if (this.order) {
+						html += '<td><a href="' + this.order + '">View</a></td>';
+					} else {
+						html += '<td></td>';
+					}
+
+					html += '<td>' + this.date_added + '</td>';
+				});
+			} else {
+				html += '<tr><td class="text-center" colspan="8"><?php echo $text_no_results; ?></td></tr>';
+			}
+
+			html +=   '</tbody>';
+			html += '</table>';
+
+			$('#table-action').html(html);
+		}
+	});
+});
+
+$(document).on('click', '.transaction-id', function(event) {
+	event.preventDefault();
+
+	getTransaction($(this).attr('data-id'));
+});
+
+$(document).on('click', '#delete-link', function(event) {
+	event.preventDefault();
+
+  $('input[name="payment_pp_braintree_access_token"]').val('');
+  $('input[name="payment_pp_braintree_refresh_token"]').val('');
+  $('input[name="payment_pp_braintree_merchant_id"]').val('');
+  $('input[name="payment_pp_braintree_public_key"]').val('');
+  $('select[name="payment_pp_braintree_status"]').val(0);
+
+  $('#form-braintree').submit();
+});
+
+$(document).ready(function() {
+    if ($('#input-3ds-status').val() == 1) {
+        $('.three-ds-status').show();
+    } else {
+        $('.three-ds-status').hide();
+    }
+});
+
+$('#input-3ds-status').on('change', function() {
+    if ($(this).val() == 1) {
+        $('.three-ds-status').show();
+    } else {
+        $('.three-ds-status').hide();
+    }
+});
+
+function getTransaction(transaction_id) {
+	$.ajax({
+		url: 'index.php?route=extension/payment/pp_braintree/getTransaction&user_token=<?php echo $user_token; ?>',
+		dataType: 'html',
+		data: {
+			transaction_id: transaction_id
+		},
+		beforeSend: function() {
+			$('#button-filter').button('loading');
+
+			$('#table-action').html('<div style="width: 5em; margin: 0px auto;"><i class="braintree-loading fa fa-spinner fa-spin fa-5x" style="text-align: center; margin: 0 auto; width: 100%; font-size: 5em;"></i></div>');
+		},
+		complete: function() {
+			$('#button-filter').button('reset');
+		},
+		success: function(html) {
+			$('#table-action').html(html);
+		}
+	});
+}
+//--></script>
+
+{% if auth_connect_url %}
+  <script src="https://assets.braintreegateway.com/v1/braintree-oauth-connect.js"></script>
+  <script type="text/javascript"><!--
+    new BraintreeOAuthConnect({
+      connectUrl: '<?php echo $auth_connect_url; ?>',
+      container: 'bt-connect',
+      onError: function (error) {
+        alert(error.message);
+      }
+    });
+    $('#bt-connect').show();
+  //--></script>
+{% endif %}
+<?php echo $footer; ?>

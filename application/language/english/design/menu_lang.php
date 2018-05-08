@@ -1,62 +1,62 @@
-<?php
-// Heading
-$lang['heading_title']       = 'Menu Groups';
+<?php // Heading
+$lang['heading_title']       = 'Nhóm trình đơn';
 
 // Text
-$lang['text_success']        = 'Success: You have modified menu groups!';
-$lang['text_list']           = 'List Menu Group';
-$lang['text_add']            = 'Add Menu Group';
-$lang['text_design']            = 'Design Menu Group';
-$lang['text_edit']           = 'Edit Group Menu';
+$lang['text_success']        = 'Thành công:Bạn đã chỉnh sửa thành công nhóm trình đơn!';
+$lang['text_list']           = 'Danh sách nhóm trình đơn';
+$lang['text_add']            = 'Thêm một nhóm trình đơn';
+$lang['text_design']            = 'Thiết kế nhóm trình đơn';
+$lang['text_edit']           = 'Chỉnh sửa nhóm trình đơn';
 
-$lang['text_links']				= 'Link';
-$lang['text_product']		= 'Products';
-$lang['text_category']		= 'Categories';
-$lang['text_information']	= 'Informations';
-$lang['text_manufacturer']	= 'Manufacturers';
+$lang['text_links']				= 'Thông tin trình đơn';
+$lang['text_product']		= 'Sản phẩm';
+$lang['text_category']		= 'Nhóm sản phẩm';
+$lang['text_information']	= 'Thông tin ';
+$lang['text_manufacturer']	= 'Hãng sản xuất';
 
 // Column
-$lang['column_name']         = 'Menu Group Title';
-$lang['column_type']       = 'Type';
-$lang['column_action']       = 'Action';
+$lang['column_name']         = 'Tên nhóm trình đơn';
+$lang['column_type']       = 'Loại';
+$lang['column_action']       = 'Hành động';
 
 // Entry
-$lang['entry_name']          = 'Title';
-$lang['entry_code']         = 'Code';
-$lang['entry_type']         = 'Type';
-$lang['entry_image']         = 'Image';
-$lang['entry_picture']         = 'Image / Icon';
-$lang['entry_status']         = 'Status';
-$lang['entry_sort_order']    = 'Sort Order';
+$lang['entry_name']          = 'Tiêu đề';
+$lang['entry_code']         = 'Mã';
+$lang['entry_type']         = 'Loại';
+$lang['entry_image']         = 'Hình ảnh';
+$lang['entry_picture']         = 'Hình ảnh / Biểu tượng';
+$lang['entry_status']         = 'Tắt/Bật';
+$lang['entry_sort_order']    = 'Thứ tự sắp xếp';
+$lang['error_code']    = 'Mã là bắt buộc'; 
 
 // Entry
-$lang['input_collective']         = 'Collective';
-$lang['input_type']         = 'Add Collective Type';
-$lang['input_species']         = 'Species';
-$lang['input_module']         = 'Module';
-$lang['input_url']         = 'URL';
-$lang['input_keyword']         = 'SEO URL';
-$lang['input_image']         = 'Image';
-$lang['input_font']         = 'Font Icon';
-$lang['input_window']         = 'Window';
-$lang['input_fixed']         = 'Fixed';
+$lang['input_collective']         = 'Thêm trình đơn hàng loạt';
+$lang['input_type']         = 'Chọn loại';
+$lang['input_species']         = 'Loại trình đơn';
+$lang['input_module']         = 'Chi tiết trình đơn';
+$lang['input_url']         = 'Đường dẫn';
+$lang['input_keyword']         = 'Đường dẫn thân thiện (SEO)';
+$lang['input_image']         = 'Hình ảnh';
+$lang['input_font']         = 'Chọn biểu tượng';
+$lang['input_window']         = 'Trang thái khi mở';
+$lang['input_fixed']         = 'Đã sửa';
 $lang['input_popup']         = 'Popup';
-$lang['input_horizontal']         = 'Horizontal';
-$lang['input_vertical']         = 'Vertical';
-$lang['input_style']         = 'Styles';
-$lang['input_style_tabbed']         = 'Tabbed';
-$lang['input_style_dropdown']         = 'DropDown';
-$lang['input_style_lists']         = 'Lists';
+$lang['input_horizontal']         = 'Trình đơn ngang';
+$lang['input_vertical']         = 'Trình đơn dọc';
+$lang['input_style']         = 'Kiểu trình đơn';
+$lang['input_style_tabbed']         = 'Bảng';
+$lang['input_style_dropdown']         = 'xổ xuống';
+$lang['input_style_lists']         = 'Danh sách';
 
 // Entry
-$lang['button_group']         = 'Menu Group Design';
-$lang['button_expand']         = 'Expanding';
-$lang['button_collapse']         = 'Collapse';
-$lang['button_finished']         = 'Save Finish';
-$lang['button_menu_add']         = 'Add';
-$lang['button_menu_save']         = 'Save';
+$lang['button_group']         = 'Thiết kế nhóm trình đơn';
+$lang['button_expand']         = 'Mở rộng';
+$lang['button_collapse']         = 'Đóng lại';
+$lang['button_finished']         = 'Lưu lại';
+$lang['button_menu_add']         = 'Thêm';
+$lang['button_menu_save']         = 'Lưu';
 
 // Error
-$lang['error_permission']    = 'Warning: You do not have permission to modify menu group!';
-$lang['error_name']					= 'Name must be between 3 and 64 characters!';
-$lang['error_url']					= 'URL must be between 3 and 64 characters!';
+$lang['error_permission']    = 'Thông báo: Bạn không có quyền hạn chỉnh sửa trinh đơn!';
+$lang['error_name']					= 'Tên phải từ 3 đến 64 kí tự!';
+$lang['error_url']					= 'Đường dẫn phải từ 3 đến 64 kí tự';

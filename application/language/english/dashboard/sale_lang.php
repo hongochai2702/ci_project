@@ -1,6 +1,6 @@
 <?php
 // Heading
-$lang['heading_title'] = 'Total Sales';
+$lang['heading_title'] = 'Doanh số';
 
 // Text
-$lang['text_view']     = 'View more...';
+$lang['text_view']     = 'Xem Thêm...';

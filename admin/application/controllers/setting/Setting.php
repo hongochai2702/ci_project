@@ -313,6 +313,11 @@ class Setting extends MX_Controller {
 		} else {
 			$data['config_country_id'] = $this->configs->get('config_country_id');
 		}
+		if ($this->input->post('config_language_id')) {
+			$data['config_language_id'] = $this->input->post('config_language_id');
+		} else {
+			$data['config_language_id'] = $this->configs->get('config_language_id');
+		}
 
 		$this->load->model('localisation/country_model','model_localisation_country');
 

@@ -13,6 +13,10 @@ class Header extends MX_Controller {
 
 		$analytics = $this->extension_model->getExtensions('analytics');
 
+		$routes = $this->uri->segment_array();
+
+		$data['class'] = end($routes);
+
 		if($analytics) {
 			foreach ($analytics as $analytic) {
 				if ($this->configs->get('analytics_' . $analytic['code'] . '_status')) {

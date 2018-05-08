@@ -1,6 +1,6 @@
 <?php
 // Heading
-$lang['heading_title'] = 'People Online';
+$lang['heading_title'] = 'Khách đang xem Website';
 
 // Text
-$lang['text_view']     = 'View more...';
+$lang['text_view']     = 'Xem thêm...';

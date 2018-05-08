@@ -1,14 +1,13 @@
 <?php
 // Heading
-$_['heading_title']    = 'Account';
+$lang['heading_title']    = ' Tài khoản';
 
-// Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified account module!';
-$_['text_edit']        = 'Edit Account Module';
+$lang['text_module']      = 'Các chức năng';
+$lang['text_success']     = 'Thành công: BẠn đã chỉnh sửa chức năng tài khoản!';
+$lang['text_edit']        = 'Chỉnh sửa chức năng tài khoản';
 
 // Entry
-$_['entry_status']     = 'Status';
+$lang['entry_status']     = 'Tắt/Bật';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify account module!';
+$lang['error_permission'] = 'Cảnh báo: Bạn không có quyền chỉnh sửa chức năng tài khoản!';
